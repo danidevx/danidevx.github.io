@@ -1,0 +1,331 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+
+}
+
+body {
+    height: 200vh;
+    padding-top: 25%; /* Ajusta este valor según la altura de tu navbar */
+    margin: 0;
+}
+
+
+
+.elemento {
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(40px); /* Desplazado hacia abajo */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transiciones definidas */
+    margin: 20px;
+    padding: 20px;
+    
+    color: white;
+    border-radius: 5px;
+}
+
+
+#Menu {
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con 80% de opacidad */
+        }
+
+
+
+.nav-link {
+    color: white; /* Color del texto */
+}
+
+.nav-link:hover {
+    color: #ffc107; /* Color del texto al pasar el mouse */
+}
+
+#Inicio {
+    display: flex;               /* Define el contenedor como un flex container */
+    flex-direction: column;     /* Organiza los elementos en una columna */
+    align-items: center;        /* Centra los elementos horizontalmente */
+    height: 100vh;             /* Opcional: establece la altura del contenedor al 100% de la ventana */
+
+}
+
+
+
+
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    
+}
+
+.profile-name {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 40px;
+}
+
+.profile-line {
+    width: 50px;
+    height: 4px;
+    background-color: #fff;
+    margin: 40px auto;
+}
+
+.profile-titlee {
+       
+        color: white;
+    }
+
+.profile-title {
+    color: gray;
+    font-size: 18px;
+}
+
+
+
+#Acerca_de {
+ margin-bottom: 40%;
+ }
+
+#Acerca_de .row {
+    margin: 0; /* Remove default margins */
+}
+
+#1, #2 {
+    max-width: 300px; /* Set a max width for both sections */
+}
+
+.title {
+    font-size: 30px; /* Adjust title size */
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 18px; /* Adjust subtitle size */
+    color: gray;
+}
+
+.footer-text {
+    font-size: 12px; /* Adjust footer text size */
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+
+.iconkills {
+    width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la proporción */
+}
+
+    
+#Servisios {
+    margin-bottom: 40%; /* Espacio entre los divs */
+}
+
+#Portafolio {
+    margin-bottom: 25%; /* Espacio entre los divs */
+}
+
+#Contacto {
+    margin-bottom: 25%; /* Espacio entre los divs */
+}
+.card {
+    background-color: transparent; }
+
+    #Portafolio {
+    display: flex;               /* Define el contenedor como un flex container */
+    flex-direction: column;     /* Organiza los elementos en una columna */
+    align-items: center;        /* Centra los elementos horizontalmente */
+    height: 100vh;             /* Opcional: establece la altura del contenedor al 100% de la ventana */
+
+}
+
+.card-text {
+    color:gray; }
+
+.card-title {
+    color:gray; }
+
+
+
+/* hover sobre la imagen del portafolio------------------------------------------- */
+
+
+.image-container {
+    position: relative; /* Posiciona el contenedor como relativo */
+    display: inline-block; /* Permite que el contenedor se ajuste al tamaño del contenido */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+}
+
+.rounded-image {
+    width: 250px; /* Ajusta el tamaño según tus necesidades */
+    height: 250px; /* Asegúrate de que la imagen sea cuadrada */
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave para zoom y opacidad */
+}
+
+.overlay {
+    position: absolute; /* Posiciona el overlay sobre la imagen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+    color: white; /* Color del texto */
+    display: flex; /* Usar flexbox para centrar el texto */
+    flex-direction: column; /* Coloca los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease; /* Transición suave para el efecto hover */
+}
+
+.image-container:hover .overlay {
+    opacity: 1; /* Muestra el overlay al pasar el mouse sobre el contenedor */
+}
+
+.image-container:hover .rounded-image {
+    transform: scale(1.1); /* Aplica un zoom a la imagen al hacer hover */
+}
+
+.overlay-title {
+    font-size: 20px; /* Tamaño del título */
+    margin-bottom: 5px; /* Espacio inferior */
+}
+
+.overlay-description {
+    font-size: 14px; /* Tamaño de la descripción */
+    margin: 35px;
+}
+
+#Contacto {
+    margin-bottom: 10%; /* Espacio entre los divs */
+}
+
+.texend {
+ color: white;
+}
+
+
+        .zoomi {
+            overflow: hidden; /* Ocultar el desbordamiento */
+            transition: transform 0.3s ease; /* Transición suave para el zoom */
+        }
+        .zoomi:hover {
+            transform: scale(1.1); /* Escalar al 110% al hacer hover */
+        }
+
+
+
+
+@media (max-width: 768px) {
+
+    
+
+   #Menu {
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con 80% de opacidad */
+        }
+
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 20px;
+    }
+
+    .profile-title {
+        font-size: 16px;
+    }
+     .profile-titlee {
+        font-size: 13px;
+        color: white;
+    }
+
+    .initials {
+        font-size: 70px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .footer-text {
+        font-size: 12px;
+        position: static;
+        margin-top: 20px;
+    }
+
+      #1, #2 {
+        max-width: 90%; /* Make them responsive on smaller screens */
+    }
+
+    .col-6 {
+    width: 80%;
+}
+
+    .iconkills {
+        width: 30px; /* Reduce el tamaño de las imágenes en pantallas pequeñas */
+    }
+
+    #Acerca_de .row {
+         
+        align-items: center; /* Centra los elementos horizontalmente */
+    }
+
+
+    .title, .subtitle, .footer-text {
+        text-align: center; /* Centra el texto en pantallas pequeñas */
+    }
+
+#Servisios {
+    margin-bottom: 40%; /* Espacio entre los divs */
+}
+
+#Portafolio {
+        height: auto; /* Permite que el contenedor ajuste su altura automáticamente */
+        margin-bottom: 50%; /* Espacio adicional si es necesario */
+    }
+
+.rounded-image {
+    width: 150px; /* Ajusta el tamaño según tus necesidades */
+    height: 150px; /* Asegúrate de que la imagen sea cuadrada */
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave para zoom y opacidad */
+}
+
+.overlay-title {
+    font-size: 14px; /* Tamaño del título */
+    margin-bottom: 3px; /* Espacio inferior */
+}
+
+.overlay-description {
+    font-size: 10px; /* Tamaño de la descripción */
+    margin: 20px;
+}
+
+#Contacto {
+        height: auto; /* Permite que el contenedor ajuste su altura automáticamente */
+        margin-bottom: 60%; /* Espacio adicional si es necesario */
+    }
+
+    .vh-100 {
+        height: auto !important; /* Asegura que no se aplique una altura fija */
+    }
+
+
+
+}
+
+
+
+    
