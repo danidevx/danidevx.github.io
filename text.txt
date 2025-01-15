@@ -1,0 +1,32 @@
+git branch
+
+
+git branch rama1
+
+
+git branch 
+
+git branch -m rama1 ramita1
+
+git branch
+
+git checkout ramita1
+
+git branch
+
+touch "texto.txt"
+
+git add.
+
+git commit -m "agrego texto"
+
+git posh 
+
+
+git branch -d ramita1
+
+git checkout main
+
+git branch -d ramita1
+
+git branch
