@@ -81,6 +81,7 @@ nav ul li a {
 .contact-info p {
     margin: 20PX;
      text-align: justify;
+     padding: 0px 50px;
 }
 
 .contact-info a {
@@ -264,9 +265,11 @@ footer {
 }
 
 .footer-section {
-    flex: 1;
+    
     margin: 10px;
     padding: 0px 10px 10px 30px;
+
+    text-align: justify;
 }
 
 .footer-section h3 {
@@ -395,6 +398,13 @@ footer {
         text-align: center; /* Centra la información de contacto */
         padding: 10px; /* Ajusta el padding */
     }
+    .contact-info p {
+        margin: 40PX;
+            padding: 0px;
+
+
+    
+    }
 
     .product-list {
         flex-direction: column; /* Cambia la dirección de la lista de productos a columna */
@@ -405,9 +415,15 @@ footer {
         width: 90%; /* Aumenta el ancho de los productos en móviles */
         margin-bottom: 20px; /* Agrega margen inferior entre productos */
     }
+    .footer-section  {
+
+        padding: 0px 50px;
+    }
 
     footer .footer-container {
         flex-direction: column; /* Cambia la dirección del footer a columna */
         align-items: center; /* Centra los elementos del footer */
     }
+
+    
 }
