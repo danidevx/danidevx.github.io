@@ -1,11 +1,11 @@
-function Categorias (name, img) {
+function Categorias (name, img, url) {
 	const Categoria = document.createElement('div')
 	Categoria.className = 'product-itemm';
 
 	Categoria.innerHTML = `
 
 	<div id="categorias" >
-		<a href="#"><img src="${img}" alt="${name}"></a>
+		<a href="${url}"><img src="${img}" alt="${name}"></a>
     </div>
 	`
 return Categoria;
@@ -18,18 +18,18 @@ const category = [
 
 	
 
-	{  img: 'img/categorias/Analgesicos.png' },
-	{  img: 'img/categorias/Antiinflamatorios.png' },
-	{  img: 'img/categorias/Antipireticos.png' },
-	{  img: 'img/categorias/Anestesicos.jpg' },
-    {  img: 'img/categorias/Antianemicos.png' },
-    {  img: 'img/categorias/Antibioticos.jpg' },
-    {  img: 'img/categorias/Antidiarreicos.png' },
-    {  img: 'img/categorias/Antihistaminicos.png' },
-    {  img: 'img/categorias/Antiparasitarios.png' },
-    {  img: 'img/categorias/Biologicos.png' },
-    {  img: 'img/categorias/Hormonales.png' },
-    {  img: 'img/categorias/Multivitaminicos.png' }
+	{ name: 'Analgésicos',  img: 'img/categorias/Analgesicos.png', url: 'categorias/analgesicos.html' },
+	{ name: 'Analgésicos', img: 'img/categorias/Antiinflamatorios.png', url: 'categorias/analgesicos.html'  },
+	{ name: 'Analgésicos', img: 'img/categorias/Antipireticos.png', url: 'categorias/analgesicos.html'  },
+	{ name: 'Analgésicos', img: 'img/categorias/Anestesicos.jpg', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antianemicos.png', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antibioticos.jpg', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antidiarreicos.png', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antihistaminicos.png', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antiparasitarios.png', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Biologicos.png', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Hormonales.png', url: 'categorias/analgesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Multivitaminicos.png', url: 'categorias/analgesicos.html'  }
 
 
 // 1. Analgésicos/Antiinflamatorios/Antipiréticos.
@@ -47,6 +47,6 @@ const category = [
 ];
 
 category.forEach(product => {
-    const productElement = Categorias(product.name, product.img);
+    const productElement = Categorias(product.name, product.img, product.url);
     listCategorias.appendChild(productElement);
 });

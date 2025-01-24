@@ -144,6 +144,7 @@ nav ul li a {
 
 
 .recommended, .new-arrivals {
+    margin-top: 30px;
     padding: 20px;
     background-color: #f2f3f3;
     border-radius: 20px;
