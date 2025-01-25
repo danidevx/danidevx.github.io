@@ -28,9 +28,7 @@ header {
 
 
 .logo-container img {
-    
-    display: block; /* Asegurarse de que la imagen se comporte como un bloque */
-    margin: auto; /* Margen automático para centrar */
+    height: 200px;
 }
 
 nav {
@@ -70,17 +68,14 @@ nav ul li a {
 
 
 .contact-info {
-    text-align: center;
+    text-align: right;
      padding: 0px 0px 10px 0px;
       margin-bottom: 10px;
-
-    justify-content: center;
 
 }
 
 .contact-info p {
-    margin: 20PX;
-     text-align: justify;
+    margin: 0;
 }
 
 .contact-info a {
@@ -325,7 +320,6 @@ footer {
 }
 
 .logo-container img {
-    height: 350px;
     display: block; /* Asegurarse de que la imagen se comporte como un bloque */
     margin: auto; /* Margen automático para centrar */
 }
