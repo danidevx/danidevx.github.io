@@ -1,0 +1,72 @@
+/* Estilos del Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 1; /* Encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilitar scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo con opacidad */
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    margin: 10% auto; /* Margen superior e inferior */
+    padding: 20px;
+    width: 80%; /* Ancho del modal en pantallas grandes */
+    max-width: 600px; /* Ancho máximo del modal */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow:2px 19px 20px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo del Título del Modal */
+.modal-content h2 {
+    color: #009933; /* Color verde para el título */
+    font-size: 24px; /* Tamaño de fuente del título */
+    margin-bottom: 15px; /* Espacio inferior */
+}
+
+
+/*#productImage {
+    max-width: 100%; 
+    border-radius: 10px; 
+}
+
+
+.productDescription {
+    color: #333333; 
+    font-size: 16px; 
+}*/
+
+/* Estilo del Botón de Cierre */
+.close {
+    color: #aaa;
+    float: right; /* Alinear a la derecha */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff0000; /* Cambiar a rojo al pasar el mouse o al enfocar */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.stil-li {
+    color: black;
+    list-style-type: none; /* Quitar los puntos */
+    padding: 0; /* Eliminar el padding por defecto */
+    margin: 0; /* Eliminar el margen por defecto */
+    text-align: center; /* Centrar texto e imágenes */
+    display: block; /* Asegurarse de que las imágenes sean elementos de bloque */
+    margin: 0 auto; /* Centrar la imagen horizontalmente */
+    max-width: 100%; /* Asegurarse de que la imagen no desborde el contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
+}
+
+
+

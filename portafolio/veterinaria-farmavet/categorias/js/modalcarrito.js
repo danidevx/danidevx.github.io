@@ -3,10 +3,10 @@
 //     document.getElementById('cartModal').style.display = "block"; // Mostrar el modal
 // };
 
-// Cerrar el modal al hacer clic en la 'X'
-document.querySelector('.close').onclick = function() {
-    document.getElementById('cartModal').style.display = "none";
-};
+// // Cerrar el modal al hacer clic en la 'X'
+// document.querySelector('.close').onclick = function() {
+//     document.getElementById('cartModal').style.display = "none";
+// };
 
 // // Enviar productos por WhatsApp
 // document.getElementById('whatsappButton').onclick = function() {
