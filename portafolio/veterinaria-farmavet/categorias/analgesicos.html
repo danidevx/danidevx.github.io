@@ -14,7 +14,7 @@
     <header id="header">
         <div  class="borde" >
             <div class="logo-container">
-                <img src="img/logo.png" alt="Medivet Logo">
+                <img src="../img/logo.png" alt="Medivet Logo">
             </div>
             <div class="contact-info">
 
@@ -31,17 +31,17 @@
                 </a> -->
                 <!-- Modal -->
                 
-                        <div id="cartModal" class="modal">
+                       <!--  <div id="cartModal" class="modal">
                             <div class="modal-content">
                                 <span class="close">&times;</span>
                                 <h2 >Productos en tu carrito</h2>
-                                <ul id="productList"> 
+                                <ul id="productList"> -->
                                     <!-- Aquí se agregarán los productos dinámicamente -->
-                                </ul>
+                                <!-- </ul>
 
                                 <button id="whatsappButton">Enviar por WhatsApp</button>
                             </div>
-                        </div> 
+                        </div> -->
 
 
             </div>
@@ -59,7 +59,7 @@
                     
                     <li>
                         
-                        <li><a href="categorias/analgesicos.html">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
+                        <li><a href="#Analgésicos/Antiinflamatorios/Antipiréticos">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
                     <li><a href="#anestesicos">Anestésicos</a></li>
                     <li><a href="#antianemicos">Antianémicos</a></li>
                     <li><a href="#antibioticos">Antibióticos</a></li>
@@ -82,32 +82,28 @@
     </header>
 
     <div class="borde" >
-        <main >
+        <!-- <main >
             <section class="hero">
                 <div class="hero-content">
-                    <img src="img/portadebaca.jpg" alt="Dermipel Zoo">
+                    <img src="../img/portadebaca.jpg" alt="Dermipel Zoo">
                 </div>
             </section>
 
 
-        </main>
+        </main> -->
 
     
 
 
 
         <section class="recommended">
-            <h2>Recomendamos</h2>
+            <h2>Analgésicos Antiinflamatorios Antipiréticos</h2>
             <div class="product-list" id="product-listrecomendamos"></div>
         </section>
 
         <br>
 <br>
-        <section class="new-arrivals">
-            <h2>Novedades</h2>
-            <div class="product-list" id="product-listrenovedades"></div>
-        </section>
-
+    
         <div class="calculator">
           <input type="number" id="dosisTerapeutica2" placeholder="Ingrese la dosis terapéutica">
           <input type="number" id="pesoVivo2" placeholder="Ingrese el peso vivo">
@@ -116,12 +112,7 @@
            <p id="resultado2"></p>
         </div>
 
-        <section class="new-arrivals">
-            <h2>Categorias</h2>
-            <div class="product-list" id="listCategorias"></div>
-
-
-        </section>
+        
 
 
 
@@ -130,12 +121,11 @@
 
 <!-- Modal para Detalles del Producto -->
 <div id="productDetailModal" class="modal">
-    <div class="modal-content" >
+    <div class="modal-content" class="">
         <span class="close close-detail">&times;</span>
         <h2 id="productName" class="stil-li"></h2>
         <img id="productImage" src="" alt="" style="max-width: 100%;" class="stil-li">
-        <center><h1>Descripcion </h1><br></center>
-        <div id="productDescription" class="stil-li">  </div>
+        <p id="productDescription" class="stil-li"></p>
     </div>
 </div>
 
@@ -149,12 +139,12 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section" >
-                <img src="img/logo.png" alt="Farvavet grandes Logo" class="logo ">
+                <img src="../img/logo.png" alt="Farvavet grandes Logo" class="logo ">
                 <div class="social-media">
-                    <a href="#"><img src="img/facebook.png" alt="Facebook" class="margen"></a>
-                    <a href="#"><img src="img/instagram.png" alt="Instagram" class="margen"></a>
+                    <a href="#"><img src="../img/facebook.png" alt="Facebook" class="margen"></a>
+                    <a href="#"><img src="../img/instagram.png" alt="Instagram" class="margen"></a>
                 </div>
-                <img src="img/venezuela.png" alt="Venezuela Flag" class="flag margen">
+                <img src="../img/venezuela.png" alt="Venezuela Flag" class="flag margen">
             </div>
             <div class="footer-section">
                 <h3 style=" text-align: center; ">Agradecimientos Especiales</h3>
@@ -210,7 +200,7 @@
 
     <script src="js/product.js"></script> <!-- Incluir el archivo común -->
     <script src="js/productrecomendamos.js"></script>
-    <script src="js/productnovedades.js"></script>
+    <script src="js/Analgésicos.js"></script>
     <script src="js/categorias.js"></script>
     <script src="js/menunav.js"></script>
     <script src="js/calculadora/calculator.js"></script>
