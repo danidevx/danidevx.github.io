@@ -3,16 +3,16 @@ const productListRecomendamos = document.getElementById('product-listrecomendamo
 
 // Ejemplo de productos recomendados
 const productsRecomendados = [
-    { name: 'ANTRIFORMINT FM ®', imageSrc: 'img/product/reme1.png', descripProdu: 'Descripción de SONENIX 150®' },
-    { name: 'ANTRIBAM 4G ®', imageSrc: 'img/product/atriban.png', descripProdu: 'Descripción de SONENIX 150®' },
-    { name: 'ASCEND', imageSrc: 'img/product/ascend.png', descripProdu: 'Descripción de SONENIX 150®' },
-    { name: 'ENROFLOXACINA 10% ®', imageSrc: 'img/product/enrofloxasina.png', descripProdu: 'Descripción de SONENIX 150®' },
-    { name: 'FLUXIPEN ®', imageSrc: 'img/product/fluxipen.png', descripProdu: 'Descripción de SONENIX 150®' },
-    { name: 'RESANIQ ®', imageSrc: 'img/product/RESANIQ.png', descripProdu: 'Descripción de SONENIX 150®' }
+    { name: 'ANTRIFORMINT FM ®', imageSrc: 'img/product/reme1.png' },
+    { name: 'ANTRIBAM 4G ®', imageSrc: 'img/product/atriban.png' },
+    { name: 'ASCEND', imageSrc: 'img/product/ascend.png' },
+    { name: 'ENROFLOXACINA 10% ®', imageSrc: 'img/product/enrofloxasina.png' },
+    { name: 'FLUXIPEN ®', imageSrc: 'img/product/fluxipen.png' },
+    { name: 'RESANIQ ®', imageSrc: 'img/product/RESANIQ.png' }
 ];
 
 // Agregar cada producto al DOM
 productsRecomendados.forEach(product => {
-    const productElement = createProduct(product.name, product.imageSrc, product.descripProdu);
+    const productElement = createProduct(product.name, product.imageSrc);
     productListRecomendamos.appendChild(productElement);
 });

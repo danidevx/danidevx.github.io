@@ -146,11 +146,11 @@ nav ul li a {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 150px; /* Ancho fijo */
-    height: auto; /* Permitir altura automática */
+    width: 150px;
+    height: 300px; /* Altura fija */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Espacio entre los elementos */
 
 }
 
@@ -164,10 +164,6 @@ nav ul li a {
 
 .product-item h3 {
     color: black;
-    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
-    margin: 0; /* Eliminar margen para evitar desbordamiento */
-    word-wrap: break-word; /* Permitir que las palabras largas se dividan */
-    overflow-wrap: break-word; /* Similar a word-wrap, pero más moderno */
 }
 
 .product-item a {

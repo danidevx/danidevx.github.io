@@ -1,8 +1,7 @@
 // product.js
+const cartItems = []; // Array para almacenar los productos del carrito
 
-const cartItems = []; 
-
-function createProduct(name, imageSrc, descripProdu) {
+function createProduct(name, imageSrc) {
     const productItem = document.createElement('div');
     productItem.className = 'product-item';
     
@@ -15,19 +14,11 @@ function createProduct(name, imageSrc, descripProdu) {
     // Agregar evento de clic al botón "Agregar al carrito"
     productItem.querySelector('.add-to-cart').onclick = function(event) {
         event.preventDefault(); // Prevenir la acción por defecto
-        event.stopPropagation(); // Evitar que se dispare el evento del contenedor
         addToCart(name, imageSrc); // Llamar a la función para agregar al carrito
-    };
-
-    // Agregar evento de clic para mostrar detalles del producto
-    productItem.onclick = function(event) {
-        showProductDetails(name, imageSrc, descripProdu); // Mostrar detalles del producto
     };
 
     return productItem;
 }
-
-
 
 // Función para agregar un producto al carrito
 function addToCart(name, imageSrc) {
@@ -39,12 +30,10 @@ function addToCart(name, imageSrc) {
 // Función para actualizar el modal con los productos en el carrito
 function updateCartModal() {
     const productList = document.getElementById('productList');
-    productList.className = 'stil-li';
     productList.innerHTML = ''; // Limpiar la lista actual
 
     cartItems.forEach(item => {
         const listItem = document.createElement('li');
-
         listItem.textContent = item.name; // Mostrar solo el nombre del producto
         productList.appendChild(listItem);
     });
