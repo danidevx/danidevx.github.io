@@ -1,7 +1,7 @@
 function showProductDetails(name, imageSrc, descripProdu) {
-    document.getElementById('productName').innerHTML = name;
+    document.getElementById('productName').textContent = name;
     document.getElementById('productImage').src = imageSrc;
-    document.getElementById('productDescription').innerHTML = descripProdu;
+    document.getElementById('productDescription').textContent = descripProdu;
 
     const modal = document.getElementById('productDetailModal');
     modal.style.display = "block"; // Mostrar el modal

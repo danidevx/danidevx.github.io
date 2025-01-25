@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/calculator.css">
-    <link rel="stylesheet" href="css/buscar.css">
 </head>
 <body>
 
@@ -31,46 +30,35 @@
                 </a> -->
                 <!-- Modal -->
                 
-                        <div id="cartModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <h2 >Productos en tu carrito</h2>
-                                <ul id="productList"> 
-                                    <!-- Aquí se agregarán los productos dinámicamente -->
-                                </ul>
+                    <div id="cartModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2 >Productos en tu carrito</h2>
+                            <ul id="productList">
+                                <!-- Aquí se agregarán los productos dinámicamente -->
+                            </ul>
 
-                                <button id="whatsappButton">Enviar por WhatsApp</button>
-                            </div>
-                        </div> 
+                            <button id="whatsappButton">Enviar por WhatsApp</button>
+                        </div>
+                    </div>
 
 
             </div>
-
-            <form role="search" method="get" action="/search" id="buscar" class="search">
-                            <input type="search" name="search-text" placeholder="Buscar..." aria-label="Buscar">
-                            <button type="submit">Buscar</button>
-            </form>
-
            <nav>
-                <div class="hamburger" id="hamburger"  >
+                <div class="hamburger" id="hamburger">
                     &#9776; <!-- Icono de hamburguesa -->
                 </div>
                 <ul id="navList">
-                    
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Noticias Veterinarias</a></li>
+                    <li><a href="#">La Empresa</a></li>
+                    <li><a href="#">Contacto</a></li>
                     <li>
-                        
-                        <li><a href="categorias/analgesicos.html">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
-                    <li><a href="#anestesicos">Anestésicos</a></li>
-                    <li><a href="#antianemicos">Antianémicos</a></li>
-                    <li><a href="#antibioticos">Antibióticos</a></li>
-                    <li><a href="#antidiarreicos">Antidiarréicos</a></li>
-                    <li><a href="#antihistaminicos">Antihistamínicos</a></li>
-                    <li><a href="#antiparasitarios">Antiparasitarios Orales/Inyectables</a></li>
-                    <li><a href="#biologicos">Biológicos</a></li>
-                    <li><a href="#hormonales">Hormonales</a></li>
-                    <li><a href="#multivitaminicos">Multivitamínicos</a></li>
-                    <li><a href="#otros">Otros</a></li>
-                </ul>
+                        <form role="search" method="get" action="/search" id="buscar">
+                            <input type="search" name="search-text" placeholder="Buscar..." aria-label="Buscar">
+                            <button type="submit">Buscar</button>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -130,12 +118,11 @@
 
 <!-- Modal para Detalles del Producto -->
 <div id="productDetailModal" class="modal">
-    <div class="modal-content" >
+    <div class="modal-content" class="">
         <span class="close close-detail">&times;</span>
         <h2 id="productName" class="stil-li"></h2>
         <img id="productImage" src="" alt="" style="max-width: 100%;" class="stil-li">
-        <center><h1>Descripcion </h1><br></center>
-        <div id="productDescription" class="stil-li">  </div>
+        <p id="productDescription" class="stil-li"></p>
     </div>
 </div>
 
@@ -144,7 +131,13 @@
 
 
 
-
+<script src="js/product.js"></script> <!-- Incluir el archivo común -->
+<script src="js/productrecomendamos.js"></script>
+<script src="js/productnovedades.js"></script>
+<script src="js/categorias.js"></script>
+<script src="js/menunav.js"></script>
+<script src="js/calculadora/calculator.js"></script>
+<script src="js/modal/produc-nove-recomen.js"></script>
 
     <footer>
         <div class="footer-container">
@@ -206,15 +199,6 @@
     </div>
 </div>
 
-
-
-    <script src="js/product.js"></script> <!-- Incluir el archivo común -->
-    <script src="js/productrecomendamos.js"></script>
-    <script src="js/productnovedades.js"></script>
-    <script src="js/categorias.js"></script>
-    <script src="js/menunav.js"></script>
-    <script src="js/calculadora/calculator.js"></script>
-    <script src="js/modal/produc-nove-recomen.js"></script>
     <script src="js/modalcarrito.js"></script>
     <script src="js/buscar-producto.js"></script>
 
