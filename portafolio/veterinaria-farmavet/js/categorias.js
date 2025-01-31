@@ -21,15 +21,15 @@ const category = [
 	{ name: 'Analgésicos',  img: 'img/categorias/Analgesicos.png', url: 'categorias/analgesicos.html' },
 	{ name: 'Analgésicos', img: 'img/categorias/Antiinflamatorios.png', url: 'categorias/analgesicos.html'  },
 	{ name: 'Analgésicos', img: 'img/categorias/Antipireticos.png', url: 'categorias/analgesicos.html'  },
-	{ name: 'Analgésicos', img: 'img/categorias/Anestesicos.jpg', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Antianemicos.png', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Antibioticos.jpg', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Antidiarreicos.png', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Antihistaminicos.png', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Antiparasitarios.png', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Biologicos.png', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Hormonales.png', url: 'categorias/analgesicos.html'  },
-    { name: 'Analgésicos', img: 'img/categorias/Multivitaminicos.png', url: 'categorias/analgesicos.html'  }
+	{ name: 'Analgésicos', img: 'img/categorias/Anestesicos.jpg', url: 'categorias/anestesicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antianemicos.png', url: 'categorias/antianemicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antibioticos.jpg', url: 'categorias/antibioticos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antidiarreicos.png', url: 'categorias/antidiarreicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antihistaminicos.png', url: 'categorias/antihistaminicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Antiparasitarios.png', url: 'categorias/antiparasitariosoralesinyectable.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Biologicos.png', url: 'categorias/biologicos.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Hormonales.png', url: 'categorias/hormonales.html'  },
+    { name: 'Analgésicos', img: 'img/categorias/Multivitaminicos.png', url: 'categorias/multivitaminicos.html'  }
 
 
 // 1. Analgésicos/Antiinflamatorios/Antipiréticos.
