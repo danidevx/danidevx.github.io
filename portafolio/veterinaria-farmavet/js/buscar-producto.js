@@ -2,7 +2,7 @@ document.getElementById('buscar').onsubmit = function(event) {
     event.preventDefault(); // Prevenir el envío del formulario
 
     const searchText = event.target['search-text'].value.toLowerCase(); // Obtener el texto de búsqueda
-    const allProducts = [...productsRecomendados, ...productsNovedades]; // Combinar productos recomendados y novedades
+    const allProducts = [...updatedProductsAll]; // Combinar productos recomendados y novedades
 
     // Filtrar productos que coincidan con el texto de búsqueda
     const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchText));
@@ -39,10 +39,10 @@ window.onclick = function(event) {
     }
 };
 
-// Cerrar el modal del carrito al hacer clic en la 'X'
-document.querySelector('.close').onclick = function() {
-    document.getElementById('cartModal').style.display = "none";
-};
+// // Cerrar el modal del carrito al hacer clic en la 'X'
+// document.querySelector('.close').onclick = function() {
+//     document.getElementById('cartModal').style.display = "none";
+// };
 
 // Cerrar el modal del carrito si se hace clic fuera de él
 window.onclick = function(event) {
@@ -52,10 +52,13 @@ window.onclick = function(event) {
 };
 
 
+
 // Función para mostrar los detalles del producto
 function showProductDetail(product) {
     const productDetailSection = document.getElementById('productDetailSection');
     const productDetailContent = document.getElementById('productDetailContent');
+
+    console.log("Antes de llenar el contenido:", productDetailSection.scrollTop); // Verifica el scroll antes de llenar el contenido
 
     // Llenar la sección de detalles con la información del producto
     productDetailContent.innerHTML = `
@@ -66,26 +69,37 @@ function showProductDetail(product) {
 
     // Ocultar la lista de productos y mostrar los detalles
     document.getElementById('productListSection').style.transform = 'translateX(-100%)';
+    productDetailSection.style.transform = 'translateX(0)'; // Mover la sección de detalles a la vista
     productDetailSection.classList.remove('hidden');
     productDetailSection.classList.add('visible');
+
+    // Restablecer el scroll de la sección de detalles a la parte superior
+    setTimeout(() => {
+        console.log("Después de llenar el contenido:", productDetailSection.scrollTop); // Verifica el scroll después de llenar el contenido
+        productDetailSection.scrollTop = 0; // Asegurar que el scroll esté en la parte superior
+    }, 10); // Pequeño retraso para asegurar que el contenido esté renderizado
+
+    console.log(updatedProductsAll); // Verifica si se imprime el arreglo
 }
 
-// Función para volver a la lista de productos
 function backToProductList() {
     const productDetailSection = document.getElementById('productDetailSection');
 
+    // Restablecer el scroll de la sección de detalles a la parte superior
+    productDetailSection.scrollTop = 0;
+
     // Ocultar los detalles y mostrar la lista de productos
     document.getElementById('productListSection').style.transform = 'translateX(0)';
+    productDetailSection.style.transform = 'translateX(100%)'; // Mover la sección de detalles fuera de la vista
     productDetailSection.classList.remove('visible');
     productDetailSection.classList.add('hidden');
 }
-
 // Evento para mostrar los detalles del producto al hacer clic en un enlace
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('product-link')) {
         event.preventDefault();
         const productName = event.target.textContent;
-        const allProducts = [...productsRecomendados, ...productsNovedades];
+        const allProducts = [...updatedProductsAll];
         const selectedProduct = allProducts.find(product => product.name === productName);
         if (selectedProduct) {
             showProductDetail(selectedProduct);
@@ -100,7 +114,7 @@ document.querySelector('.back-arrow').addEventListener('click', backToProductLis
 document.getElementById('buscar').onsubmit = function (event) {
     event.preventDefault();
     const searchText = event.target['search-text'].value.toLowerCase();
-    const allProducts = [...productsRecomendados, ...productsNovedades];
+    const allProducts = [...updatedProductsAll];
     const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchText));
 
     const searchResultsList = document.getElementById('searchResultsList');

@@ -98,37 +98,41 @@
     background: white;
     padding: 20px;
     border-radius: 10px;
-    max-width: 800px; /* Ancho máximo del modal */
-    width: 90%; /* Ancho relativo */
-    max-height: 80vh; /* Alto máximo del modal */
+    width: 600px; /* Ancho fijo */
+    height: 400px; /* Alto fijo */
     overflow-y: auto; /* Permitir scroll vertical si el contenido es muy largo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Sección de lista de productos */
+/* Estilos para la lista de productos */
 #productListSection {
     transition: transform 0.3s ease;
+    overflow-y: auto; /* Permitir scroll en la lista */
 }
 
-/* Sección de detalles del producto */
+/* Estilos para la sección de detalles del producto */
+/* Estilos para la sección de detalles del producto */
 #productDetailSection {
     position: absolute;
     top: 0;
-    left: 100%;
+    left: 0;
     width: 100%;
     height: 100%;
     background: white;
-    transition: left 0.3s ease;
+    transition: transform 0.3s ease;
+    transform: translateX(100%); /* Inicialmente fuera de la vista */
     padding: 20px;
     overflow-y: auto; /* Permitir scroll en los detalles */
+    z-index: 1; /* Asegurar que esté por encima de la lista */
 }
 
 #productDetailSection.hidden {
-    left: 100%;
+    transform: translateX(100%); /* Fuera de la vista */
 }
 
 #productDetailSection.visible {
-    left: 0;
+    transform: translateX(0); /* Dentro de la vista */
 }
 
 /* Flecha de retroceso */
@@ -146,4 +150,14 @@
 /* Ocultar la sección de detalles inicialmente */
 .hidden {
     display: none;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Ancho más pequeño en móviles */
+        height: 300px; /* Alto más pequeño en móviles */
+    }
 }

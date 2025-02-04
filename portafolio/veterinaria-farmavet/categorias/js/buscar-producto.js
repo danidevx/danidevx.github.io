@@ -2,7 +2,7 @@ document.getElementById('buscar').onsubmit = function(event) {
     event.preventDefault(); // Prevenir el envío del formulario
 
     const searchText = event.target['search-text'].value.toLowerCase(); // Obtener el texto de búsqueda
-    const allProducts = [...productsRecomendados]; // Combinar productos recomendados y novedades
+    const allProducts = [...productsAll]; // Combinar productos recomendados y novedades
 
     // Filtrar productos que coincidan con el texto de búsqueda
     const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchText));
@@ -86,7 +86,7 @@ document.addEventListener('click', function (event) {
     if (event.target.classList.contains('product-link')) {
         event.preventDefault();
         const productName = event.target.textContent;
-        const allProducts = [...productsRecomendados];
+        const allProducts = [...productsAll];
         const selectedProduct = allProducts.find(product => product.name === productName);
         if (selectedProduct) {
             showProductDetail(selectedProduct);
@@ -101,7 +101,7 @@ document.querySelector('.back-arrow').addEventListener('click', backToProductLis
 document.getElementById('buscar').onsubmit = function (event) {
     event.preventDefault();
     const searchText = event.target['search-text'].value.toLowerCase();
-    const allProducts = [...productsRecomendados];
+    const allProducts = [...productsAll];
     const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchText));
 
     const searchResultsList = document.getElementById('searchResultsList');

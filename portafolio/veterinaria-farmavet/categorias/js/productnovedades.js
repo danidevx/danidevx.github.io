@@ -12,7 +12,7 @@
 // ];
 
 
-// // Agregar cada producto al DOM
+// Agregar cada producto al DOM
 // productsNovedades.forEach(product => {
 //     const productElement = createProduct(product.name, product.imageSrc, product.descripProdu);
 //     productListNovedades.appendChild(productElement);
