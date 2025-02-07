@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!--  -->
     <title>Farvavet grandes</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modal.css">
@@ -56,23 +61,20 @@
                     &#9776; <!-- Icono de hamburguesa -->
                 </div>
                 <ul id="navList">
+                    <li><a href="#Inicio">Inicio</a></li>     
+                    <li><a href="categorias/analgesicos.html">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
+                    <li><a href="categorias/anestesicos.html">Anestésicos</a></li>
+                    <li><a href="categorias/antianemicos.html">Antianémicos</a></li>
+                    <li><a href="categorias/antibioticos.html">Antibióticos</a></li>
+                    <li><a href="categorias/antidiarreicos.html">Antidiarréicos</a></li>
+                    <li><a href="categorias/antihistaminicos.html">Antihistamínicos</a></li>
+                    <li><a href="categorias/antiparasitariosoralesinyectable.html">Antiparasitarios Orales/Inyectables</a></li>
+                    <li><a href="categorias/biologicos.html">Biológicos</a></li>
+                    <li><a href="categorias/hormonales.html">Hormonales</a></li>
+                    <li><a href="categorias/multivitaminicos.html">Multivitamínicos</a></li>
+                    <li><a href="categorias/otros.html">Otros</a></li>
+                </ul>
                     
-                    <li>
-                        
-                        <li><a href="categorias/analgesicos.html">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
-                    <li><a href="#anestesicos">Anestésicos</a></li>
-                    <li><a href="#antianemicos">Antianémicos</a></li>
-                    <li><a href="#antibioticos">Antibióticos</a></li>
-                    <li><a href="#antidiarreicos">Antidiarréicos</a></li>
-                    <li><a href="#antihistaminicos">Antihistamínicos</a></li>
-                    <li><a href="#antiparasitarios">Antiparasitarios Orales/Inyectables</a></li>
-                    <li><a href="#biologicos">Biológicos</a></li>
-                    <li><a href="#hormonales">Hormonales</a></li>
-                    <li><a href="#multivitaminicos">Multivitamínicos</a></li>
-                    <li><a href="#otros">Otros</a></li>
-                </ul>
-                    </li>
-                </ul>
             </nav>
 
 
@@ -196,18 +198,28 @@
 
     </div>
     <!-- Modal de Resultados de Búsqueda -->
+<<!-- Modal de búsqueda (productListSection) -->
+<!-- Modal de búsqueda -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <span class="close-search">&times;</span>
-        <h2>Resultados de Búsqueda</h2>
-        <ul id="searchResultsList">
-            <!-- Aquí se agregarán los productos encontrados dinámicamente -->
-        </ul>
+        <div id="productListSection">
+            <h2>Resultados de Búsqueda</h2>
+            <ul id="searchResultsList"></ul>
+        </div>
     </div>
 </div>
 
+<!-- Modal de detalles -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <span id="lon" class="close-detail">&times;</span>
+        <div id="productDetailContent"></div>
+    </div>
+</div>
 
-
+     <script src="js/productall.js"></script>
+    <script src="js/buscar-producto.js"></script>
     <script src="js/product.js"></script> <!-- Incluir el archivo común -->
     <script src="js/productrecomendamos.js"></script>
     <script src="js/productnovedades.js"></script>
@@ -216,7 +228,7 @@
     <script src="js/calculadora/calculator.js"></script>
     <script src="js/modal/produc-nove-recomen.js"></script>
     <script src="js/modalcarrito.js"></script>
-    <script src="js/buscar-producto.js"></script>
+   
 
 
 </body>

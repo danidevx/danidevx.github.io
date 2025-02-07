@@ -63,11 +63,12 @@ nav ul {
 nav ul li a {
     color: white;
     text-decoration: none;
-     padding: 10px 15px;
+     padding: 7px 12px;
      border-radius: 5px; /* Bordes redondeados en los enlaces */
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
     background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil para simular botón */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
+
 }
 }
 
@@ -144,7 +145,6 @@ nav ul li a {
 
 
 .recommended, .new-arrivals {
-    margin-top: 30px;
     padding: 20px;
     background-color: #f2f3f3;
     border-radius: 20px;
@@ -351,7 +351,10 @@ footer {
     margin: auto; /* Margen automático para centrar */
 }
 
-    
+   nav ul li a {
+/*    margin-top: 30px;*/
+padding: 6px;
+} 
 
 
     .borde {
@@ -443,5 +446,6 @@ footer {
         align-items: center; /* Centra los elementos del footer */
     }
 
+    
     
 }

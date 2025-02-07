@@ -56,24 +56,33 @@
                     &#9776; <!-- Icono de hamburguesa -->
                 </div>
                 <ul id="navList">
+                    <li><a href="../index.html">Inicio</a></li>     
+                    <li><a href="#Analgésicos/Antiinflamatorios/Antipiréticos">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
+                    <li><a href="anestesicos.html">Anestésicos</a></li>
+                    <li><a href="antianemicos.html">Antianémicos</a></li>
+                    <li><a href="antibioticos.html">Antibióticos</a></li>
+                    <li><a href="antidiarreicos.html">Antidiarréicos</a></li>
+                    <li><a href="antihistaminicos.html">Antihistamínicos</a></li>
+                    <li><a href="antiparasitariosoralesinyectable.html">Antiparasitarios Orales/Inyectables</a></li>
+                    <li><a href="biologicos.html">Biológicos</a></li>
+                    <li><a href="hormonales.html">Hormonales</a></li>
+                    <li><a href="multivitaminicos.html">Multivitamínicos</a></li>
+                    <li><a href="otros.html">Otros</a></li>
+                </ul>
                     
-                    <li>
-                        
-                        <li><a href="#Analgésicos/Antiinflamatorios/Antipiréticos">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
-                    <li><a href="#anestesicos">Anestésicos</a></li>
-                    <li><a href="#antianemicos">Antianémicos</a></li>
-                    <li><a href="#antibioticos">Antibióticos</a></li>
-                    <li><a href="#antidiarreicos">Antidiarréicos</a></li>
-                    <li><a href="#antihistaminicos">Antihistamínicos</a></li>
-                    <li><a href="#antiparasitarios">Antiparasitarios Orales/Inyectables</a></li>
-                    <li><a href="#biologicos">Biológicos</a></li>
-                    <li><a href="#hormonales">Hormonales</a></li>
-                    <li><a href="#multivitaminicos">Multivitamínicos</a></li>
-                    <li><a href="#otros">Otros</a></li>
-                </ul>
-                    </li>
-                </ul>
             </nav>
+
+           <!--  // 1. Analgésicos/Antiinflamatorios/Antipiréticos.
+// 2. Anestésicos.
+// 3. Antianémicos.
+// 4. Antibióticos.
+// 5. Antidiarréicos.
+// 6. Antihistamínicos
+// 7. Antiparasitarios Orales/Inyectables.
+// 8. Biológicos.
+// 9. Hormonales.
+// 10. Multivitamínicos.
+// 11. Otros. -->
 
 
         
@@ -189,24 +198,36 @@
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <span class="close-search">&times;</span>
-        <h2>Resultados de Búsqueda</h2>
-        <ul id="searchResultsList">
-            <!-- Aquí se agregarán los productos encontrados dinámicamente -->
-        </ul>
+        <div id="productListSection">
+            <h2>Resultados de Búsqueda</h2>
+            <ul id="searchResultsList"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de detalles -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <span id="lon" class="close-detail">&times;</span>
+        <div id="productDetailContent"></div>
     </div>
 </div>
 
 
 
+
     <script src="js/product.js"></script> <!-- Incluir el archivo común -->
-    <script src="js/productrecomendamos.js"></script>
+    
     <script src="js/Analgésicos.js"></script>
-    <script src="js/categorias.js"></script>
+    
     <script src="js/menunav.js"></script>
     <script src="js/calculadora/calculator.js"></script>
     <script src="js/modal/produc-nove-recomen.js"></script>
     <script src="js/modalcarrito.js"></script>
+    <script src="js/productall.js"></script>
     <script src="js/buscar-producto.js"></script>
+    
+    <script src="js/productnovedades.js"></script>
 
 
 </body>

@@ -1,9 +1,147 @@
+/* Estilos para el botón de búsqueda */
 .search {
-
-	padding: 30px;
-	display: block;
+    padding: 30px;
+    display: block;
     margin: auto;
-    
+    text-align: center;
+}
 
-	 text-align: center
+.search input[type="search"] {
+    width: 200px; /* Ancho del input */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    border: 2px solid #ccc; /* Borde del input */
+    border-radius: 25px; /* Bordes redondeados */
+    outline: none; /* Quita el borde predeterminado al hacer focus */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+.search input[type="search"]:focus {
+    border-color: #007BFF; /* Cambia el color del borde al hacer focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Sombra al hacer focus */
+}
+
+.search button[type="submit"] {
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #fff; /* Color del texto */
+    background-color: #087d2f; /* Color de fondo */
+    border: none; /* Quita el borde */
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.search button[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+}
+
+/* Estilos para la lista de resultados */
+#searchResultsList {
+    list-style: none; /* Quitar los puntos de la lista */
+    padding: 0; /* Quitar el padding predeterminado */
+    margin: 20px 0; /* Espaciado exterior */
+}
+
+/* Estilos para cada elemento de la lista */
+#searchResultsList li {
+    margin-bottom: 10px; /* Espaciado entre elementos */
+    padding: 10px; /* Espaciado interno */
+    border-bottom: 1px solid #e0e0e0; /* Borde inferior sutil */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para los enlaces de los productos */
+#searchResultsList li a.product-link {
+    text-decoration: none; /* Quitar subrayado */
+    color: #333; /* Color del texto */
+    font-size: 16px; /* Tamaño de la fuente */
+    display: block; /* Hacer que el enlace ocupe todo el espacio del li */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para los enlaces */
+#searchResultsList li a.product-link:hover {
+    color: #007BFF; /* Cambiar color del texto al pasar el mouse */
+    background-color: #f9f9f9; /* Cambiar fondo al pasar el mouse */
+}
+
+/* Estilos para el mensaje "No se encontraron productos" */
+#searchResultsList li.no-results {
+    color: #777; /* Color del texto */
+    font-style: italic; /* Texto en cursiva */
+    text-align: center; /* Centrar el texto */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para el modal de búsqueda */
+#searchModal.modal {
+    display: none; /* Ocultar por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilos para el modal de detalles */
+#detailModal.modal {
+    display: none; /* Ocultar por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Mayor z-index para que aparezca sobre el modal de búsqueda */
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px; /* Ancho fijo */
+    height: 400px; /* Alto fijo */
+    overflow-y: auto; /* Permitir scroll vertical si el contenido es muy largo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la lista de productos */
+#productListSection {
+    transition: transform 0.3s ease;
+    overflow-y: auto; /* Permitir scroll en la lista */
+}
+
+/* Estilos para la sección de detalles del producto */
+#productDetailContent {
+    padding: 20px;
+    overflow-y: auto; /* Permitir scroll en los detalles */
+}
+
+/* Flecha de retroceso */
+.back-arrow {
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.back-arrow:hover {
+    color: #007BFF;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Ancho más pequeño en móviles */
+        height: 300px; /* Alto más pequeño en móviles */
+    }
 }
