@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Out the Door - Orlando</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Interruptor de idioma -->
+    
+    <div class="language-switch">
+        <label for="language-toggle">Español</label>
+        <input type="checkbox" id="language-toggle">
+        <label for="language-toggle">English</label>
+    </div>
+
+    <div class="calculator-container">
+        <!-- Contenido en español -->
+        <h1 data-lang="es">Calculadora Out the Door</h1>
+        <h1 data-lang="en" style="display: none;">Out the Door Calculator</h1>
+
+        <form id="calculator-form">
+            <div class="form-group">
+                <label for="vehicle-price" data-lang="es">Precio del Vehículo ($):</label>
+                <label for="vehicle-price" data-lang="en" style="display: none;">Vehicle Price ($):</label>
+                <input type="number" id="vehicle-price" placeholder="Ej: 12995" required>
+            </div>
+            <div class="form-group">
+                <label for="city-type" data-lang="es">Tipo de Ciudad:</label>
+                <label for="city-type" data-lang="en" style="display: none;">City Type:</label>
+                <select id="city-type">
+                    <option value="orlando-new" data-lang="es">Orlando - Placa Nueva</option>
+                    <option value="orlando-new" data-lang="en" style="display: none;">Orlando - New Plate</option>
+                    <option value="orlando-transfer" data-lang="es">Orlando - Transfer</option>
+                    <option value="orlando-transfer" data-lang="en" style="display: none;">Orlando - Transfer</option>
+                    <option value="other-cities" data-lang="es">Otras Ciudades</option>
+                    <option value="other-cities" data-lang="en" style="display: none;">Other Cities</option>
+                </select>
+            </div>
+            <button type="submit" data-lang="es">Calcular</button>
+            <button type="submit" data-lang="en" style="display: none;">Calculate</button>
+            <button type="button" id="clear-button" data-lang="es">Limpiar</button>
+            <button type="button" id="clear-button" data-lang="en" style="display: none;">Clear</button>
+        </form>
+        <div id="result" class="result-container">
+            <h2 data-lang="es">Total Out the Door:</h2>
+            <h2 data-lang="en" style="display: none;">Total Out the Door:</h2>
+            <p id="total-price">$0.00</p>
+        </div>
+    </div>
+    <script src="js/calculadora.js"></script>
+</body>
+</html>
