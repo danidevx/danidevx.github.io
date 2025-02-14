@@ -4,51 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Out the Door - Orlando</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stilos.css">
 </head>
 <body>
-    <!-- Interruptor de idioma -->
-    
-    <div class="language-switch">
-        <label for="language-toggle">Español</label>
-        <input type="checkbox" id="language-toggle">
-        <label for="language-toggle">English</label>
-    </div>
-
     <div class="calculator-container">
-        <!-- Contenido en español -->
-        <h1 data-lang="es">Calculadora Out the Door</h1>
-        <h1 data-lang="en" style="display: none;">Out the Door Calculator</h1>
-
+        <h1>Calculadora Out the Door</h1>
         <form id="calculator-form">
+            <!-- Precio del vehículo -->
             <div class="form-group">
-                <label for="vehicle-price" data-lang="es">Precio del Vehículo ($):</label>
-                <label for="vehicle-price" data-lang="en" style="display: none;">Vehicle Price ($):</label>
-                <input type="number" id="vehicle-price" placeholder="Ej: 12995" required>
+                <label for="vehicle-price">Precio del Vehículo ($):</label>
+                <div class="input-group">
+                    <span class="math-symbol">+</span>
+                    <input type="number" id="vehicle-price" placeholder="Ej: 12995" required>
+                </div>
             </div>
+
+            <!-- Fee $500 -->
             <div class="form-group">
-                <label for="city-type" data-lang="es">Tipo de Ciudad:</label>
-                <label for="city-type" data-lang="en" style="display: none;">City Type:</label>
+                <label>
+                    <input type="checkbox" id="include-fee" checked>
+                    <span class="math-symbol">+</span> Fee $500
+                </label>
+            </div>
+
+            <!-- Electronic Fee $37 -->
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="include-electronic-fee" checked>
+                    <span class="math-symbol">+</span> Electronic Fee $37
+                </label>
+            </div>
+
+            <!-- Impuestos -->
+            <div class="form-group">
+                <label for="city-type">Tipo de Ciudad:</label>
                 <select id="city-type">
-                    <option value="orlando-new" data-lang="es">Orlando - Placa Nueva</option>
-                    <option value="orlando-new" data-lang="en" style="display: none;">Orlando - New Plate</option>
-                    <option value="orlando-transfer" data-lang="es">Orlando - Transfer</option>
-                    <option value="orlando-transfer" data-lang="en" style="display: none;">Orlando - Transfer</option>
-                    <option value="other-cities" data-lang="es">Otras Ciudades</option>
-                    <option value="other-cities" data-lang="en" style="display: none;">Other Cities</option>
+                    <option value="orlando">Orlando</option>
+                    <option value="other-cities">Otras Ciudades</option>
                 </select>
             </div>
-            <button type="submit" data-lang="es">Calcular</button>
-            <button type="submit" data-lang="en" style="display: none;">Calculate</button>
-            <button type="button" id="clear-button" data-lang="es">Limpiar</button>
-            <button type="button" id="clear-button" data-lang="en" style="display: none;">Clear</button>
+
+            <!-- Select para Transfer o Placa Nueva -->
+            <div class="form-group">
+                <label for="transfer-or-plate">Transfer o Placa Nueva:</label>
+                <select id="transfer-or-plate">
+                    <option value="transfer">Transfer</option>
+                    <option value="new-plate">Placa Nueva</option>
+                </select>
+            </div>
+
+            <!-- Renovación (solo visible si se selecciona Transfer) -->
+            <div class="form-group" id="renewal-group" style="display: none;">
+                <label>
+                    <input type="checkbox" id="include-renewal">
+                    <span class="math-symbol">+</span> Renovación $54
+                </label>
+            </div>
+
+            <!-- Placa Nueva (solo visible si se selecciona Placa Nueva) -->
+            <div class="form-group" id="new-plate-group">
+                <label>
+                    <input type="checkbox" id="include-new-plate" checked>
+                    <span class="math-symbol">+</span> Placa Nueva $289.10
+                </label>
+            </div>
+
+            <!-- Título -->
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="include-title" checked>
+                    <span class="math-symbol">+</span> Título $87.75
+                </label>
+            </div>
+
+            <!-- Botones -->
+            <div class="form-group">
+                <button type="submit">Calcular</button>
+                <button type="button" id="clear-button">Limpiar</button>
+            </div>
         </form>
+
+        <!-- Resultado -->
         <div id="result" class="result-container">
-            <h2 data-lang="es">Total Out the Door:</h2>
-            <h2 data-lang="en" style="display: none;">Total Out the Door:</h2>
+            <h2>Total Out the Door:</h2>
             <p id="total-price">$0.00</p>
         </div>
     </div>
-    <script src="js/calculadora.js"></script>
+    <script src="js/javascript.js"></script>
 </body>
 </html>
