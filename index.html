@@ -297,18 +297,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 elemento">
+        <button onclick="openSettings()">Abrir Configuración</button>
 
-            <div class="card h-100 ">
-                <div class="card-body text-center">
-                    <a href="intent:#Intent;action=android.settings.SETTINGS;end">Abrir Configuración</a>
-                        <img src="img/contactgithub.png" alt="telefono" class="iconkills">
-                    </a>
-                                
-                                
-                </div>
-            </div>
-        </div>
+    <script>
+        function openSettings() {
+            if (navigator.userAgent.match(/Android/i)) {
+                var intentUrl = 'intent:#Intent;action=android.settings.SETTINGS;end';
+                window.location.href = intentUrl;
+            } else {
+                alert('Esta función solo está disponible en dispositivos Android.');
+            }
+        }
+    </script>
         <p class="texend text-center elemento">Deanarespe@gmail.com</p>  
     </div>
 
