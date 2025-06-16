@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farvavet grandes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/buscar.css">
+</head>
+<body>
+
+    <header id="header">
+        <div  class="borde" >
+            <div class="logo-container">
+                <img src="../img/logo.png" alt="Medivet Logo">
+            </div>
+            <div class="contact-info">
+
+                 
+
+                <p style="text-align: center;">¡Bienvenidos!</p>
+                <p>En el mundo de la veterinaria, cada día es una nueva oportunidad para garantizar la salud y el bienestar de nuestros grandes amigos: los equinos, bovinos y otros animales tanto de compañía como de granja que nos brindan tanto. En *Farmavet Grandes*, entendemos que la salud de tus animales es primordial, por eso te ofrecemos una amplia gama de medicamentos veterinarios de alta calidad, específicamente formulados para animales domésticos.</p>
+
+               
+
+
+                <!-- <a href="/carrito" class="cart-button" id="carrito">
+                    <img src="img/carrito.png" alt="Carrito" class="cart-icon">
+                </a> -->
+                <!-- Modal -->
+                
+                       <!--  <div id="cartModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h2 >Productos en tu carrito</h2>
+                                <ul id="productList"> -->
+                                    <!-- Aquí se agregarán los productos dinámicamente -->
+                                <!-- </ul>
+
+                                <button id="whatsappButton">Enviar por WhatsApp</button>
+                            </div>
+                        </div> -->
+
+
+            </div>
+
+            <form role="search" method="get" action="/search" id="buscar" class="search">
+                            <input type="search" name="search-text" placeholder="Buscar..." aria-label="Buscar">
+                            <button type="submit">Buscar</button>
+            </form>
+
+           <nav>
+                <div class="hamburger" id="hamburger"  >
+                    &#9776; <!-- Icono de hamburguesa -->
+                </div>
+                <ul id="navList">
+                    <li><a href="../index.html">Inicio</a></li>     
+                    <li><a href="analgesicos.html">Analgésicos/Antiinflamatorios/Antipiréticos</a></li>
+                    <li><a href="anestesicos.html">Anestésicos</a></li>
+                    <li><a href="antianemicos.html">Antianémicos</a></li>
+                    <li><a href="#Antibióticos">Antibióticos</a></li>
+                    <li><a href="antidiarreicos.html">Antidiarréicos</a></li>
+                    <li><a href="antihistaminicos.html">Antihistamínicos</a></li>
+                    <li><a href="antiparasitariosoralesinyectable.html">Antiparasitarios Orales/Inyectables</a></li>
+                    <li><a href="biologicos.html">Biológicos</a></li>
+                    <li><a href="hormonales.html">Hormonales</a></li>
+                    <li><a href="multivitaminicos.html">Multivitamínicos</a></li>
+                    <li><a href="otros.html">Otros</a></li>
+                </ul>
+                    
+            </nav>
+
+
+        
+        </div>
+
+    </header>
+
+    <div class="borde" >
+        <!-- <main >
+            <section class="hero">
+                <div class="hero-content">
+                    <img src="../img/portadebaca.jpg" alt="Dermipel Zoo">
+                </div>
+            </section>
+
+
+        </main> -->
+
+    
+
+
+
+        <section class="recommended">
+            <h2>Antibióticos</h2>
+            <div class="product-list" id="product-listrecomendamos"></div>
+        </section>
+
+       <!--  // 1. Analgésicos/Antiinflamatorios/Antipiréticos.
+// 2. Anestésicos.
+// 3. Antianémicos.
+// 4. Antibióticos.
+// 5. Antidiarréicos.
+// 6. Antihistamínicos
+// 7. Antiparasitarios Orales/Inyectables.
+// 8. Biológicos.
+// 9. Hormonales.
+// 10. Multivitamínicos.
+// 11. Otros.
+ -->
+        <br>
+<br>
+    
+        <div class="calculator">
+          <input type="number" id="dosisTerapeutica2" placeholder="Ingrese la dosis terapéutica">
+          <input type="number" id="pesoVivo2" placeholder="Ingrese el peso vivo">
+          <input type="number" id="concentracionProducto2" placeholder="Ingrese la concentración de producto">
+          <button class="buton" onclick="calcularDosis(2)">Calcular</button>
+           <p id="resultado2"></p>
+        </div>
+
+        
+
+
+
+    </div>
+
+
+<!-- Modal para Detalles del Producto -->
+<div id="productDetailModal" class="modal">
+    <div class="modal-content" class="">
+        <span class="close close-detail">&times;</span>
+        <h2 id="productName" class="stil-li"></h2>
+        <img id="productImage" src="" alt="" style="max-width: 100%;" class="stil-li">
+        <p id="productDescription" class="stil-li"></p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section" >
+                <img src="../img/logo.png" alt="Farvavet grandes Logo" class="logo ">
+                <div class="social-media">
+                    <a href="#"><img src="../img/facebook.png" alt="Facebook" class="margen"></a>
+                    <a href="#"><img src="../img/instagram.png" alt="Instagram" class="margen"></a>
+                </div>
+                <img src="../img/venezuela.png" alt="Venezuela Flag" class="flag margen">
+            </div>
+            <div class="footer-section">
+                <h3 style=" text-align: center; ">Agradecimientos Especiales</h3>
+                <div class="location">
+                    <p><strong></strong></p>
+                    <p >Esta página fue realizada por estudiantes de Clínica de Grandes Animales, Período III-2024 de la Universidad Nacional Experimental Francisco de Miranda; Cablo, Iribarren.
+
+                    Nuestro compromiso con el bienestar animal va más allá de las aulas; estamos dedicados a aplicar nuestros conocimientos para mejorar la salud de los grandes animales que tanto valoran nuestras comunidades. Además, buscamos ayudar a nuevos estudiantes a familiarizarse con la aplicación de fármacos en estos animales, asegurando que el futuro de la veterinaria esté bien preparado y comprometido.
+
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="footer-section">
+                <h3>Lo más utilizado</h3>
+                <ul>
+                    <li>Accesorios</li>
+                    <li>Alimentos</li>
+                    <li>Antibióticos</li>
+                    <li>Baños para mascotas</li>
+                    <li>Desparasitantes</li>
+                    <li>Vitaminas</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Fármacos Especializados</h3>
+                <ul>
+                    <li>Analgésicos</li>
+                    <li>Anti-inflamatorios</li>
+                    <li>Esto-Parasiticidas</li>
+                    <li>Insumos</li>
+                    <li>Vacunas</li>
+                    <li>Especiales</li>
+                </ul>
+            </div -->
+        </div>
+        <p class="footer-note">© Farmavet Grandes 2025</p>
+        <p class="footer-note">Diseñado por Danidevx.</p>
+    </footer>
+
+    </div>
+    <!-- Modal de Resultados de Búsqueda -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <span class="close-search">&times;</span>
+        <div id="productListSection">
+            <h2>Resultados de Búsqueda</h2>
+            <ul id="searchResultsList"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de detalles -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <span id="lon" class="close-detail">&times;</span>
+        <div id="productDetailContent"></div>
+    </div>
+</div>
+
+
+
+
+    <script src="js/product.js"></script> <!-- Incluir el archivo común -->
+    <script src="js/antibioticos.js"></script>
+    <script src="js/menunav.js"></script>
+    <script src="js/calculadora/calculator.js"></script>
+    <script src="js/modal/produc-nove-recomen.js"></script>
+    <script src="js/modalcarrito.js"></script>
+    <script src="js/productall.js"></script>
+    <script src="js/buscar-producto.js"></script>
+
+
+</body>
+</html>
