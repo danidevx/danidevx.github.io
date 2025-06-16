@@ -45,7 +45,7 @@ const modalContainer = document.querySelector("[data-modal-container]");
 const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
 const overlay = document.querySelector("[data-overlay]");
 
-// modal variable
+// modal open function
 const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
@@ -78,23 +78,29 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
-// custom select variables
+// custom select variables for portfolio filter
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-selecct-value]"); // Ojo: "selecct" tiene doble 'c' aquí, asegúrate que en HTML sea igual
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 select.addEventListener("click", function () { elementToggleFunc(this); });
 
-// add event in all select items
+// Función de normalización para cadenas (quita tildes, convierte a minúsculas, reemplaza espacios por guiones)
+const normalizeString = function (str) {
+  return str.toLowerCase()
+            .normalize("NFD") // Normaliza caracteres Unicode
+            .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos (tildes)
+            .replace(/\s+/g, "-"); // Reemplaza uno o más espacios por un guión
+};
+
+// add event in all select items for dropdown filter
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    let selectedValue = normalizeString(this.innerText); // APLICAR NORMALIZACIÓN AQUÍ
+    selectValue.innerText = this.innerText; // Mantener el texto original en el display
     elementToggleFunc(select);
     filterFunc(selectedValue);
-
   });
 }
 
@@ -102,40 +108,35 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-
   for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
+    // CAMBIO: 'all' a 'todo' para la comparación
+    if (selectedValue === "todo") {
       filterItems[i].classList.add("active");
     } else if (selectedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
     }
-
   }
-
-}
+};
 
 // add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+let lastClickedBtn = filterBtn[0]; // Asegura que el primer botón esté activo al cargar
 
 for (let i = 0; i < filterBtn.length; i++) {
-
   filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    let selectedValue = normalizeString(this.innerText); // APLICAR NORMALIZACIÓN AQUÍ
+    selectValue.innerText = this.innerText; // Mantener el texto original en el display
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
+    // Asegura que solo el botón clickeado tenga la clase 'active' para el estilo visual
+    if (lastClickedBtn) { // Verificar si lastClickedBtn existe antes de intentar remover la clase
+        lastClickedBtn.classList.remove("active");
+    }
     this.classList.add("active");
     lastClickedBtn = this;
-
   });
-
 }
-
 
 
 // contact form variables
@@ -167,16 +168,30 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+    // 'this' aquí es el elemento 'button' o 'a' del navbar que fue clickeado.
+    const clickedNavLinkText = this.innerHTML.toLowerCase(); // Obtenemos el texto del botón clickeado.
+
+    // Desactivar todas las páginas y todos los botones de navegación
+    // (Esto asegura que solo la página correcta y el botón clickeado queden activos)
+    for (let k = 0; k < pages.length; k++) {
+      pages[k].classList.remove("active");
+    }
+    for (let k = 0; k < navigationLinks.length; k++) {
+      navigationLinks[k].classList.remove("active");
+    }
+
+    // Iterar sobre todas las páginas para encontrar la que coincide con el botón clickeado
+    for (let j = 0; j < pages.length; j++) {
+      // Comparamos el texto del botón clickeado con el 'data-page' de cada página
+      if (clickedNavLinkText === pages[j].dataset.page) {
+        pages[j].classList.add("active"); // Activa la página correspondiente
+        window.scrollTo(0, 0); // Opcional: desplazar al inicio de la página
+        break; // Una vez que la encontramos y la activamos, no necesitamos seguir buscando
       }
     }
+
+    // Finalmente, activa el botón de navegación que fue clickeado
+    this.classList.add("active");
 
   });
 }
