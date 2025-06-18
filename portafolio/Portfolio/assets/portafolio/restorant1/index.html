@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delicious food</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="#"><span>Delicious</span>food</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#" class="animated-link">Home</a></li>
+          <li><a href="#specials" class="animated-link">Specials</a></li>
+          <li><a href="#chefs" class="animated-link">Our Chefs</a></li>
+          <li>
+            <a href="#testimonials" class="animated-link">Testimonials</a>
+          </li>
+          <li><a href="contact.html" class="animated-link">Contact Us</a></li>
+        </ul>
+        <div class="cart-icon animated-icon">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count">0</span>
+        </div>
+        <div class="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title animate-on-scroll">
+          <span>Indulge</span> Your Senses
+        </h1>
+        <p class="hero-subtitle animate-on-scroll" style="--delay: 200ms">
+          Discover exquisite flavors and culinary artistry.
+        </p>
+        <button class="hero-button animate-on-scroll" style="--delay: 400ms">
+          Explore Menu
+        </button>
+      </div>
+      <div class="hero-image animate-on-scroll" style="--delay: 600ms">
+        <img src="assets/client-1.jpg" alt="Gourmet Food" />
+      </div>
+    </header>
+
+    <section id="specials" class="specials-section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">
+          Today's Delectable Specials
+        </h2>
+        <div class="specials-carousel">
+          <div
+            class="special-card animate-on-scroll"
+            style="
+              --delay: 200ms;
+              background-image: url('assets/special-1.jpg');
+            "
+          >
+            <div class="special-info">
+              <h3>Chicken Veg Curry</h3>
+              <p class="description">
+                Aromatic curry with tender chicken and fresh vegetables.
+              </p>
+              <div class="actions">
+                <span class="price">$100</span>
+                <button class="order-now-button">Order Now</button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="special-card animate-on-scroll"
+            style="
+              --delay: 400ms;
+              background-image: url('assets/special-2.jpg');
+            "
+          >
+            <div class="special-info">
+              <h3>Chicken Veg Curry</h3>
+              <p class="description">
+                Aromatic curry with tender chicken and fresh vegetables.
+              </p>
+              <div class="actions">
+                <span class="price">$100</span>
+                <button class="order-now-button">Order Now</button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="special-card animate-on-scroll"
+            style="
+              --delay: 600ms;
+              background-image: url('assets/special-3.jpg');
+            "
+          >
+            <div class="special-info">
+              <h3>Chicken Veg Curry</h3>
+              <p class="description">
+                Aromatic curry with tender chicken and fresh vegetables.
+              </p>
+              <div class="actions">
+                <span class="price">$100</span>
+                <button class="order-now-button">Order Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-navigation">
+          <button class="prev-special">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="next-special">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore-section parallax">
+      <div class="container explore-inner">
+        <div class="explore-content animate-on-scroll">
+          <h2>The Art of Flavor & Wellbeing</h2>
+          <p>
+            We meticulously craft dishes that are not only delicious but also
+            nourish your body and soul. Experience the perfect harmony of taste
+            and health.
+          </p>
+          <button class="explore-button">Our Culinary Philosophy</button>
+        </div>
+        <div class="explore-image animate-on-scroll" style="--delay: 300ms">
+          <img src="assets/explore.jpg" alt="Healthy Gourmet Food" />
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="container services-grid">
+        <div class="service-card animate-on-scroll" style="--delay: 0ms">
+          <div class="icon-wrapper animated-icon">
+            <i class="fa-solid fa-bowl-rice"></i>
+          </div>
+          <h3>Effortless Ordering</h3>
+          <p>
+            Order your favorite dishes online with just a few clicks. Enjoy a
+            seamless and convenient experience.
+          </p>
+          <a href="#" class="learn-more animated-link">Discover More</a>
+        </div>
+        <div class="service-card animate-on-scroll" style="--delay: 200ms">
+          <div class="icon-wrapper animated-icon">
+            <i class="fa-solid fa-truck"></i>
+          </div>
+          <h3>Swift Delivery</h3>
+          <p>
+            Get your meals delivered hot and fresh to your doorstep with our
+            reliable delivery service.
+          </p>
+          <a href="#" class="learn-more animated-link">Track Your Order</a>
+        </div>
+        <div class="service-card animate-on-scroll" style="--delay: 400ms">
+          <div class="icon-wrapper animated-icon">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h3>Quality Ingredients</h3>
+          <p>
+            We are committed to using only the finest, locally sourced
+            ingredients for exceptional taste.
+          </p>
+          <a href="#" class="learn-more animated-link">Our Standards</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="chefs" class="chefs-section">
+      <div class="container">
+        <div class="chef-info animate-on-scroll">
+          <h2 class="section-title">Meet the Maestros of Taste</h2>
+          <p class="section-description">
+            Our award-winning chefs bring passion and innovation to every plate,
+            creating culinary masterpieces that delight your senses.
+          </p>
+          <ul class="chef-highlights">
+            <li class="animate-on-scroll" style="--delay: 100ms">
+              <i class="fa-solid fa-check-double"></i> Michelin-starred culinary
+              expertise.
+            </li>
+            <li class="animate-on-scroll" style="--delay: 300ms">
+              <i class="fa-solid fa-check-double"></i> Innovative and globally
+              inspired cuisine.
+            </li>
+            <li class="animate-on-scroll" style="--delay: 500ms">
+              <i class="fa-solid fa-check-double"></i> Dedicated to an
+              unforgettable dining experience.
+            </li>
+          </ul>
+        </div>
+        <div class="chef-image animate-on-scroll" style="--delay: 200ms">
+          <div class="chef-image-inner">
+            <img src="assets/chef.jpg" alt="Executive Chef" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section parallax">
+      <div class="container testimonials-inner">
+        <h2 class="section-title animate-on-scroll">
+          Rave Reviews from Our Guests
+        </h2>
+        <div class="testimonials-slider-container">
+          <div class="testimonials-slider">
+            <div class="testimonial animate-on-scroll" style="--delay: 0ms">
+              <p class="quote">
+                "The food was an absolute revelation! Every dish was a work of
+                art, bursting with flavor. The service was impeccable too."
+              </p>
+              <div class="customer">
+                <img src="assets/client-1.jpg" alt="Customer Review" />
+                <div class="customer-info">
+                  <h3>Eleanor Vance</h3>
+                  <span>Food Critic</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial animate-on-scroll" style="--delay: 200ms">
+              <p class="quote">
+                "A truly exceptional dining experience. The chefs' creativity
+                shines through in every bite. Highly recommended!"
+              </p>
+              <div class="customer">
+                <img src="assets/client-2.jpg" alt="Customer Feedback" />
+                <div class="customer-info">
+                  <h3>Daniel Choi</h3>
+                  <span>Travel Blogger</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial animate-on-scroll" style="--delay: 400ms">
+              <p class="quote">
+                "From the ambiance to the food, everything was perfect.
+                Delicious food sets a new standard for fine dining."
+              </p>
+              <div class="customer">
+                <img src="assets/client-3.jpg" alt="Guest Review" />
+                <div class="customer-info">
+                  <h3>Sophia Dubois</h3>
+                  <span>Event Planner</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button class="prev-testimonial">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="next-testimonial">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-col animate-on-scroll" style="--delay: 0ms">
+          <div class="footer-logo">
+            <a href="#"><span>Delicious</span>food</a>
+          </div>
+          <p class="footer-description">
+            Experience the art of fine dining and discover a world of exquisite
+            flavors crafted with passion and precision.
+          </p>
+        </div>
+        <div class="footer-col animate-on-scroll" style="--delay: 200ms">
+          <h3>Explore</h3>
+          <ul class="footer-links">
+            <li><a href="#" class="animated-link">Menu</a></li>
+            <li><a href="#specials" class="animated-link">Specials</a></li>
+            <li><a href="#chefs" class="animated-link">Our Chefs</a></li>
+            <li><a href="#" class="animated-link">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col animate-on-scroll" style="--delay: 400ms">
+          <h3>Visit Us</h3>
+          <ul class="footer-links">
+            <li>
+              <i class="fa-solid fa-location-dot"></i> 123 Gourmet Street,
+              Culinary City
+            </li>
+            <li><i class="fa-solid fa-phone"></i> +1 (555) 987-6543</li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              reservations@Deliciousfood.com
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col animate-on-scroll" style="--delay: 600ms">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#" class="animated-icon"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="animated-icon"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+            <a href="#" class="animated-icon"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2025 Delicious food. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
