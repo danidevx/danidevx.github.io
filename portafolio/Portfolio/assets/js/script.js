@@ -195,3 +195,17 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Encuentra el enlace de navegación "Apps" y haz clic en él
+  const appsNavLink = document.querySelector('.navbar-link[data-nav-link][data-page="apps"]');
+  if (appsNavLink) {
+    appsNavLink.click();
+  }
+
+  // Encuentra el botón de filtro "Todo" y haz clic en él para mostrar todos los proyectos
+  const todoFilterButton = document.querySelector('.filter-list .filter-item button.active'); // Esto apunta al botón 'Todo' asumiendo que es el primero y está inicialmente activo
+  if (todoFilterButton) {
+    todoFilterButton.click();
+  }
+});
