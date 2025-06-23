@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Carriles - Bufete Legal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Diagrama de Flujo del Proceso de Captación de Clientes</h1>
+
+    <div class="swimlane-diagram">
+        <div class="swimlane-header-container">
+            <div class="swimlane-header">Captador</div>
+            <div class="swimlane-header">Cliente</div>
+            <div class="swimlane-header">Sistema</div>
+            <div class="swimlane-header">Abogado Interno</div>
+            <div class="swimlane-header">Admin. Sistema</div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador">
+                <div class="process-step start">Inicio</div>
+                <div class="process-step">Capta Cliente</div>
+            </div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador">
+                <div class="process-step">Registra Datos Cliente</div>
+            </div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema">
+                <div class="process-step arrow-left">Guarda Datos Cliente (DB)</div>
+            </div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema">
+                <div class="process-step arrow-down">Envía Recordatorio/Felicitación</div>
+            </div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente">
+                <div class="process-step decision">¿Asiste 1ª Cita?</div>
+            </div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row decision-branch">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente">
+                <div class="branch-label yes">SÍ</div>
+                <div class="branch-label no">NO</div>
+            </div>
+            <div class="swimlane-cell sistema">
+                <div class="process-step no-action">Datos Guardados (para recordatorios futuros)</div>
+            </div>
+            <div class="swimlane-cell abogado">
+                <div class="process-step">Conversa Demanda / Despide Cita</div>
+            </div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin">
+                <div class="process-step arrow-left">Vacía Info Cliente y Demanda</div>
+            </div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema">
+                <div class="process-step arrow-right">Envía Info Demanda, Pago, Precio por WhatsApp</div>
+            </div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente">
+                <div class="process-step">Realiza Transferencia</div>
+            </div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente">
+                <div class="process-step">Envía Captura Pago por WhatsApp</div>
+            </div>
+            <div class="swimlane-cell sistema">
+                <div class="process-step arrow-right">Registra Captura de Pago</div>
+            </div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin"></div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="process-step arrow-left">Observa Captura / Verifica Pago</div>
+        </div>
+
+        <div class="diagram-row">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado"></div>
+            <div class="swimlane-cell admin">
+                <div class="process-step decision">¿Pago Exitoso?</div>
+            </div>
+        </div>
+
+        <div class="diagram-row decision-branch">
+            <div class="swimlane-cell captador"></div>
+            <div class="swimlane-cell cliente"></div>
+            <div class="swimlane-cell sistema"></div>
+            <div class="swimlane-cell abogado">
+                <div class="branch-label yes">SÍ</div>
+                <div class="process-step">Introduce Papeles Demanda</div>
+            </div>
+            <div class="swimlane-cell admin">
+                <div class="branch-label no">NO</div>
+                <div class="process-step arrow-left">Abre Causa (en DB)</div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

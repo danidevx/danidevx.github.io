@@ -1,0 +1,282 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.swimlane-diagram {
+    display: flex;
+    flex-direction: column; /* Organiza encabezados y filas verticalmente */
+    width: fit-content; /* Se ajusta al contenido */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: auto; /* Centra el diagrama */
+}
+
+/* --- Encabezados de los carriles --- */
+.swimlane-header-container {
+    display: flex; /* Muestra los encabezados en fila */
+    background-color: #e0e0e0;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.swimlane-header {
+    flex: 1; /* Distribuye el espacio equitativamente */
+    padding: 10px 15px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    min-width: 180px; /* Ancho mínimo para cada carril */
+}
+
+.swimlane-header:last-child {
+    border-right: none;
+}
+
+/* --- Filas del diagrama (contenido) --- */
+.diagram-row {
+    display: flex; /* Cada fila es un contenedor flex para las celdas */
+    border-bottom: 1px dashed #eee; /* Líneas divisorias sutiles entre filas */
+    min-height: 80px; /* Altura mínima para cada fila */
+    align-items: center; /* Centra verticalmente el contenido de las celdas */
+}
+
+.diagram-row:last-child {
+    border-bottom: none;
+}
+
+.swimlane-cell {
+    flex: 1; /* Cada celda del carril ocupa el mismo ancho */
+    padding: 10px;
+    border-right: 1px solid #eee; /* Separador vertical entre carriles */
+    display: flex; /* Para centrar los pasos dentro de la celda */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    position: relative; /* Necesario para posicionar flechas con pseudo-elementos */
+    min-width: 180px; /* Asegura el ancho mínimo consistente */
+}
+
+.swimlane-cell:last-child {
+    border-right: none;
+}
+
+/* --- Estilos de los pasos del proceso --- */
+.process-step {
+    background-color: #add8e6; /* Azul claro */
+    border: 1px solid #6a5acd; /* Azul oscuro */
+    border-radius: 5px; /* Rectángulos redondeados */
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 0.9em;
+    position: relative; /* Para las flechas internas */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    max-width: 90%; /* Evita que el texto sea demasiado largo */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
+}
+
+.process-step.start {
+    background-color: #c9e6b4; /* Verde claro */
+    border-color: #7abf5b;
+    border-radius: 50%; /* Óvalo para inicio/fin */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.process-step.end {
+    background-color: #ffb3b3; /* Rojo claro */
+    border-color: #cc0000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.process-step.decision {
+    background-color: #ffebcc; /* Naranja claro */
+    border-color: #e69900;
+    transform: rotate(45deg); /* Rombo */
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Ajustar padding para que el texto rote bien */
+}
+
+.process-step.decision span { /* Contenedor para el texto del rombo */
+    transform: rotate(-45deg); /* Rotar el texto de vuelta */
+    white-space: nowrap; /* Evita que el texto se divida */
+    font-size: 0.85em;
+    padding: 5px;
+}
+
+.process-step.no-action {
+    background-color: #f0f0f0; /* Gris claro para acciones secundarias */
+    border-color: #bbb;
+    color: #555;
+    font-style: italic;
+}
+
+/* --- Estilos para las etiquetas SÍ/NO --- */
+.decision-branch {
+    position: relative; /* Para posicionar las etiquetas SÍ/NO */
+    min-height: 100px; /* Más espacio para las ramas */
+}
+
+.branch-label {
+    position: absolute;
+    top: 50%; /* Alinear verticalmente al centro */
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    z-index: 10; /* Asegura que se vea sobre las líneas */
+}
+
+.branch-label.yes {
+    left: 25%; /* Posición estimada para la rama SÍ */
+    color: green;
+    border: 1px solid green;
+}
+
+.branch-label.no {
+    right: 25%; /* Posición estimada para la rama NO */
+    color: red;
+    border: 1px solid red;
+}
+
+/* --- Flechas (usando pseudo-elementos o bordes) --- */
+
+/* Flecha de SÍ para ¿Asiste 1ª Cita? */
+.swimlane-cell.cliente .process-step.decision::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -25px; /* Ajustar según el ancho del rombo */
+    transform: translateY(-50%) rotate(45deg); /* Posicionar y rotar la flecha */
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+    z-index: 1;
+}
+
+/* Flechas entre celdas (horizontal) */
+.swimlane-cell:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0; /* Al final de la celda */
+    width: 20px; /* Longitud de la flecha */
+    height: 2px;
+    background-color: #333;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.swimlane-cell:not(:last-child)::before { /* Punta de la flecha */
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #333;
+    transform: translateY(-50%) translateX(20px); /* Ajuste para la punta */
+    z-index: 5;
+}
+
+
+/* Ajustes para flechas específicas si el flujo va hacia otras direcciones */
+
+/* Flecha hacia la izquierda */
+.process-step.arrow-left::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px; /* Sale de la izquierda del elemento */
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #333; /* Punta de flecha hacia la izquierda */
+    transform: translateY(-50%);
+}
+.process-step.arrow-left::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px; /* Sale de la izquierda del elemento */
+    width: 20px; /* Cuerpo de la flecha */
+    height: 2px;
+    background-color: #333;
+    transform: translateY(-50%);
+}
+
+/* Flecha hacia abajo (para Recordatorio) */
+.process-step.arrow-down::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Sale de abajo del elemento */
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: #333;
+    transform: translateX(-50%);
+}
+
+.process-step.arrow-down::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Sale de abajo del elemento */
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #333; /* Punta de flecha hacia abajo */
+    transform: translateX(-50%) translateY(20px);
+}
+
+/* Flecha hacia la derecha (para Envía Info Demanda, Pago, Precio) */
+.process-step.arrow-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Sale de la derecha del elemento */
+    width: 20px; /* Cuerpo de la flecha */
+    height: 2px;
+    background-color: #333;
+    transform: translateY(-50%);
+}
+.process-step.arrow-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Sale de la derecha del elemento */
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #333; /* Punta de flecha hacia la derecha */
+    transform: translateY(-50%);
+}
+
+
+/* Esto es solo un punto de partida. Para flechas que cruzan múltiples carriles o con trayectorias complejas,
+   se requerirían métodos más avanzados, como SVG, Canvas, o más divs con posicionamiento absoluto y bordes. */
