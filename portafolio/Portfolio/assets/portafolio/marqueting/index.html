@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia de Marketing Digital</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        secondary: '#00D1FF'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white">
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <nav class="px-8 h-20 flex items-center justify-between">
+            <a href="#" class="font-['Pacifico'] text-2xl text-primary">logo</a>
+            <div class="flex items-center gap-8">
+                <a href="#servicios" class="text-gray-600 hover:text-primary">Servicios</a>
+                <a href="#casos" class="text-gray-600 hover:text-primary">Casos de Éxito</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary">FAQ</a>
+                <button class="bg-primary text-white px-6 py-2.5 !rounded-button hover:bg-primary/90 whitespace-nowrap">Contactar</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="relative min-h-[800px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20digital%20marketing%20office%20environment%20with%20soft%20lighting%2C%20minimalist%20design%2C%20technology%20devices%2C%20clean%20workspace%20with%20gradient%20blue%20background%20on%20the%20left%20side%20transitioning%20to%20product%20visualization%20on%20the%20right%2C%20professional%20atmosphere&width=1920&height=800&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 to-white/30"></div>
+            <div class="container mx-auto px-8 relative">
+                <div class="max-w-2xl">
+                    <h1 class="text-6xl font-bold leading-tight mb-6">Transformamos tu Presencia Digital</h1>
+                    <p class="text-xl text-gray-600 mb-8">Estrategias personalizadas de marketing digital que impulsan el crecimiento de tu negocio y maximizan el retorno de inversión.</p>
+                    <div class="flex gap-4">
+                        <button class="bg-primary text-white px-8 py-4 !rounded-button hover:bg-primary/90 whitespace-nowrap text-lg">Consulta Gratuita</button>
+                        <button class="border border-gray-200 px-8 py-4 !rounded-button hover:bg-gray-50 whitespace-nowrap text-lg">Ver Servicios</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-8">
+                <h2 class="text-4xl font-bold text-center mb-16">Nuestros Servicios</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="ri-line-chart-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">SEO y Marketing de Contenidos</h3>
+                        <p class="text-gray-600 mb-6">Mejora tu visibilidad en buscadores y atrae tráfico orgánico de calidad.</p>
+                        <button class="text-primary hover:underline flex items-center gap-2">
+                            Saber más
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="ri-advertisement-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Publicidad Digital</h3>
+                        <p class="text-gray-600 mb-6">Campañas publicitarias optimizadas para maximizar tu ROI en redes sociales.</p>
+                        <button class="text-primary hover:underline flex items-center gap-2">
+                            Saber más
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="ri-code-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Diseño Web</h3>
+                        <p class="text-gray-600 mb-6">Sitios web modernos y responsivos que convierten visitantes en clientes.</p>
+                        <button class="text-primary hover:underline flex items-center gap-2">
+                            Saber más
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="ri-settings-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Automatización</h3>
+                        <p class="text-gray-600 mb-6">Optimiza tus procesos de marketing y ventas con herramientas automatizadas.</p>
+                        <button class="text-primary hover:underline flex items-center gap-2">
+                            Saber más
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="casos" class="py-24">
+            <div class="container mx-auto px-8">
+                <h2 class="text-4xl font-bold text-center mb-16">Casos de Éxito</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gray-200"></div>
+                            <div>
+                                <h4 class="font-bold">Carlos Rodríguez</h4>
+                                <p class="text-gray-600">Director de Marketing, TechSolutions</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Incrementamos nuestro tráfico orgánico en un 200% en solo 6 meses gracias a su estrategia de SEO."</p>
+                        <div class="flex items-center gap-1 text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gray-200"></div>
+                            <div>
+                                <h4 class="font-bold">Ana Martínez</h4>
+                                <p class="text-gray-600">CEO, Moda Express</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Las campañas en redes sociales superaron nuestras expectativas, triplicando las ventas online."</p>
+                        <div class="flex items-center gap-1 text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gray-200"></div>
+                            <div>
+                                <h4 class="font-bold">Miguel Sánchez</h4>
+                                <p class="text-gray-600">Fundador, Innovatech</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"La automatización de marketing nos ayudó a reducir costos operativos en un 40%."</p>
+                        <div class="flex items-center gap-1 text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-8">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-4xl font-bold text-center mb-16">Contacta con Nosotros</h2>
+                    <form class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+                            <textarea class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary h-32" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 !rounded-button hover:bg-primary/90">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-24">
+            <div class="container mx-auto px-8">
+                <h2 class="text-4xl font-bold text-center mb-16">Preguntas Frecuentes</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="mb-6">
+                        <button class="w-full flex items-center justify-between p-6 bg-white rounded-lg border border-gray-100 hover:border-primary">
+                            <span class="font-medium">¿Cuánto tiempo toma ver resultados?</span>
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                    <div class="mb-6">
+                        <button class="w-full flex items-center justify-between p-6 bg-white rounded-lg border border-gray-100 hover:border-primary">
+                            <span class="font-medium">¿Qué incluye el servicio de SEO?</span>
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                    <div class="mb-6">
+                        <button class="w-full flex items-center justify-between p-6 bg-white rounded-lg border border-gray-100 hover:border-primary">
+                            <span class="font-medium">¿Cómo miden el ROI de las campañas?</span>
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <a href="#" class="font-['Pacifico'] text-2xl text-white mb-6 block">logo</a>
+                    <p class="text-gray-400">Transformando negocios a través del marketing digital desde 2010.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">SEO</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Publicidad Digital</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Diseño Web</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Automatización</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Empresa</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Casos de Éxito</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">info@empresa.com</li>
+                        <li class="text-gray-400">+34 900 123 456</li>
+                        <li class="text-gray-400">Madrid, España</li>
+                    </ul>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 0) {
+                    header.classList.add('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-sm');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Inyección de estilos CSS globales para animaciones ---
+    // Esto centraliza los keyframes y estilos que usaremos.
+    const globalAnimationsStyle = document.createElement('style');
+    globalAnimationsStyle.innerHTML = `
+        /* Keyframes para animaciones de entrada */
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(80px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @keyframes fadeInZoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efecto Ripple */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.6s linear forwards;
+            background-color: rgba(255, 255, 255, 0.7);
+            opacity: 1;
+        }
+        button.border.hover\\:bg-gray-50 .ripple {
+            background-color: rgba(0, 102, 255, 0.1);
+        }
+        @keyframes ripple-effect {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Efecto Shine en Cards */
+        .shine-effect {
+            position: absolute;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            filter: blur(20px);
+            z-index: -1; /* Asegura que el brillo esté detrás del contenido de la tarjeta */
+        }
+
+        /* Fondo del Hero animado con CSS */
+        .hero-animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            animation: heroPan 60s linear infinite alternate; /* Movimiento lento del fondo */
+            z-index: -2; /* Detrás del gradiente y contenido */
+        }
+        @keyframes heroPan {
+            0% { transform: scale(1.0) translate(0, 0); }
+            100% { transform: scale(1.05) translate(5%, 5%); }
+        }
+
+        /* Efecto de degradado pulsante para el logo en hover */
+        .logo-hover-gradient {
+            background-size: 200% auto;
+            background-image: linear-gradient(to right, #0066FF 0%, #00D1FF 50%, #0066FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+    `;
+    document.head.appendChild(globalAnimationsStyle);
+
+    // --- Configuración de Animación CSS para el Hero ---
+    const heroSection = document.querySelector('section.relative');
+    if (heroSection) {
+        // Asegúrate de que la imagen de fondo esté en una variable CSS para animarla
+        const bgImageUrl = heroSection.style.backgroundImage.match(/url\(['"]?(.*?)['"]?\)/)[1];
+        heroSection.style.setProperty('--bg-image', `url('${bgImageUrl}')`);
+        heroSection.classList.add('hero-animated-bg'); // Añade la clase para la animación CSS
+        heroSection.style.backgroundImage = 'none'; // Quita el fondo directo para que ::before lo maneje
+    }
+
+
+    // --- Animaciones de Carga Inicial ---
+
+    // Animación de la barra de navegación al cargar
+    const navbar = document.querySelector('header nav');
+    if (navbar) {
+        navbar.style.animation = 'fadeInSlideUp 0.8s ease-out forwards';
+        navbar.style.animationDelay = '0.1s';
+    }
+
+    // Animación del logo al cargar y efecto en hover
+    const logo = document.querySelector('.font-\\[\'Pacifico\'\\]');
+    if (logo) {
+        logo.style.animation = 'bounceIn 1.2s ease-out forwards';
+        logo.style.animationDelay = '0.3s';
+        logo.addEventListener('mouseenter', () => {
+            logo.classList.add('logo-hover-gradient');
+        });
+        logo.addEventListener('mouseleave', () => {
+            logo.classList.remove('logo-hover-gradient');
+        });
+    }
+
+    // Animación del texto y botones de la sección Hero al cargar
+    const heroTitle = document.querySelector('section.relative h1');
+    const heroSubtitle = document.querySelector('section.relative p');
+    const heroButtons = document.querySelector('section.relative .flex.gap-4');
+
+    if (heroTitle && heroSubtitle && heroButtons) {
+        heroTitle.style.animation = 'fadeInSlideUp 1s ease-out forwards';
+        heroTitle.style.animationDelay = '0.6s';
+        heroSubtitle.style.animation = 'fadeInSlideUp 1s ease-out forwards';
+        heroSubtitle.style.animationDelay = '0.9s';
+        heroButtons.style.animation = 'fadeInSlideUp 1s ease-out forwards';
+        heroButtons.style.animationDelay = '1.2s';
+    }
+
+    // --- Funcionalidad General ---
+
+    // Scroll suave para los enlaces de navegación
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Sombra del encabezado al hacer scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            header.classList.add('shadow-sm');
+        } else {
+            header.classList.remove('shadow-sm');
+        }
+    });
+
+    // --- Animaciones al hacer Scroll (On-Scroll Animations) ---
+
+    // Función para verificar si un elemento está en el viewport
+    function isInViewport(element, offset = 0) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) - offset &&
+            rect.bottom >= offset
+        );
+    }
+
+    // Elementos a animar al hacer scroll (los iniciales)
+    const scrollAnimatedElements = document.querySelectorAll(
+        '#servicios > div > h2, #servicios .grid > div, ' +
+        '#casos > div > h2, #casos .grid > div, ' +
+        'section.py-24.bg-gray-50 > div > .max-w-3xl, ' +
+        '#faq > div > h2, #faq .max-w-3xl > div'
+    );
+
+    const animateOnScroll = () => {
+        scrollAnimatedElements.forEach(element => {
+            if (isInViewport(element, 150) && !element.classList.contains('js-animated')) {
+                // Aplica la animación definida en CSS
+                element.style.animation = 'fadeInSlideUp 1s ease-out forwards';
+
+                // Retraso escalonado basado en el tipo de elemento
+                let delay = 0;
+                if (element.closest('#servicios') || element.closest('#casos')) {
+                    const parentGrid = element.closest('.grid');
+                    if (parentGrid) {
+                        const index = Array.from(parentGrid.children).indexOf(element);
+                        if (index !== -1) {
+                            delay = index * 180; // Más retraso para un efecto más pronunciado
+                        }
+                    }
+                } else if (element.tagName === 'H2') {
+                    delay = 0; // Títulos más rápidos
+                } else if (element.closest('#faq')) {
+                    const index = Array.from(element.parentNode.children).indexOf(element);
+                    delay = index * 100;
+                }
+
+                element.style.animationDelay = `${delay}ms`;
+                element.classList.add('js-animated');
+            }
+        });
+    };
+
+    // Lanzar animaciones al cargar y en cada scroll
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
+
+
+    // --- Interacciones con Elementos ---
+
+    // Efecto de "Ripple" en todos los botones
+    document.querySelectorAll('button, a[role="button"]').forEach(button => { // Incluye enlaces que se comportan como botones
+        if (!button.classList.contains('no-ripple')) { // Permite deshabilitar el ripple si se añade la clase 'no-ripple'
+            button.style.position = 'relative';
+            button.style.overflow = 'hidden';
+
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const diameter = Math.max(this.clientWidth, this.clientHeight);
+                const radius = diameter / 2;
+
+                ripple.style.width = ripple.style.height = `${diameter}px`;
+                ripple.style.left = `${e.clientX - (this.getBoundingClientRect().left + radius)}px`;
+                ripple.style.top = `${e.clientY - (this.getBoundingClientRect().top + radius)}px`;
+                ripple.classList.add('ripple');
+
+                const existingRipple = this.querySelector('.ripple');
+                if (existingRipple) {
+                    existingRipple.remove();
+                }
+                this.appendChild(ripple);
+            });
+        }
+    });
+
+
+    // Efecto de "Shine" (Brillo) en las Tarjetas de Servicio y Casos de Éxito
+    document.querySelectorAll('#servicios .grid > div, #casos .grid > div').forEach(card => {
+        card.style.position = 'relative';
+        card.style.overflow = 'hidden';
+        card.style.zIndex = 1;
+
+        const shine = document.createElement('div');
+        shine.classList.add('shine-effect');
+        card.appendChild(shine);
+
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            shine.style.setProperty('--x', `${x}px`);
+            shine.style.setProperty('--y', `${y}px`);
+        });
+
+        card.addEventListener('mouseenter', () => {
+            shine.style.opacity = 1;
+            shine.style.transform = 'scale(1)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            shine.style.opacity = 0;
+            shine.style.transform = 'scale(0)';
+        });
+    });
+
+    // Animación de los iconos en los cards de servicio (rotación 3D y zoom in/out al hover)
+    document.querySelectorAll('#servicios .grid > div').forEach(card => {
+        const iconContainer = card.querySelector('.w-16.h-16');
+        if (iconContainer) {
+            iconContainer.style.transition = 'transform 0.4s ease-out';
+            card.addEventListener('mouseenter', () => {
+                iconContainer.style.transform = 'scale(1.1) rotateY(15deg)'; // Ligeras rotación en Y
+            });
+            card.addEventListener('mouseleave', () => {
+                iconContainer.style.transform = 'scale(1) rotateY(0deg)';
+            });
+        }
+    });
+
+
+    // Acordeón para la sección FAQ con animación de altura y rotación de icono
+    document.querySelectorAll('#faq button').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+
+            if (content && content.classList.contains('faq-content')) {
+                // Cerrar todos los demás acordeones abiertos
+                document.querySelectorAll('.faq-content:not(.hidden)').forEach(openContent => {
+                    if (openContent !== content) {
+                        openContent.style.maxHeight = '0';
+                        openContent.style.opacity = '0';
+                        openContent.classList.add('hidden');
+                        openContent.previousElementSibling.querySelector('i').classList.remove('ri-subtract-line');
+                        openContent.previousElementSibling.querySelector('i').classList.add('ri-add-line');
+                        openContent.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+
+                content.classList.toggle('hidden');
+
+                if (!content.classList.contains('hidden')) {
+                    // Abrir
+                    content.style.maxHeight = '0'; // Reset para calcular altura
+                    content.style.opacity = '0';
+                    content.style.transition = 'max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease-out';
+                    setTimeout(() => {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.opacity = '1';
+                    }, 10);
+                    icon.style.transform = 'rotate(45deg)'; // Rotar el + a una X
+                    icon.classList.remove('ri-add-line');
+                    icon.classList.add('ri-subtract-line'); // Cambiar el ícono
+                } else {
+                    // Cerrar
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    icon.style.transform = 'rotate(0deg)'; // Rotar la X de vuelta al +
+                    icon.classList.remove('ri-subtract-line');
+                    icon.classList.add('ri-add-line'); // Cambiar el ícono
+                }
+                icon.style.transition = 'transform 0.3s ease-in-out';
+            }
+        });
+    });
+
+
+    // --- Efecto de Seguidor de Ratón Interactivo (Mouse Follower) ---
+    const mouseFollower = document.createElement('div');
+    mouseFollower.style.cssText = `
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        border: 2px solid var(--primary, #0066FF); /* Color del borde primario */
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+        transition: opacity 0.3s ease-out, transform 0.1s ease-out;
+        mix-blend-mode: exclusion; /* Interesante efecto de mezcla */
+        backdrop-filter: invert(100%); /* Invierte colores debajo (experimental) */
+    `;
+    document.body.appendChild(mouseFollower);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let followerX = 0;
+    let followerY = 0;
+    let isActive = false;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!isActive) {
+            mouseFollower.style.opacity = 1;
+            mouseFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+            isActive = true;
+        }
+    });
+
+    document.addEventListener('mouseleave', () => {
+        mouseFollower.style.opacity = 0;
+        mouseFollower.style.transform = 'translate(-50%, -50%) scale(0.5)';
+        isActive = false;
+    });
+
+    function animateFollower() {
+        followerX += (mouseX - followerX) * 0.1; // Suavizado del movimiento
+        followerY += (mouseY - followerY) * 0.1;
+
+        mouseFollower.style.left = `${followerX}px`;
+        mouseFollower.style.top = `${followerY}px`;
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    // Efecto de escalar el seguidor al pasar por enlaces y botones
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            mouseFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            mouseFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+    });
+
+});
+    </script>
+    
+</body>
+</html>
