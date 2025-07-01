@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexPro Consultores - Consultoría Legal Gratuita</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#1A365D',secondary:'#C5A572'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-section {
+            background-image: linear-gradient(to right, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.5), rgba(26, 54, 93, 0.3), rgba(26, 54, 93, 0));
+            background-size: cover;
+            background-position: center;
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #C5A572;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #C5A572;
+        }
+        input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #C5A572;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #1A365D;
+            color: white;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #C5A572;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-primary font-['Pacifico'] text-2xl mr-2">LexPro</div>
+                    <div class="text-gray-700 font-semibold">Consultores</div>
+                </div>
+                <nav class="hidden md:flex space-x-8 text-sm">
+                    <a href="#inicio" class="text-gray-700 hover:text-primary font-medium">Inicio</a>
+                    <a href="#servicios" class="text-gray-700 hover:text-primary font-medium">Servicios</a>
+                    <a href="#casos" class="text-gray-700 hover:text-primary font-medium">Casos de Éxito</a>
+                    <a href="#galeria" class="text-gray-700 hover:text-primary font-medium">Galería</a>
+                    <a href="#presupuesto" class="text-gray-700 hover:text-primary font-medium">Presupuesto</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-primary font-medium">Contacto</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+34912345678" class="hidden md:flex items-center text-sm text-gray-700">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <span>+34 912 345 678</span>
+                    </a>
+                    <a href="#agendar" class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap">Agendar Consulta</a>
+                    <button class="md:hidden w-8 h-8 flex items-center justify-center text-primary">
+                        <i class="ri-menu-line text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section pt-24 md:pt-28 relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=modern%2520law%2520office%2520interior%2520with%2520elegant%2520design%252C%2520professional%2520atmosphere%252C%2520large%2520windows%2520with%2520natural%2520light%252C%2520wooden%2520elements%252C%2520blue%2520and%2520gold%2520accents%252C%2520bookshelves%2520with%2520law%2520books%252C%2520empty%2520space%2520on%2520the%2520left%2520side%2520for%2520text%2520overlay&width=1920&height=1080&seq=1&orientation=landscape')">
+        <div class="container mx-auto px-4 py-16 md:py-24 w-full">
+            <div class="flex flex-col md:flex-row items-center" style="    background-color: rgb(67 64 64 / 60%);">
+                <div class="w-full md:w-1/2 text-white z-10">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Consultoría Legal Gratuita</h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-xl">Ofrecemos asesoramiento legal profesional sin costo inicial. Nuestro equipo de abogados expertos está listo para ayudarle con sus necesidades legales.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#agendar" class="bg-secondary text-primary px-6 py-3 rounded-button font-semibold text-center whitespace-nowrap">Agendar Consulta Gratuita</a>
+                        <a href="#servicios" class="border-2 border-white text-white px-6 py-3 rounded-button font-semibold text-center whitespace-nowrap">Nuestros Servicios</a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <!-- Esta área queda intencionalmente vacía para la imagen de fondo -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nuestros Servicios Legales</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ofrecemos una amplia gama de servicios legales para satisfacer todas sus necesidades. Nuestro equipo de abogados expertos está listo para ayudarle.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+                        <i class="ri-scales-3-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Derecho Civil</h3>
+                    <p class="text-gray-600 mb-4">Asesoramiento en contratos, reclamaciones, responsabilidad civil, derecho de familia y sucesiones.</p>
+                    <a href="#contacto" class="text-secondary font-medium flex items-center">
+                        Más información
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+                        <i class="ri-building-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Derecho Mercantil</h3>
+                    <p class="text-gray-600 mb-4">Constitución de sociedades, contratos mercantiles, fusiones y adquisiciones, asesoría empresarial.</p>
+                    <a href="#contacto" class="text-secondary font-medium flex items-center">
+                        Más información
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+                        <i class="ri-government-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Derecho Administrativo</h3>
+                    <p class="text-gray-600 mb-4">Recursos administrativos, contratación pública, licencias y autorizaciones, sanciones administrativas.</p>
+                    <a href="#contacto" class="text-secondary font-medium flex items-center">
+                        Más información
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+                        <i class="ri-briefcase-4-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Derecho Laboral</h3>
+                    <p class="text-gray-600 mb-4">Contratos de trabajo, despidos, reclamaciones salariales, negociación colectiva, prevención de riesgos.</p>
+                    <a href="#contacto" class="text-secondary font-medium flex items-center">
+                        Más información
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Servicio 5 -->
+                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+                        <i class="ri-file-paper-2-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Derecho Fiscal</h3>
+                    <p class="text-gray-600 mb-4">Planificación fiscal, inspecciones tributarias, recursos contra liquidaciones, asesoramiento fiscal continuo.</p>
+                    <a href="#contacto" class="text-secondary font-medium flex items-center">
+                        Más información
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Servicio 6 -->
+                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+                        <i class="ri-home-4-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Derecho Inmobiliario</h3>
+                    <p class="text-gray-600 mb-4">Compraventa de inmuebles, arrendamientos, comunidades de propietarios, reclamaciones por defectos.</p>
+                    <a href="#contacto" class="text-secondary font-medium flex items-center">
+                        Más información
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendar Consulta -->
+    <section id="agendar" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Agende su Consulta Gratuita</h2>
+                    <p class="text-gray-600 mb-8">Complete el formulario y uno de nuestros abogados se pondrá en contacto con usted para confirmar su cita. La primera consulta es totalmente gratuita y sin compromiso.</p>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-bold text-primary mb-4">Horario de Atención</h3>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between">
+                                <span class="text-gray-600">Lunes a Viernes</span>
+                                <span class="font-medium">9:00 - 20:00</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="text-gray-600">Sábados</span>
+                                <span class="font-medium">10:00 - 14:00</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="text-gray-600">Domingos y Festivos</span>
+                                <span class="font-medium">Cerrado</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-primary/5 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-primary mb-4">¿Por qué elegir nuestra consulta gratuita?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="w-5 h-5 flex items-center justify-center text-secondary mt-1 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <span class="text-gray-600">Evaluación inicial de su caso sin compromiso</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-5 h-5 flex items-center justify-center text-secondary mt-1 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <span class="text-gray-600">Atención personalizada por abogados especializados</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-5 h-5 flex items-center justify-center text-secondary mt-1 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <span class="text-gray-600">Información clara sobre costes y plazos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-5 h-5 flex items-center justify-center text-secondary mt-1 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <span class="text-gray-600">Opciones de financiación y pago flexible</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white shadow-lg rounded-lg p-8">
+                        <form>
+                            <div class="mb-6">
+                                <label for="nombre" class="block text-gray-700 font-medium mb-2">Nombre completo</label>
+                                <input type="text" id="nombre" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Correo electrónico</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="telefono" class="block text-gray-700 font-medium mb-2">Teléfono</label>
+                                <input type="tel" id="telefono" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="tipo" class="block text-gray-700 font-medium mb-2">Tipo de consulta</label>
+                                <div class="relative">
+                                    <select id="tipo" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-secondary pr-8">
+                                        <option value="">Seleccione una opción</option>
+                                        <option value="civil">Derecho Civil</option>
+                                        <option value="mercantil">Derecho Mercantil</option>
+                                        <option value="administrativo">Derecho Administrativo</option>
+                                        <option value="laboral">Derecho Laboral</option>
+                                        <option value="fiscal">Derecho Fiscal</option>
+                                        <option value="inmobiliario">Derecho Inmobiliario</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                                            <i class="ri-arrow-down-s-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="fecha" class="block text-gray-700 font-medium mb-2">Fecha preferida</label>
+                                <input type="date" id="fecha" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="hora" class="block text-gray-700 font-medium mb-2">Hora preferida</label>
+                                <div class="relative">
+                                    <select id="hora" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-secondary pr-8">
+                                        <option value="">Seleccione una hora</option>
+                                        <option value="9:00">9:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                        <option value="19:00">19:00</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                                            <i class="ri-arrow-down-s-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="mensaje" class="block text-gray-700 font-medium mb-2">Breve descripción de su caso</label>
+                                <textarea id="mensaje" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary"></textarea>
+                            </div>
+                            
+                            <div class="mb-6 flex items-start">
+                                <input type="checkbox" id="privacidad" class="mr-3 mt-1" required>
+                                <label for="privacidad" class="text-sm text-gray-600">Acepto la <a href="#" class="text-secondary">política de privacidad</a> y el tratamiento de mis datos personales</label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-button font-semibold hover:bg-primary/90 transition-colors whitespace-nowrap">Solicitar Consulta Gratuita</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Casos de Éxito -->
+    <section id="casos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Casos de Éxito</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nuestros clientes confían en nosotros para resolver sus problemas legales. Conozca algunos de nuestros casos más destacados.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Caso 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%2520lawyer%2520in%2520suit%2520shaking%2520hands%2520with%2520client%2520in%2520modern%2520office%252C%2520warm%2520lighting%252C%2520professional%2520setting%252C%2520business%2520meeting%252C%2520successful%2520case%2520resolution%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=2&orientation=landscape" alt="Caso de éxito" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                <i class="ri-building-line"></i>
+                            </div>
+                            <span class="text-sm font-medium text-gray-500">Derecho Mercantil</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Fusión empresarial exitosa</h3>
+                        <p class="text-gray-600 mb-4">Asesoramos a una empresa mediana en su proceso de fusión con una multinacional, asegurando condiciones favorables y protegiendo los intereses de nuestro cliente.</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520businessman%2520portrait%252C%2520CEO%252C%2520confident%252C%2520smiling%252C%2520suit%252C%2520corporate%2520headshot%252C%2520neutral%2520background%252C%2520high%2520quality&width=100&height=100&seq=3&orientation=squarish" alt="Cliente" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <p class="font-medium">Carlos Rodríguez</p>
+                                <p class="text-sm text-gray-500">Director General, Innovatech S.L.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Caso 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=female%2520lawyer%2520explaining%2520documents%2520to%2520family%2520clients%252C%2520warm%2520office%2520setting%252C%2520professional%2520consultation%252C%2520legal%2520advice%252C%2520family%2520law%2520case%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=4&orientation=landscape" alt="Caso de éxito" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                <i class="ri-home-4-line"></i>
+                            </div>
+                            <span class="text-sm font-medium text-gray-500">Derecho Inmobiliario</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Reclamación por vicios ocultos</h3>
+                        <p class="text-gray-600 mb-4">Conseguimos una indemnización completa para una familia que compró una vivienda con graves defectos estructurales no declarados por el vendedor.</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=middle%2520aged%2520woman%2520portrait%252C%2520professional%252C%2520confident%252C%2520smiling%252C%2520casual%2520elegant%252C%2520neutral%2520background%252C%2520high%2520quality&width=100&height=100&seq=5&orientation=squarish" alt="Cliente" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <p class="font-medium">Elena Martínez</p>
+                                <p class="text-sm text-gray-500">Cliente particular</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Caso 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=lawyer%2520in%2520courtroom%2520presenting%2520case%252C%2520professional%2520setting%252C%2520legal%2520defense%252C%2520judge%2520and%2520courtroom%2520in%2520background%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=6&orientation=landscape" alt="Caso de éxito" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                <i class="ri-briefcase-4-line"></i>
+                            </div>
+                            <span class="text-sm font-medium text-gray-500">Derecho Laboral</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Despido improcedente resuelto</h3>
+                        <p class="text-gray-600 mb-4">Representamos a un trabajador despedido injustamente, logrando su readmisión y el pago de todos los salarios dejados de percibir durante el proceso.</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=young%2520professional%2520man%2520portrait%252C%2520casual%2520smart%252C%2520confident%252C%2520smiling%252C%2520neutral%2520background%252C%2520high%2520quality&width=100&height=100&seq=7&orientation=squarish" alt="Cliente" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <p class="font-medium">Miguel Ángel Sánchez</p>
+                                <p class="text-sm text-gray-500">Ingeniero de Sistemas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contacto" class="inline-flex items-center text-primary font-medium">
+                    Ver más casos de éxito
+                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Galería Profesional</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conozca a nuestro equipo de abogados en acción, defendiendo los intereses de nuestros clientes con profesionalidad y dedicación.</p>
+            </div>
+            
+            <div class="mb-8">
+                <div class="flex justify-center space-x-2 px-1 py-1 bg-gray-100 rounded-full inline-flex mx-auto">
+                    <button class="tab-button active px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="todos">Todos</button>
+                    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="juicios">Juicios</button>
+                    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="consultas">Consultas</button>
+                    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="equipo">Equipo</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Imagen 1 -->
+                <div class="gallery-item" data-category="juicios">
+                    <div class="rounded-lg overflow-hidden shadow-md h-64">
+                        <img src="https://readdy.ai/api/search-image?query=lawyer%2520presenting%2520case%2520in%2520courtroom%252C%2520professional%2520setting%252C%2520judge%2520in%2520background%252C%2520legal%2520defense%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=8&orientation=landscape" alt="Abogado en juicio" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+                
+                <!-- Imagen 2 -->
+                <div class="gallery-item" data-category="consultas">
+                    <div class="rounded-lg overflow-hidden shadow-md h-64">
+                        <img src="https://readdy.ai/api/search-image?query=lawyer%2520consulting%2520with%2520clients%2520in%2520office%252C%2520professional%2520setting%252C%2520legal%2520advice%252C%2520documents%2520on%2520desk%252C%2520warm%2520lighting%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=9&orientation=landscape" alt="Consulta legal" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+                
+                <!-- Imagen 3 -->
+                <div class="gallery-item" data-category="equipo">
+                    <div class="rounded-lg overflow-hidden shadow-md h-64">
+                        <img src="https://readdy.ai/api/search-image?query=team%2520of%2520diverse%2520lawyers%2520in%2520modern%2520office%252C%2520professional%2520setting%252C%2520business%2520meeting%252C%2520legal%2520team%2520collaboration%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=10&orientation=landscape" alt="Equipo de abogados" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+                
+                <!-- Imagen 4 -->
+                <div class="gallery-item" data-category="juicios">
+                    <div class="rounded-lg overflow-hidden shadow-md h-64">
+                        <img src="https://readdy.ai/api/search-image?query=lawyer%2520reviewing%2520documents%2520in%2520courtroom%252C%2520professional%2520setting%252C%2520legal%2520case%2520preparation%252C%2520serious%2520expression%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=11&orientation=landscape" alt="Preparación de caso" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+                
+                <!-- Imagen 5 -->
+                <div class="gallery-item" data-category="consultas">
+                    <div class="rounded-lg overflow-hidden shadow-md h-64">
+                        <img src="https://readdy.ai/api/search-image?query=female%2520lawyer%2520explaining%2520contract%2520to%2520elderly%2520clients%252C%2520professional%2520setting%252C%2520legal%2520advice%252C%2520warm%2520lighting%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=12&orientation=landscape" alt="Asesoramiento legal" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+                
+                <!-- Imagen 6 -->
+                <div class="gallery-item" data-category="equipo">
+                    <div class="rounded-lg overflow-hidden shadow-md h-64">
+                        <img src="https://readdy.ai/api/search-image?query=lawyers%2520working%2520together%2520in%2520library%252C%2520professional%2520setting%252C%2520legal%2520research%252C%2520law%2520books%252C%2520collaboration%252C%2520high%2520quality%2520professional%2520photo&width=600&height=400&seq=13&orientation=landscape" alt="Investigación legal" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presupuesto -->
+    <section id="presupuesto" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Calculadora de Presupuesto</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Seleccione los servicios que necesita y obtenga un presupuesto estimado al instante. Recuerde que la primera consulta es siempre gratuita.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-xl font-bold text-primary mb-6">Seleccione los servicios que necesita</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            <!-- Categoría: Derecho Civil -->
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-3">Derecho Civil</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="civil1" class="service-checkbox mr-3" data-price="150">
+                                            <label for="civil1" class="text-gray-700">Redacción de contratos</label>
+                                        </div>
+                                        <span class="text-gray-600">150 €</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="civil2" class="service-checkbox mr-3" data-price="300">
+                                            <label for="civil2" class="text-gray-700">Reclamaciones por daños y perjuicios</label>
+                                        </div>
+                                        <span class="text-gray-600">300 €</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="civil3" class="service-checkbox mr-3" data-price="500">
+                                            <label for="civil3" class="text-gray-700">Procedimientos de familia (divorcio, custodia)</label>
+                                        </div>
+                                        <span class="text-gray-600">500 €</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Categoría: Derecho Mercantil -->
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-3">Derecho Mercantil</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="mercantil1" class="service-checkbox mr-3" data-price="200">
+                                            <label for="mercantil1" class="text-gray-700">Constitución de sociedades</label>
+                                        </div>
+                                        <span class="text-gray-600">200 €</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="mercantil2" class="service-checkbox mr-3" data-price="350">
+                                            <label for="mercantil2" class="text-gray-700">Contratos mercantiles</label>
+                                        </div>
+                                        <span class="text-gray-600">350 €</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="mercantil3" class="service-checkbox mr-3" data-price="800">
+                                            <label for="mercantil3" class="text-gray-700">Asesoría legal empresarial (mensual)</label>
+                                        </div>
+                                        <span class="text-gray-600">800 €</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Categoría: Derecho Laboral -->
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-3">Derecho Laboral</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="laboral1" class="service-checkbox mr-3" data-price="250">
+                                            <label for="laboral1" class="text-gray-700">Reclamaciones por despido</label>
+                                        </div>
+                                        <span class="text-gray-600">250 €</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="laboral2" class="service-checkbox mr-3" data-price="180">
+                                            <label for="laboral2" class="text-gray-700">Reclamaciones salariales</label>
+                                        </div>
+                                        <span class="text-gray-600">180 €</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="laboral3" class="service-checkbox mr-3" data-price="400">
+                                            <label for="laboral3" class="text-gray-700">Negociación de convenios colectivos</label>
+                                        </div>
+                                        <span class="text-gray-600">400 €</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <label class="custom-switch mr-3">
+                                <input type="checkbox" id="urgencia">
+                                <span class="slider"></span>
+                            </label>
+                            <div>
+                                <p class="font-medium">Servicio urgente</p>
+                                <p class="text-sm text-gray-500">Incremento del 30% sobre el precio base</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <label class="custom-switch mr-3">
+                                <input type="checkbox" id="descuento">
+                                <span class="slider"></span>
+                            </label>
+                            <div>
+                                <p class="font-medium">Descuento para clientes recurrentes</p>
+                                <p class="text-sm text-gray-500">10% de descuento en el total</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-primary mb-6">Resumen del Presupuesto</h3>
+                        
+                        <div id="servicios-seleccionados" class="mb-6">
+                            <p class="text-gray-500 italic">No hay servicios seleccionados</p>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4 mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Subtotal:</span>
+                                <span id="subtotal" class="font-medium">0 €</span>
+                            </div>
+                            <div id="urgencia-container" class="flex justify-between mb-2 hidden">
+                                <span class="text-gray-600">Servicio urgente (30%):</span>
+                                <span id="urgencia-valor" class="font-medium">0 €</span>
+                            </div>
+                            <div id="descuento-container" class="flex justify-between mb-2 hidden">
+                                <span class="text-gray-600">Descuento cliente recurrente (10%):</span>
+                                <span id="descuento-valor" class="font-medium">0 €</span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="font-bold text-gray-800">Total:</span>
+                                <span id="total" class="font-bold text-primary text-xl">0 €</span>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 mb-4">Este presupuesto es orientativo. Contacte con nosotros para un presupuesto personalizado.</p>
+                            <a href="#contacto" class="block bg-secondary text-primary py-3 px-6 rounded-button font-semibold hover:bg-secondary/90 transition-colors whitespace-nowrap">Solicitar Presupuesto Detallado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contacto -->
+    <section id="contacto" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Contacte con Nosotros</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Estamos a su disposición para resolver cualquier duda o consulta. No dude en ponerse en contacto con nuestro equipo de profesionales.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-white shadow-lg rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-primary mb-6">Envíenos un mensaje</h3>
+                        
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="nombre-contacto" class="block text-gray-700 font-medium mb-2">Nombre</label>
+                                    <input type="text" id="nombre-contacto" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="apellidos" class="block text-gray-700 font-medium mb-2">Apellidos</label>
+                                    <input type="text" id="apellidos" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="email-contacto" class="block text-gray-700 font-medium mb-2">Correo electrónico</label>
+                                    <input type="email" id="email-contacto" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="telefono-contacto" class="block text-gray-700 font-medium mb-2">Teléfono</label>
+                                    <input type="tel" id="telefono-contacto" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="asunto" class="block text-gray-700 font-medium mb-2">Asunto</label>
+                                <input type="text" id="asunto" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="mensaje-contacto" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+                                <textarea id="mensaje-contacto" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-secondary" required></textarea>
+                            </div>
+                            
+                            <div class="mb-6 flex items-start">
+                                <input type="checkbox" id="privacidad-contacto" class="mr-3 mt-1" required>
+                                <label for="privacidad-contacto" class="text-sm text-gray-600">Acepto la <a href="#" class="text-secondary">política de privacidad</a> y el tratamiento de mis datos personales</label>
+                            </div>
+                            
+                            <button type="submit" class="bg-primary text-white py-3 px-6 rounded-button font-semibold hover:bg-primary/90 transition-colors whitespace-nowrap">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-gray-50 rounded-lg overflow-hidden h-96 mb-8">
+                        <div class="h-full w-full bg-center bg-no-repeat bg-cover" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800">Dirección</h4>
+                            </div>
+                            <p class="text-gray-600">Calle Serrano 41, 3ª planta</p>
+                            <p class="text-gray-600">28001 Madrid, España</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800">Horario</h4>
+                            </div>
+                            <p class="text-gray-600">Lunes a Viernes: 9:00 - 20:00</p>
+                            <p class="text-gray-600">Sábados: 10:00 - 14:00</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800">Teléfono</h4>
+                            </div>
+                            <p class="text-gray-600">+34 912 345 678</p>
+                            <p class="text-gray-600">+34 600 123 456</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-3">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                            </div>
+                            <p class="text-gray-600">info@lexproconsultores.es</p>
+                            <p class="text-gray-600">contacto@lexproconsultores.es</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="text-white font-['Pacifico'] text-2xl mr-2">LexPro</div>
+                        <div class="text-white/80 font-semibold">Consultores</div>
+                    </div>
+                    <p class="text-white/70 mb-4">Ofrecemos servicios legales profesionales con un enfoque personalizado y cercano. Su tranquilidad es nuestra prioridad.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-facebook-fill text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-twitter-x-fill text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-linkedin-fill text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-instagram-fill text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-white/70 hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#servicios" class="text-white/70 hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="#casos" class="text-white/70 hover:text-white transition-colors">Casos de Éxito</a></li>
+                        <li><a href="#galeria" class="text-white/70 hover:text-white transition-colors">Galería</a></li>
+                        <li><a href="#presupuesto" class="text-white/70 hover:text-white transition-colors">Presupuesto</a></li>
+                        <li><a href="#contacto" class="text-white/70 hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Servicios Legales</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">Derecho Civil</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">Derecho Mercantil</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">Derecho Administrativo</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">Derecho Laboral</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">Derecho Fiscal</a></li>
+                        <li><a href="#" class="text-white/70 hover:text-white transition-colors">Derecho Inmobiliario</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Boletín Informativo</h4>
+                    <p class="text-white/70 mb-4">Suscríbase a nuestro boletín para recibir las últimas novedades legales y consejos jurídicos.</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="Su correo electrónico" class="px-4 py-2 w-full rounded-l-button text-gray-800 border-none focus:outline-none">
+                            <button type="submit" class="bg-secondary text-primary px-4 py-2 rounded-r-button font-medium whitespace-nowrap">Suscribirse</button>
+                        </div>
+                    </form>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-6 flex items-center justify-center">
+                            <i class="ri-visa-fill text-white text-xl"></i>
+                        </div>
+                        <div class="w-10 h-6 flex items-center justify-center">
+                            <i class="ri-mastercard-fill text-white text-xl"></i>
+                        </div>
+                        <div class="w-10 h-6 flex items-center justify-center">
+                            <i class="ri-paypal-fill text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-white/70 text-sm mb-4 md:mb-0">© 2025 LexPro Consultores. Todos los derechos reservados.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="text-white/70 hover:text-white text-sm transition-colors">Política de Privacidad</a>
+                    <a href="#" class="text-white/70 hover:text-white text-sm transition-colors">Términos y Condiciones</a>
+                    <a href="#" class="text-white/70 hover:text-white text-sm transition-colors">Aviso Legal</a>
+                    <a href="#" class="text-white/70 hover:text-white text-sm transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="gallery-filter">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.tab-button');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Show/hide gallery items based on filter
+                    galleryItems.forEach(item => {
+                        if (filter === 'todos' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script id="budget-calculator">
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.service-checkbox');
+            const urgenciaCheckbox = document.getElementById('urgencia');
+            const descuentoCheckbox = document.getElementById('descuento');
+            const serviciosSeleccionados = document.getElementById('servicios-seleccionados');
+            const subtotalElement = document.getElementById('subtotal');
+            const urgenciaContainer = document.getElementById('urgencia-container');
+            const urgenciaValor = document.getElementById('urgencia-valor');
+            const descuentoContainer = document.getElementById('descuento-container');
+            const descuentoValor = document.getElementById('descuento-valor');
+            const totalElement = document.getElementById('total');
+            
+            function updateBudget() {
+                let subtotal = 0;
+                let servicios = [];
+                
+                // Calculate subtotal and collect selected services
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        const price = parseInt(checkbox.getAttribute('data-price'));
+                        subtotal += price;
+                        
+                        const label = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+                        servicios.push({
+                            name: label,
+                            price: price
+                        });
+                    }
+                });
+                
+                // Update selected services list
+                if (servicios.length > 0) {
+                    let html = '<ul class="space-y-2">';
+                    servicios.forEach(service => {
+                        html += `<li class="flex justify-between"><span class="text-gray-700">${service.name}</span><span>${service.price} €</span></li>`;
+                    });
+                    html += '</ul>';
+                    serviciosSeleccionados.innerHTML = html;
+                } else {
+                    serviciosSeleccionados.innerHTML = '<p class="text-gray-500 italic">No hay servicios seleccionados</p>';
+                }
+                
+                // Update subtotal
+                subtotalElement.textContent = `${subtotal} €`;
+                
+                // Calculate urgency fee
+                let urgenciaFee = 0;
+                if (urgenciaCheckbox.checked && subtotal > 0) {
+                    urgenciaFee = subtotal * 0.3;
+                    urgenciaContainer.classList.remove('hidden');
+                    urgenciaValor.textContent = `${urgenciaFee.toFixed(0)} €`;
+                } else {
+                    urgenciaContainer.classList.add('hidden');
+                }
+                
+                // Calculate discount
+                let descuentoAmount = 0;
+                if (descuentoCheckbox.checked && subtotal > 0) {
+                    descuentoAmount = (subtotal + urgenciaFee) * 0.1;
+                    descuentoContainer.classList.remove('hidden');
+                    descuentoValor.textContent = `-${descuentoAmount.toFixed(0)} €`;
+                } else {
+                    descuentoContainer.classList.add('hidden');
+                }
+                
+                // Calculate total
+                const total = subtotal + urgenciaFee - descuentoAmount;
+                totalElement.textContent = `${total.toFixed(0)} €`;
+            }
+            
+            // Add event listeners to all checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateBudget);
+            });
+            
+            urgenciaCheckbox.addEventListener('change', updateBudget);
+            descuentoCheckbox.addEventListener('change', updateBudget);
+            
+            // Initial calculation
+            updateBudget();
+        });
+    </script>
+</body>
+</html>
