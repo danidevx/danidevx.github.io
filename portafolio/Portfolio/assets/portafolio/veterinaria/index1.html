@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PawParadise - Clínica Veterinaria en Barquisimeto</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#FF6B35',secondary:'#FFB563'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Outfit', sans-serif;
+}
+.section-title {
+font-size: 2.25rem;
+font-weight: 600;
+color: #1F2937;
+margin-bottom: 1rem;
+}
+.section-subtitle {
+font-size: 1.125rem;
+color: #4B5563;
+max-width: 600px;
+margin: 0 auto;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=A%20modern%2C%20minimalist%20scene%20with%20a%20large%20dog%20and%20cat%20silhouette%20against%20a%20warm%20orange%20gradient%20background.%20The%20image%20has%20a%20clean%2C%20contemporary%20design%20with%20abstract%20geometric%20shapes%20and%20soft%20lighting.%20The%20composition%20leaves%20space%20for%20text%20on%20the%20left%20side&width=1920&height=800&seq=17&orientation=landscape');
+background-size: cover;
+background-position: center;
+position: relative;
+}
+.hero-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(90deg, rgba(255,107,53,0.95) 0%, rgba(255,107,53,0.8) 50%, rgba(255,107,53,0.4) 100%);
+}
+.service-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.testimonial-card {
+transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+transform: scale(1.05);
+}
+input:focus, textarea:focus {
+outline: none;
+border-color: #57B5E7;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #57B5E7;
+border-radius: 4px;
+margin-right: 8px;
+position: relative;
+cursor: pointer;
+}
+.custom-checkbox:checked {
+background-color: #57B5E7;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+top: 2px;
+left: 6px;
+transform: rotate(45deg);
+}
+.custom-radio {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #57B5E7;
+border-radius: 50%;
+margin-right: 8px;
+position: relative;
+cursor: pointer;
+}
+.custom-radio:checked {
+border-color: #57B5E7;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+width: 10px;
+height: 10px;
+background-color: #57B5E7;
+border-radius: 50%;
+top: 3px;
+left: 3px;
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #57B5E7;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+.paw-pattern {
+background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 16c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm8 8c0 2.2 1.8 4 4 4s4-1.8 4-4-1.8-4-4-4-4 1.8-4 4zm-8 16c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm16-8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z' fill='%2357B5E7' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="fixed w-full bg-white shadow-md z-50">
+<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<a href="#" class="flex items-center">
+<span class="text-4xl font-['Pacifico'] text-primary">P</span>
+</a>
+<!-- Desktop Menu -->
+<nav class="hidden md:flex items-center space-x-6">
+<a href="#inicio" class="text-gray-700 hover:text-primary font-medium transition-colors">Inicio</a>
+<a href="#servicios" class="text-gray-700 hover:text-primary font-medium transition-colors">Servicios</a>
+<a href="#equipo" class="text-gray-700 hover:text-primary font-medium transition-colors">Nuestro Equipo</a>
+<a href="#instalaciones" class="text-gray-700 hover:text-primary font-medium transition-colors">Instalaciones</a>
+<a href="#blog" class="text-gray-700 hover:text-primary font-medium transition-colors">Blog</a>
+<a href="#contacto" class="text-gray-700 hover:text-primary font-medium transition-colors">Contacto</a>
+<a href="#agendar" class="bg-primary text-white px-5 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Agenda tu Cita</a>
+</nav>
+<!-- Mobile Menu Button -->
+<button class="md:hidden flex items-center justify-center w-10 h-10" id="mobileMenuButton">
+<i class="ri-menu-line text-gray-700 text-2xl"></i>
+</button>
+</div>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="md:hidden bg-white w-full absolute top-full left-0 shadow-md hidden">
+<div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+<a href="#inicio" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Inicio</a>
+<a href="#servicios" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Servicios</a>
+<a href="#equipo" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Nuestro Equipo</a>
+<a href="#instalaciones" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Instalaciones</a>
+<a href="#blog" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Blog</a>
+<a href="#contacto" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Contacto</a>
+<a href="#agendar" class="bg-primary text-white px-5 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors text-center whitespace-nowrap">Agenda tu Cita</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="inicio" class="hero-section min-h-screen flex items-center pt-16">
+<div class="container mx-auto px-4 w-full">
+<div class="relative max-w-2xl">
+<h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+Cuidado <br>Veterinario <br>Excepcional
+</h1>
+<p class="text-2xl text-white mb-12">
+Tu mascota merece lo mejor
+</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<a href="#agendar" class="bg-white text-primary px-12 py-4 !rounded-button font-semibold hover:bg-opacity-90 transition-colors text-center whitespace-nowrap text-lg">Agenda tu Cita</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section id="servicios" class="py-20 paw-pattern">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestros Servicios</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Ofrecemos una amplia gama de servicios veterinarios para mantener a tus mascotas saludables y felices.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="service-card bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+<div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-stethoscope-line text-primary text-3xl"></i>
+</div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Consultas Médicas</h3>
+<p class="text-gray-600 text-center mb-6">
+Exámenes completos, diagnósticos precisos y tratamientos personalizados para todo tipo de mascotas.
+</p>
+<a href="#" class="block text-primary font-medium text-center hover:underline">Más información</a>
+</div>
+<!-- Service 2 -->
+<div class="service-card bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+<div class="w-16 h-16 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-scissors-2-line text-secondary text-3xl"></i>
+</div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Peluquería Canina</h3>
+<p class="text-gray-600 text-center mb-6">
+Servicios de baño, corte y estilismo profesional para que tu mascota luzca y se sienta increíble.
+</p>
+<a href="#" class="block text-primary font-medium text-center hover:underline">Más información</a>
+</div>
+<!-- Service 3 -->
+<div class="service-card bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+<div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-syringe-line text-primary text-3xl"></i>
+</div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Vacunación</h3>
+<p class="text-gray-600 text-center mb-6">
+Programas de vacunación personalizados para proteger a tu mascota contra enfermedades comunes.
+</p>
+<a href="#" class="block text-primary font-medium text-center hover:underline">Más información</a>
+</div>
+<!-- Service 4 -->
+<div class="service-card bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+<div class="w-16 h-16 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-hospital-line text-secondary text-3xl"></i>
+</div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Cirugía Veterinaria</h3>
+<p class="text-gray-600 text-center mb-6">
+Procedimientos quirúrgicos realizados por especialistas con equipamiento de última generación.
+</p>
+<a href="#" class="block text-primary font-medium text-center hover:underline">Más información</a>
+</div>
+<!-- Service 5 -->
+<div class="service-card bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+<div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-microscope-line text-primary text-3xl"></i>
+</div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Laboratorio Clínico</h3>
+<p class="text-gray-600 text-center mb-6">
+Análisis clínicos completos con resultados rápidos y precisos para un diagnóstico efectivo.
+</p>
+<a href="#" class="block text-primary font-medium text-center hover:underline">Más información</a>
+</div>
+<!-- Service 6 -->
+<div class="service-card bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+<div class="w-16 h-16 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-hotel-bed-line text-secondary text-3xl"></i>
+</div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Hospitalización</h3>
+<p class="text-gray-600 text-center mb-6">
+Cuidados intensivos las 24 horas en un ambiente confortable y seguro para la recuperación de tu mascota.
+</p>
+<a href="#" class="block text-primary font-medium text-center hover:underline">Más información</a>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us Section -->
+<section id="equipo" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestro Equipo</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Conoce a nuestros profesionales dedicados al bienestar de tus mascotas.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Team Member 1 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Professional%20female%20veterinarian%20with%20brown%20hair%20and%20glasses%2C%20wearing%20a%20blue%20medical%20coat%2C%20smiling%20warmly%20at%20the%20camera.%20The%20background%20is%20a%20clean%2C%20modern%20veterinary%20clinic%20with%20soft%20lighting.%20The%20image%20has%20a%20professional%2C%20friendly%20atmosphere%20suitable%20for%20a%20clinic%20website&width=600&height=400&seq=2&orientation=portrait" alt="Dra. Valentina Rodríguez" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Dra. Valentina Rodríguez</h3>
+<p class="text-primary font-medium mb-4">Directora Médica</p>
+<p class="text-gray-600 mb-4">
+Especialista en medicina interna con más de 15 años de experiencia en el cuidado de pequeñas especies.
+</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-instagram-line text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-linkedin-line text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 2 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Professional%20male%20veterinarian%20with%20short%20dark%20hair%2C%20wearing%20a%20blue%20medical%20coat%2C%20smiling%20confidently%20at%20the%20camera.%20He%20is%20in%20a%20modern%20veterinary%20clinic%20with%20medical%20equipment%20visible%20in%20the%20background.%20The%20image%20has%20a%20warm%2C%20trustworthy%20feel%20with%20professional%20lighting&width=600&height=400&seq=3&orientation=portrait" alt="Dr. Carlos Mendoza" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Carlos Mendoza</h3>
+<p class="text-primary font-medium mb-4">Cirujano Veterinario</p>
+<p class="text-gray-600 mb-4">
+Especializado en cirugía de tejidos blandos y ortopedia con certificación internacional.
+</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-instagram-line text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-linkedin-line text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 3 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Young%20female%20veterinary%20technician%20with%20curly%20hair%2C%20wearing%20blue%20scrubs%2C%20smiling%20while%20holding%20a%20cat%20in%20a%20modern%20veterinary%20clinic.%20The%20background%20shows%20a%20clean%20examination%20room%20with%20veterinary%20equipment.%20The%20lighting%20is%20bright%20and%20professional&width=600&height=400&seq=4&orientation=portrait" alt="Gabriela Pérez" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Gabriela Pérez</h3>
+<p class="text-primary font-medium mb-4">Técnico Veterinario</p>
+<p class="text-gray-600 mb-4">
+Especialista en cuidados intensivos y manejo de emergencias veterinarias con enfoque en felinos.
+</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-instagram-line text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-linkedin-line text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="#" class="inline-block bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Conoce a todo el equipo</a>
+</div>
+</div>
+</section>
+<!-- Facilities Section -->
+<section id="instalaciones" class="py-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestras Instalaciones</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Contamos con instalaciones modernas y equipadas con la última tecnología para ofrecer el mejor servicio.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="rounded-lg overflow-hidden shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=Modern%20veterinary%20reception%20area%20with%20a%20clean%2C%20bright%20design.%20The%20reception%20desk%20has%20a%20blue%20accent%20color%20matching%20the%20clinics%20branding.%20There%20are%20comfortable%20seating%20areas%20for%20clients%20and%20their%20pets.%20The%20space%20is%20well-lit%20with%20natural%20light%20from%20large%20windows&width=600&height=400&seq=5&orientation=landscape" alt="Recepción" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-semibold text-gray-800">Recepción</h3>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=Modern%20veterinary%20examination%20room%20with%20clean%20medical%20equipment%2C%20an%20examination%20table%20in%20the%20center%2C%20and%20cabinets%20with%20supplies.%20The%20room%20has%20good%20lighting%20and%20a%20professional%20medical%20appearance%20with%20blue%20accents%20matching%20the%20clinics%20color%20scheme&width=600&height=400&seq=6&orientation=landscape" alt="Sala de Consulta" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-semibold text-gray-800">Sala de Consulta</h3>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=Modern%20veterinary%20surgery%20room%20with%20advanced%20surgical%20equipment%2C%20operating%20table%2C%20and%20monitoring%20devices.%20The%20room%20is%20sterile%20with%20bright%20lighting%20and%20blue%20accents%20matching%20the%20clinics%20branding.%20Medical%20instruments%20are%20neatly%20arranged&width=600&height=400&seq=7&orientation=landscape" alt="Quirófano" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-semibold text-gray-800">Quirófano</h3>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=Modern%20veterinary%20laboratory%20with%20microscopes%2C%20centrifuges%2C%20and%20other%20diagnostic%20equipment.%20The%20lab%20has%20a%20clean%2C%20clinical%20appearance%20with%20organized%20workstations.%20Blue%20accents%20match%20the%20clinics%20branding%2C%20and%20the%20space%20is%20well-lit%20with%20professional%20lighting&width=600&height=400&seq=8&orientation=landscape" alt="Laboratorio" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-semibold text-gray-800">Laboratorio</h3>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=Professional%20pet%20grooming%20area%20in%20a%20veterinary%20clinic%20with%20grooming%20tables%2C%20bathing%20stations%2C%20and%20drying%20equipment.%20The%20space%20is%20clean%20and%20modern%20with%20blue%20accents%20matching%20the%20clinics%20branding.%20Grooming%20tools%20are%20neatly%20organized&width=600&height=400&seq=9&orientation=landscape" alt="Peluquería" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-semibold text-gray-800">Peluquería</h3>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=Modern%20veterinary%20hospitalization%20area%20with%20comfortable%20kennels%20and%20recovery%20spaces%20for%20pets.%20The%20area%20has%20monitoring%20equipment%20and%20is%20designed%20for%20pet%20comfort.%20The%20space%20has%20blue%20accents%20matching%20the%20clinics%20branding%20and%20is%20clean%20and%20well-organized&width=600&height=400&seq=10&orientation=landscape" alt="Hospitalización" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-semibold text-gray-800">Hospitalización</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Lo Que Dicen Nuestros Clientes</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+La satisfacción de nuestros clientes y el bienestar de sus mascotas son nuestra mayor recompensa.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="testimonial-card bg-white rounded-lg shadow-lg p-8">
+<div class="flex items-center mb-6">
+<img src="https://readdy.ai/api/search-image?query=Middle-aged%20woman%20with%20shoulder-length%20brown%20hair%20smiling%20at%20the%20camera%2C%20casual%20portrait%20style%20with%20neutral%20background&width=100&height=100&seq=11&orientation=squarish" alt="María Fernández" class="w-16 h-16 rounded-full object-cover mr-4">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">María Fernández</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">
+"La atención que recibió mi perro Max fue excepcional. El Dr. Mendoza explicó detalladamente el procedimiento y nos mantuvo informados durante todo el proceso. ¡Totalmente recomendado!"
+</p>
+</div>
+<!-- Testimonial 2 -->
+<div class="testimonial-card bg-white rounded-lg shadow-lg p-8">
+<div class="flex items-center mb-6">
+<img src="https://readdy.ai/api/search-image?query=Young%20man%20with%20short%20dark%20hair%20and%20glasses%2C%20casual%20portrait%20with%20neutral%20background%2C%20smiling%20at%20camera&width=100&height=100&seq=12&orientation=squarish" alt="Alejandro Gutiérrez" class="w-16 h-16 rounded-full object-cover mr-4">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Alejandro Gutiérrez</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">
+"Mi gata Luna recibió un tratamiento excelente. El personal es muy amable y profesional. Las instalaciones están impecables y el servicio de peluquería dejó a mi mascota irreconocible de lo hermosa que quedó."
+</p>
+</div>
+<!-- Testimonial 3 -->
+<div class="testimonial-card bg-white rounded-lg shadow-lg p-8">
+<div class="flex items-center mb-6">
+<img src="https://readdy.ai/api/search-image?query=Elderly%20woman%20with%20gray%20hair%20in%20a%20neat%20bob%2C%20warm%20smile%2C%20casual%20portrait%20with%20neutral%20background&width=100&height=100&seq=13&orientation=squarish" alt="Carmen Blanco" class="w-16 h-16 rounded-full object-cover mr-4">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Carmen Blanco</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">
+"Llevo a mi perrito Toby desde hace años y siempre recibimos un trato excepcional. La Dra. Rodríguez es una profesional increíble, muy dedicada y cariñosa con los animales. ¡No cambiaría esta clínica por nada!"
+</p>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="#" class="inline-block bg-white border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition-colors whitespace-nowrap">Ver más testimonios</a>
+</div>
+</div>
+</section>
+<!-- Blog Section -->
+<section id="blog" class="py-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Blog y Consejos</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Información útil y consejos para el cuidado de tus mascotas.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Blog Post 1 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20dog%20being%20examined%20by%20a%20veterinarian%2C%20focus%20on%20vaccination%20procedure.%20The%20image%20shows%20a%20professional%20veterinary%20setting%20with%20good%20lighting.%20The%20veterinarian%20is%20wearing%20blue%20medical%20attire%20and%20is%20carefully%20administering%20a%20vaccine%20to%20a%20calm%20dog&width=600&height=400&seq=14&orientation=landscape" alt="Importancia de la vacunación" class="w-full h-48 object-cover">
+<div class="p-6">
+<span class="inline-block bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">Salud</span>
+<h3 class="text-xl font-semibold text-gray-800 mb-3">La importancia de la vacunación en mascotas</h3>
+<p class="text-gray-600 mb-4">
+Descubre por qué mantener al día el calendario de vacunación es fundamental para la salud de tu mascota y cómo prevenir enfermedades comunes.
+</p>
+<a href="#" class="text-primary font-medium hover:underline">Leer más</a>
+</div>
+</div>
+<!-- Blog Post 2 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20dog%20groomer%20giving%20a%20small%20dog%20a%20haircut%20in%20a%20modern%20pet%20salon.%20The%20groomer%20is%20wearing%20blue%20attire%20and%20using%20professional%20equipment.%20The%20setting%20is%20clean%20and%20well-lit%20with%20grooming%20tools%20visible&width=600&height=400&seq=15&orientation=landscape" alt="Cuidados de pelaje" class="w-full h-48 object-cover">
+<div class="p-6">
+<span class="inline-block bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-full text-sm font-medium mb-4">Cuidados</span>
+<h3 class="text-xl font-semibold text-gray-800 mb-3">Cuidados esenciales para el pelaje de tu mascota</h3>
+<p class="text-gray-600 mb-4">
+Aprende técnicas y consejos para mantener el pelaje de tu mascota saludable, brillante y libre de parásitos durante todo el año.
+</p>
+<a href="#" class="text-primary font-medium hover:underline">Leer más</a>
+</div>
+</div>
+<!-- Blog Post 3 -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20cat%20and%20dog%20sitting%20together%20peacefully%20in%20a%20home%20environment.%20The%20image%20shows%20a%20friendly%20interaction%20between%20the%20pets%20in%20a%20well-lit%2C%20comfortable%20living%20room%20setting.%20Both%20animals%20appear%20healthy%20and%20well-groomed&width=600&height=400&seq=16&orientation=landscape" alt="Convivencia entre mascotas" class="w-full h-48 object-cover">
+<div class="p-6">
+<span class="inline-block bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">Comportamiento</span>
+<h3 class="text-xl font-semibold text-gray-800 mb-3">Cómo lograr una buena convivencia entre perros y gatos</h3>
+<p class="text-gray-600 mb-4">
+Estrategias efectivas para introducir una nueva mascota en el hogar y fomentar una relación armoniosa entre diferentes especies.
+</p>
+<a href="#" class="text-primary font-medium hover:underline">Leer más</a>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="#" class="inline-block bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Ver todos los artículos</a>
+</div>
+</div>
+</section>
+<!-- Appointment Section -->
+<section id="agendar" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Agenda tu Cita</h2>
+<p class="text-xl text-gray-600">
+Reserva una cita para tu mascota de manera rápida y sencilla.
+</p>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="ownerName" class="block text-gray-700 font-medium mb-2">Nombre del propietario</label>
+<input type="text" id="ownerName" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tu nombre completo">
+</div>
+<div>
+<label for="petName" class="block text-gray-700 font-medium mb-2">Nombre de la mascota</label>
+<input type="text" id="petName" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Nombre de tu mascota">
+</div>
+<div>
+<label for="petType" class="block text-gray-700 font-medium mb-2">Tipo de mascota</label>
+<div class="relative">
+<select id="petType" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-primary pr-8">
+<option value="">Seleccionar</option>
+<option value="dog">Perro</option>
+<option value="cat">Gato</option>
+<option value="bird">Ave</option>
+<option value="other">Otro</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label for="service" class="block text-gray-700 font-medium mb-2">Servicio</label>
+<div class="relative">
+<select id="service" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-primary pr-8">
+<option value="">Seleccionar</option>
+<option value="consultation">Consulta médica</option>
+<option value="vaccination">Vacunación</option>
+<option value="grooming">Peluquería</option>
+<option value="surgery">Cirugía</option>
+<option value="laboratory">Laboratorio</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label for="date" class="block text-gray-700 font-medium mb-2">Fecha</label>
+<input type="date" id="date" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary">
+</div>
+<div>
+<label for="time" class="block text-gray-700 font-medium mb-2">Hora</label>
+<input type="time" id="time" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary">
+</div>
+<div class="md:col-span-2">
+<label for="notes" class="block text-gray-700 font-medium mb-2">Notas adicionales</label>
+<textarea id="notes" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Describe brevemente el motivo de la consulta o cualquier información relevante"></textarea>
+</div>
+<div class="md:col-span-2">
+<label class="flex items-center">
+<input type="checkbox" class="custom-checkbox">
+<span class="text-gray-700">Acepto los términos y condiciones</span>
+</label>
+</div>
+<div class="md:col-span-2 text-center">
+<button type="submit" class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Agendar Cita</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contacto" class="py-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contáctanos</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Estamos aquí para ayudarte. No dudes en contactarnos para cualquier consulta.
+</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div>
+<div class="bg-white rounded-lg shadow-lg p-8 h-full">
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">Información de Contacto</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-map-pin-line text-primary text-xl"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800 mb-1">Dirección</h4>
+<p class="text-gray-600">Av. Libertador, C.C. Plaza Mayor, Local 15-B, Barquisimeto, Estado Lara, Venezuela</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-phone-line text-primary text-xl"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800 mb-1">Teléfono</h4>
+<p class="text-gray-600">+58 251-123-4567</p>
+<p class="text-gray-600">+58 414-567-8901</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-mail-line text-primary text-xl"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800 mb-1">Email</h4>
+<p class="text-gray-600">info@pawparadise.com</p>
+<p class="text-gray-600">citas@pawparadise.com</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-time-line text-primary text-xl"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800 mb-1">Horario de Atención</h4>
+<p class="text-gray-600">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+<p class="text-gray-600">Sábados: 9:00 AM - 2:00 PM</p>
+<p class="text-gray-600">Domingos: Cerrado</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800 mb-3">Síguenos</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+<i class="ri-facebook-fill text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+<i class="ri-instagram-line text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+<i class="ri-twitter-x-line text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+<i class="ri-whatsapp-line text-primary"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white rounded-lg shadow-lg p-8">
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">Envíanos un Mensaje</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
+<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tu nombre">
+</div>
+<div>
+<label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tu email">
+</div>
+</div>
+<div class="mb-6">
+<label for="subject" class="block text-gray-700 font-medium mb-2">Asunto</label>
+<input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Asunto del mensaje">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+<textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tu mensaje"></textarea>
+</div>
+<button type="submit" class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Enviar Mensaje</button>
+</form>
+</div>
+</div>
+</div>
+<div class="mt-16">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="h-96 w-full">
+<img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Mapa de ubicación" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="flex items-center mb-6">
+<span class="text-4xl font-['Pacifico'] text-white">P</span>
+</a>
+<p class="text-gray-400 mb-6">
+Cuidado veterinario de excelencia para tus mejores amigos. Salud, bienestar y felicidad para tus compañeros peludos.
+</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-semibold mb-6">Enlaces Rápidos</h4>
+<ul class="space-y-3">
+<li><a href="#inicio" class="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
+<li><a href="#servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a></li>
+<li><a href="#equipo" class="text-gray-400 hover:text-white transition-colors">Nuestro Equipo</a></li>
+<li><a href="#instalaciones" class="text-gray-400 hover:text-white transition-colors">Instalaciones</a></li>
+<li><a href="#blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+<li><a href="#contacto" class="text-gray-400 hover:text-white transition-colors">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xl font-semibold mb-6">Servicios</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consultas Médicas</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Vacunación</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Peluquería Canina</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cirugía Veterinaria</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Laboratorio Clínico</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Hospitalización</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xl font-semibold mb-6">Boletín Informativo</h4>
+<p class="text-gray-400 mb-6">
+Suscríbete para recibir consejos, promociones y noticias sobre el cuidado de tus mascotas.
+</p>
+<form>
+<div class="flex mb-4">
+<input type="email" placeholder="Tu email" class="w-full px-4 py-3 rounded-l border-none focus:outline-none text-gray-800">
+<button type="submit" class="bg-primary text-white px-4 py-3 rounded-r hover:bg-opacity-90 transition-colors whitespace-nowrap">Suscribirse</button>
+</div>
+<label class="flex items-center">
+<input type="checkbox" class="custom-checkbox">
+<span class="text-gray-400 text-sm">Acepto recibir comunicaciones por email</span>
+</label>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">
+&copy; 2025 PawParadise. Todos los derechos reservados.
+</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Términos y Condiciones</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Política de Privacidad</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileMenuButton.addEventListener('click', function() {
+if (mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.remove('hidden');
+} else {
+mobileMenu.classList.add('hidden');
+}
+});
+// Close mobile menu when clicking on a link
+const mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+});
+});
+});
+</script>
+<script id="smoothScrollScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Smooth scrolling for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80, // Adjust for header height
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+<script id="formValidationScript">
+document.addEventListener('DOMContentLoaded', function() {
+const appointmentForm = document.querySelector('#agendar form');
+const contactForm = document.querySelector('#contacto form');
+if (appointmentForm) {
+appointmentForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Form validation logic would go here
+alert('¡Gracias por agendar tu cita! Te contactaremos pronto para confirmar.');
+});
+}
+if (contactForm) {
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Form validation logic would go here
+alert('¡Gracias por tu mensaje! Te responderemos a la brevedad posible.');
+});
+}
+});
+</script>
+</body>
+</html>
