@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Entidad-Relación Minimalista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Fondo muy suave */
+            color: #475569; /* Color de texto principal */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal del diagrama */
+        .erd-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px; /* Ancho más compacto */
+            background-color: #ffffff;
+            padding: 30px; /* Menos padding */
+            border-radius: 10px; /* Bordes ligeramente más suaves */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra más sutil */
+            display: grid;
+            /* Nuevo diseño de grid para un flujo más ordenado y menos cruces */
+            grid-template-areas:
+                "usuario                posible-cliente         cliente"
+                "cita                   .                       ."
+                "causa                  mensaje                 documento-demanda"
+                "cuota                  contraparte             causa-contraparte"
+                "plantilla-mensaje      plantilla-demanda       fase-comunicacion-configuracion";
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas para mayor compacidad */
+            grid-template-rows: auto;
+            gap: 40px 30px; /* Espacio reducido entre las entidades */
+            justify-items: center;
+            align-items: start;
+        }
+
+        /* Estilo para cada entidad */
+        .entity-box {
+            background-color: #f0f4f8; /* Fondo más claro para las cajas de entidad */
+            border: 1px solid #cbd5e1; /* Borde más sutil */
+            border-radius: 6px; /* Bordes ligeramente menos redondeados */
+            padding: 12px 18px; /* Menos padding */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03); /* Sombra muy ligera */
+            width: 100%;
+            max-width: 280px; /* Ancho máximo para cada entidad */
+            min-height: 120px; /* Altura mínima ajustada */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .entity-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .entity-box h3 {
+            font-size: 1.3rem; /* Tamaño de fuente ligeramente menor */
+            font-weight: 600; /* Menos negrita */
+            color: #1e40af; /* Azul oscuro para los títulos */
+            margin-bottom: 8px; /* Menos margen */
+            border-bottom: 1px solid #e0e7ff; /* Línea separadora más clara */
+            padding-bottom: 4px;
+        }
+
+        .entity-box p {
+            font-size: 0.88rem; /* Tamaño de fuente ligeramente menor */
+            margin-bottom: 3px; /* Menos margen */
+            line-height: 1.2;
+            color: #64748b; /* Gris más suave para los atributos */
+        }
+
+        .entity-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pk {
+            font-weight: 600;
+            color: #059669; /* Verde más oscuro para PK */
+        }
+
+        .fk {
+            font-style: italic;
+            color: #ef4444; /* Rojo más vibrante para FK */
+        }
+
+        .nullable {
+            color: #94a3b8; /* Gris más claro para NULLable */
+            font-size: 0.8rem;
+        }
+
+        /* Estilos para las líneas de relación */
+        .relationship-line {
+            position: absolute;
+            background-color: #3b82f6; /* Azul para las líneas */
+            height: 1.5px; /* Líneas más finas */
+            transform-origin: 0 0;
+            z-index: 1;
+        }
+
+        .relationship-label {
+            position: absolute;
+            background-color: #e0f2fe; /* Fondo más claro para las etiquetas */
+            border: 1px solid #93c5fd;
+            border-radius: 3px;
+            padding: 3px 6px; /* Menos padding */
+            font-size: 0.75rem; /* Tamaño de fuente más pequeño */
+            color: #1c50a0;
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        /* Ajustes para pantallas más pequeñas */
+        @media (max-width: 1024px) {
+            .erd-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajuste para móviles */
+                grid-template-areas: unset;
+                padding: 15px;
+                gap: 25px;
+            }
+            .entity-box {
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-start min-h-screen p-8">
+
+    <div class="erd-container">
+        <h1 class="col-span-full text-3xl font-bold text-center text-blue-800 mb-8 w-full">Diagrama de Entidad-Relación</h1>
+
+        <!-- Entidad Usuario -->
+        <div id="usuario" class="entity-box" style="grid-area: usuario;">
+            <h3>Usuario</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre</p>
+            <p>apellido</p>
+            <p>email</p>
+            <p>telefono</p>
+            <p>fecha_registro</p>
+            <p>contraseña</p>
+            <p>rol</p>
+            <p>cedula <span class="nullable">(NULLable)</span></p>
+            <p>numero_licencia <span class="nullable">(NULLable)</span></p>
+            <p>rum <span class="nullable">(NULLable)</span></p>
+            <p>cargo <span class="nullable">(NULLable)</span></p>
+        </div>
+
+        <!-- Entidad PosibleCliente -->
+        <div id="posible-cliente" class="entity-box" style="grid-area: posible-cliente;">
+            <h3>PosibleCliente</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre</p>
+            <p>apellido</p>
+            <p>email</p>
+            <p>telefono</p>
+            <p>direccion</p>
+            <p>fecha_envio_formulario</p>
+            <p>fuente_captacion</p>
+            <p>motivo_contacto</p>
+            <p>estado_captacion</p>
+            <p>perfil</p>
+            <p><span class="fk">abogado_que_capto_id</span> (FK a Usuario) <span class="nullable">(NULLable)</span></p>
+            <p><span class="fk">captador_que_capto_id</span> (FK a Usuario) <span class="nullable">(NULLable)</span></p>
+            <p><span class="fk">ejecutiva_que_capto_id</span> (FK a Usuario) <span class="nullable">(NULLable)</span></p>
+        </div>
+
+        <!-- Entidad Cliente -->
+        <div id="cliente" class="entity-box" style="grid-area: cliente;">
+            <h3>Cliente</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre</p>
+            <p>apellido</p>
+            <p>email</p>
+            <p>telefono</p>
+            <p>direccion</p>
+            <p>fecha_registro</p>
+            <p>rut</p>
+            <p>clave_unica</p>
+            <p>fecha_nacimiento</p>
+            <p>estado_civil</p>
+            <p>nacionalidad</p>
+            <p>profesion</p>
+            <p><span class="fk">id_posible_cliente_origen</span> (FK a PosibleCliente) <span class="nullable">(NULLable)</span></p>
+        </div>
+
+        <!-- Entidad Cita -->
+        <div id="cita" class="entity-box" style="grid-area: cita;">
+            <h3>Cita</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>codigo</p>
+            <p>hora</p>
+            <p>fecha</p>
+            <p>razon_o_causa_contratada</p>
+            <p>contrato</p>
+            <p>materia</p>
+            <p>primera_cuota_resultas</p>
+            <p><span class="fk">ejecutiva_o_administradora_id</span> (FK a Usuario)</p>
+            <p><span class="fk">posible_cliente_id</span> (FK a PosibleCliente) <span class="nullable">(NULLable)</span></p>
+            <p><span class="fk">cliente_id</span> (FK a Cliente) <span class="nullable">(NULLable)</span></p>
+        </div>
+
+        <!-- Entidad Causa -->
+        <div id="causa" class="entity-box" style="grid-area: causa;">
+            <h3>Causa</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>tipo_caso</p>
+            <p>codigo_data</p>
+            <p>descripcion</p>
+            <p>estado</p>
+            <p>fase_proceso_legal</p>
+            <p>fecha_apertura</p>
+            <p>fecha_ultima_actualizacion</p>
+            <p>rit_rol</p>
+            <p>tribunal</p>
+            <p>fecha_ingreso_causa</p>
+            <p>caratulado</p>
+            <p>institucion</p>
+            <p>detalle_tramitacion</p>
+            <p>pagare</p>
+            <p><span class="fk">cliente_id</span> (FK a Cliente)</p>
+            <p><span class="fk">abogado_asignado_id</span> (FK a Usuario)</p>
+        </div>
+
+        <!-- Entidad Mensaje -->
+        <div id="mensaje" class="entity-box" style="grid-area: mensaje;">
+            <h3>Mensaje</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>asunto</p>
+            <p>contenido</p>
+            <p>fecha_envio</p>
+            <p>estado_conversacion</p>
+            <p><span class="fk">causa_id</span> (FK a Causa)</p>
+            <p><span class="fk">plantilla_mensaje_id</span> (FK a PlantillaMensaje)</p>
+        </div>
+
+        <!-- Entidad DocumentoDemanda -->
+        <div id="documento-demanda" class="entity-box" style="grid-area: documento-demanda;">
+            <h3>DocumentoDemanda</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre_archivo</p>
+            <p>ruta_archivo</p>
+            <p>fecha_generacion</p>
+            <p>tipo_documento</p>
+            <p><span class="fk">causa_id</span> (FK a Causa)</p>
+            <p><span class="fk">plantilla_demanda_id</span> (FK a PlantillaDemanda)</p>
+        </div>
+
+        <!-- Entidad Cuota -->
+        <div id="cuota" class="entity-box" style="grid-area: cuota;">
+            <h3>Cuota</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>monto</p>
+            <p>fecha_vencimiento</p>
+            <p>fecha_pago</p>
+            <p>estado_pago</p>
+            <p><span class="fk">causa_id</span> (FK a Causa)</p>
+        </div>
+
+        <!-- Entidad Contraparte -->
+        <div id="contraparte" class="entity-box" style="grid-area: contraparte;">
+            <h3>Contraparte</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre</p>
+            <p>rut</p>
+            <p>direccion_particular</p>
+            <p>correo_electronico</p>
+            <p>clave_unica</p>
+            <p>telefonos</p>
+            <p>relacion_con_nuestro_cliente</p>
+            <p>profesion_u_oficio</p>
+            <p>nacionalidad</p>
+            <p>relacion_de_hechos</p>
+        </div>
+
+        <!-- Entidad PlantillaMensaje -->
+        <div id="plantilla-mensaje" class="entity-box" style="grid-area: plantilla-mensaje;">
+            <h3>PlantillaMensaje</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre</p>
+            <p>contenido_base</p>
+            <p>tipo_canal</p>
+        </div>
+
+        <!-- Entidad PlantillaDemanda -->
+        <div id="plantilla-demanda" class="entity-box" style="grid-area: plantilla-demanda;">
+            <h3>PlantillaDemanda</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre</p>
+            <p>ruta_plantilla_base</p>
+            <p>tipo_plantilla</p>
+        </div>
+
+        <!-- Entidad FaseComunicacionConfiguracion -->
+        <div id="fase-comunicacion-configuracion" class="entity-box" style="grid-area: fase-comunicacion-configuracion;">
+            <h3>FaseComunicacionConfiguracion</h3>
+            <p><span class="pk">id</span> (PK)</p>
+            <p>nombre_fase</p>
+            <p>descripcion</p>
+            <p>orden</p>
+            <p><span class="fk">plantilla_mensaje_id</span> (FK a PlantillaMensaje)</p>
+        </div>
+
+        <!-- Entidad Causa_Contraparte (Tabla de Unión) -->
+        <div id="causa-contraparte" class="entity-box" style="grid-area: causa-contraparte;">
+            <h3>Causa_Contraparte</h3>
+            <p><span class="pk fk">causa_id</span> (PK, FK a Causa)</p>
+            <p><span class="pk fk">contraparte_id</span> (PK, FK a Contraparte)</p>
+        </div>
+
+        <!-- Script para dibujar las líneas de relación -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const container = document.querySelector('.erd-container');
+
+                // Función para obtener las coordenadas centrales de un elemento
+                function getElementCenter(element) {
+                    const rect = element.getBoundingClientRect();
+                    const containerRect = container.getBoundingClientRect();
+                    return {
+                        x: (rect.left + rect.right) / 2 - containerRect.left,
+                        y: (rect.top + rect.bottom) / 2 - containerRect.top
+                    };
+                }
+
+                // Función para dibujar una línea
+                function drawLine(fromElementId, toElementId, labelText) {
+                    const fromElement = document.getElementById(fromElementId);
+                    const toElement = document.getElementById(toElementId);
+
+                    if (!fromElement || !toElement) {
+                        console.error(`No se encontraron los elementos: ${fromElementId} o ${toElementId}`);
+                        return;
+                    }
+
+                    const fromPos = getElementCenter(fromElement);
+                    const toPos = getElementCenter(toElement);
+
+                    const dx = toPos.x - fromPos.x;
+                    const dy = toPos.y - fromPos.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+                    const line = document.createElement('div');
+                    line.className = 'relationship-line';
+                    line.style.width = `${distance}px`;
+                    line.style.left = `${fromPos.x}px`;
+                    line.style.top = `${fromPos.y}px`;
+                    line.style.transform = `rotate(${angle}deg)`;
+                    container.appendChild(line);
+
+                    // Etiqueta de la relación
+                    const label = document.createElement('div');
+                    label.className = 'relationship-label';
+                    label.textContent = labelText;
+
+                    // Posicionar la etiqueta en el centro de la línea
+                    const labelX = fromPos.x + dx / 2;
+                    const labelY = fromPos.y + dy / 2;
+
+                    label.style.left = `${labelX}px`;
+                    label.style.top = `${labelY}px`;
+                    label.style.transform = `translate(-50%, -50%)`; // Centrar la etiqueta
+                    container.appendChild(label);
+                }
+
+                // Dibujar las relaciones con el nuevo posicionamiento
+                // Relaciones de Usuario
+                drawLine('usuario', 'causa', '1:M (Abogado)');
+                drawLine('usuario', 'cita', '1:M (Ejecutiva/Admin)');
+                drawLine('usuario', 'posible-cliente', '1:M (Captador/Abogado/Ejecutiva)');
+
+                // Relaciones de PosibleCliente
+                drawLine('posible-cliente', 'cita', '1:M');
+                drawLine('posible-cliente', 'cliente', '1:1');
+
+                // Relaciones de Cliente
+                drawLine('cliente', 'causa', '1:M');
+                drawLine('cliente', 'cita', '1:M');
+
+                // Relaciones de Causa
+                drawLine('causa', 'mensaje', '1:M');
+                drawLine('causa', 'documento-demanda', '1:M');
+                drawLine('causa', 'cuota', '1:M');
+                drawLine('causa', 'causa-contraparte', '1:M');
+
+                // Relaciones de Mensaje
+                drawLine('mensaje', 'plantilla-mensaje', 'M:1');
+
+                // Relaciones de DocumentoDemanda
+                drawLine('documento-demanda', 'plantilla-demanda', 'M:1');
+
+                // Relaciones de FaseComunicacionConfiguracion
+                drawLine('fase-comunicacion-configuracion', 'plantilla-mensaje', 'M:1');
+
+                // Relación M:M Causa - Contraparte (a través de Causa_Contraparte)
+                drawLine('causa-contraparte', 'contraparte', 'M:1');
+            });
+        </script>
+    </div>
+
+</body>
+</html>
