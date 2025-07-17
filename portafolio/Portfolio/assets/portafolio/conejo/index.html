@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaHop - Vitaminas Premium para Conejos</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff6b35',
+                        secondary: '#4ecdc4'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(10px); }
+        }
+        
+        @keyframes slideLeft {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-bounce-custom { animation: bounce 2s ease-in-out infinite; }
+        .animate-rotate-slow { animation: rotate 8s linear infinite; }
+        .animate-wave { animation: wave 4s ease-in-out infinite; }
+        .animate-slide-left { animation: slideLeft 20s linear infinite; }
+        .animate-pulse-custom { animation: pulse 2s ease-in-out infinite; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6b35 0%, #4ecdc4 50%, #9b59b6 100%);
+        }
+        
+        .menu-slide-left {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-slide-left.active {
+            transform: translateX(0);
+        }
+        
+        .menu-slide-right {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-slide-right.active {
+            transform: translateX(0);
+        }
+        
+        .menu-slide-bottom {
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-slide-bottom.active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Menú Lateral Izquierdo - Categorías -->
+    <div id="leftMenu" class="fixed top-0 left-0 w-80 h-full bg-white shadow-2xl z-50 menu-slide-left">
+        <div class="p-8">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="text-2xl font-bold text-gray-800">Categorías</h3>
+                <button id="closeLeftMenu" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary">
+                    <i class="ri-close-line text-xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#" class="flex items-center p-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <div class="w-8 h-8 flex items-center justify-center mr-4">
+                        <i class="ri-heart-pulse-line text-xl"></i>
+                    </div>
+                    <span class="text-lg">Multivitamínicos</span>
+                </a>
+                <a href="#" class="flex items-center p-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <div class="w-8 h-8 flex items-center justify-center mr-4">
+                        <i class="ri-bone-line text-xl"></i>
+                    </div>
+                    <span class="text-lg">Calcio y Huesos</span>
+                </a>
+                <a href="#" class="flex items-center p-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <div class="w-8 h-8 flex items-center justify-center mr-4">
+                        <i class="ri-shield-check-line text-xl"></i>
+                    </div>
+                    <span class="text-lg">Sistema Inmune</span>
+                </a>
+                <a href="#" class="flex items-center p-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <div class="w-8 h-8 flex items-center justify-center mr-4">
+                        <i class="ri-leaf-line text-xl"></i>
+                    </div>
+                    <span class="text-lg">Digestión</span>
+                </a>
+                <a href="#" class="flex items-center p-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <div class="w-8 h-8 flex items-center justify-center mr-4">
+                        <i class="ri-scissors-cut-line text-xl"></i>
+                    </div>
+                    <span class="text-lg">Pelaje y Piel</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Menú Lateral Derecho - Carrito y Contacto -->
+    <div id="rightMenu" class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 menu-slide-right">
+        <div class="p-8">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="text-2xl font-bold text-gray-800">Carrito</h3>
+                <button id="closeRightMenu" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary">
+                    <i class="ri-close-line text-xl"></i>
+                </button>
+            </div>
+            <div class="space-y-4 mb-8">
+                <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=premium%20rabbit%20vitamin%20bottle%20orange%20colorful%20background%20simple%20clean%20product%20photography&width=60&height=60&seq=cart1&orientation=squarish" alt="Producto" class="w-16 h-16 rounded-lg mr-4 object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gray-800">VitaHop Premium</h4>
+                        <p class="text-sm text-gray-600">Cantidad: 2</p>
+                        <p class="text-primary font-bold">$45.99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t pt-4 mb-8">
+                <div class="flex justify-between text-xl font-bold text-gray-800">
+                    <span>Total:</span>
+                    <span class="text-primary">$91.98</span>
+                </div>
+            </div>
+            <button class="w-full bg-primary text-white py-4 rounded-button text-lg font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap mb-6">
+                Finalizar Compra
+            </button>
+            <div class="space-y-4">
+                <h4 class="text-lg font-bold text-gray-800">Contacto</h4>
+                <div class="flex items-center text-gray-600">
+                    <div class="w-6 h-6 flex items-center justify-center mr-3">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="flex items-center text-gray-600">
+                    <div class="w-6 h-6 flex items-center justify-center mr-3">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                    <span>info@vitahop.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú Inferior - Enlaces Rápidos -->
+    <div id="bottomMenu" class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl z-50 menu-slide-bottom">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-800">Enlaces Rápidos</h3>
+                <button id="closeBottomMenu" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary">
+                    <i class="ri-close-line text-xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-information-line"></i>
+                    </div>
+                    <span>Sobre Nosotros</span>
+                </a>
+                <a href="#" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-truck-line"></i>
+                    </div>
+                    <span>Envíos</span>
+                </a>
+                <a href="#" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-question-line"></i>
+                    </div>
+                    <span>FAQ</span>
+                </a>
+                <a href="#" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-facebook-fill"></i>
+                    </div>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-instagram-fill"></i>
+                    </div>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-twitter-fill"></i>
+                    </div>
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Botones Flotantes para Menús -->
+    <button id="openLeftMenu" class="fixed top-6 left-6 w-16 h-16 bg-primary text-white rounded-full shadow-lg z-40 flex items-center justify-center hover:scale-110 transition-all duration-300 animate-pulse-custom">
+        <i class="ri-menu-line text-2xl"></i>
+    </button>
+
+    <button id="openRightMenu" class="fixed top-6 right-6 w-16 h-16 bg-secondary text-white rounded-full shadow-lg z-40 flex items-center justify-center hover:scale-110 transition-all duration-300 animate-bounce-custom">
+        <i class="ri-shopping-cart-line text-2xl"></i>
+    </button>
+
+    <button id="openBottomMenu" class="fixed bottom-6 right-6 w-16 h-16 bg-purple-600 text-white rounded-full shadow-lg z-40 flex items-center justify-center hover:scale-110 transition-all duration-300 animate-float">
+        <i class="ri-links-line text-2xl"></i>
+    </button>
+
+    <!-- Contenido Principal -->
+    <div class="min-h-screen gradient-bg relative overflow-hidden">
+        <!-- Elementos Flotantes Decorativos -->
+        <div class="absolute top-20 left-20 w-32 h-32 bg-white bg-opacity-20 rounded-full animate-float"></div>
+        <div class="absolute top-40 right-32 w-24 h-24 bg-white bg-opacity-15 rounded-full animate-bounce-custom"></div>
+        <div class="absolute bottom-40 left-40 w-40 h-40 bg-white bg-opacity-10 rounded-full animate-wave"></div>
+        <!-- Header -->
+        <header class="relative z-30 pt-20 pb-12">
+            <div class="container mx-auto px-8 text-center">
+                <h1 class="font-['Pacifico'] text-white text-8xl mb-6 animate-pulse-custom">VitaHop</h1>
+                <p class="text-white text-3xl font-bold mb-8">Vitaminas Premium para Conejos Felices</p>
+                <div class="flex justify-center">
+                    <img src="https://readdy.ai/api/search-image?query=happy%20cute%20rabbit%20with%20colorful%20vitamins%20bottles%20vibrant%20background%20orange%20green%20purple%20gradient%20playful%20scene%20high%20quality%20photography&width=600&height=400&seq=hero1&orientation=landscape" alt="Conejos Felices" class="rounded-3xl shadow-2xl animate-float object-cover">
+                </div>
+            </div>
+        </header>
+
+        <!-- Carrusel de Productos Dinámico -->
+        <section class="relative py-16">
+            <div class="container mx-auto px-8">
+                <h2 class="text-6xl font-bold text-white text-center mb-16 animate-bounce-custom">Productos Estrella</h2>
+                
+                <div class="relative overflow-hidden">
+                    <div class="flex space-x-8 animate-slide-left">
+                        <!-- Producto 1 -->
+                        <div class="min-w-80 bg-white rounded-3xl p-8 shadow-2xl animate-float">
+                            <div class="text-center">
+                                <img src="https://readdy.ai/api/search-image?query=premium%20rabbit%20multivitamin%20bottle%20orange%20label%20vibrant%20colors%20clean%20white%20background%20product%20photography%20professional%20lighting&width=200&height=200&seq=prod1&orientation=squarish" alt="VitaHop Premium" class="w-48 h-48 mx-auto mb-6 rounded-2xl object-cover">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">VitaHop Premium</h3>
+                                <p class="text-gray-600 mb-6 text-lg">Complejo multivitamínico completo para conejos adultos</p>
+                                <div class="text-4xl font-bold text-primary mb-6">$29.99</div>
+                                <button class="w-full bg-primary text-white py-4 rounded-button text-xl font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Producto 2 -->
+                        <div class="min-w-80 bg-white rounded-3xl p-8 shadow-2xl animate-bounce-custom">
+                            <div class="text-center">
+                                <img src="https://readdy.ai/api/search-image?query=rabbit%20calcium%20supplement%20bottle%20green%20label%20bone%20health%20vitamins%20clean%20white%20background%20professional%20product%20photography&width=200&height=200&seq=prod2&orientation=squarish" alt="BunnyCalcium Plus" class="w-48 h-48 mx-auto mb-6 rounded-2xl object-cover">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">BunnyCalcium Plus</h3>
+                                <p class="text-gray-600 mb-6 text-lg">Suplemento de calcio para huesos fuertes y saludables</p>
+                                <div class="text-4xl font-bold text-secondary mb-6">$24.99</div>
+                                <button class="w-full bg-secondary text-white py-4 rounded-button text-xl font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Producto 3 -->
+                        <div class="min-w-80 bg-white rounded-3xl p-8 shadow-2xl animate-rotate-slow">
+                            <div class="text-center">
+                                <img src="https://readdy.ai/api/search-image?query=rabbit%20probiotic%20pellets%20blue%20package%20digestive%20health%20supplements%20clean%20white%20background%20professional%20product%20photography&width=200&height=200&seq=prod3&orientation=squarish" alt="DigestCare Rabbit" class="w-48 h-48 mx-auto mb-6 rounded-2xl object-cover">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">DigestCare Rabbit</h3>
+                                <p class="text-gray-600 mb-6 text-lg">Probióticos especiales para digestión óptima</p>
+                                <div class="text-4xl font-bold text-blue-600 mb-6">$32.99</div>
+                                <button class="w-full bg-blue-600 text-white py-4 rounded-button text-xl font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Producto 4 -->
+                        <div class="min-w-80 bg-white rounded-3xl p-8 shadow-2xl animate-wave">
+                            <div class="text-center">
+                                <img src="https://readdy.ai/api/search-image?query=rabbit%20immune%20system%20booster%20pellets%20purple%20package%20vitamin%20supplements%20clean%20white%20background%20professional%20product%20photography&width=200&height=200&seq=prod4&orientation=squarish" alt="ImmunoBoost Pellets" class="w-48 h-48 mx-auto mb-6 rounded-2xl object-cover">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">ImmunoBoost Pellets</h3>
+                                <p class="text-gray-600 mb-6 text-lg">Refuerzo inmunológico natural y efectivo</p>
+                                <div class="text-4xl font-bold text-purple-600 mb-6">$27.99</div>
+                                <button class="w-full bg-purple-600 text-white py-4 rounded-button text-xl font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Producto 5 -->
+                        <div class="min-w-80 bg-white rounded-3xl p-8 shadow-2xl animate-float">
+                            <div class="text-center">
+                                <img src="https://readdy.ai/api/search-image?query=rabbit%20fur%20coat%20vitamins%20pink%20bottle%20beauty%20supplements%20clean%20white%20background%20professional%20product%20photography&width=200&height=200&seq=prod5&orientation=squarish" alt="VitaFur Complex" class="w-48 h-48 mx-auto mb-6 rounded-2xl object-cover">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">VitaFur Complex</h3>
+                                <p class="text-gray-600 mb-6 text-lg">Vitaminas para pelaje brillante y sedoso</p>
+                                <div class="text-4xl font-bold text-pink-600 mb-6">$22.99</div>
+                                <button class="w-full bg-pink-600 text-white py-4 rounded-button text-xl font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Repetir productos para efecto infinito -->
+                        <div class="min-w-80 bg-white rounded-3xl p-8 shadow-2xl animate-float">
+                            <div class="text-center">
+                                <img src="https://readdy.ai/api/search-image?query=premium%20rabbit%20multivitamin%20bottle%20orange%20label%20vibrant%20colors%20clean%20white%20background%20product%20photography%20professional%20lighting&width=200&height=200&seq=prod1b&orientation=squarish" alt="VitaHop Premium" class="w-48 h-48 mx-auto mb-6 rounded-2xl object-cover">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">VitaHop Premium</h3>
+                                <p class="text-gray-600 mb-6 text-lg">Complejo multivitamínico completo para conejos adultos</p>
+                                <div class="text-4xl font-bold text-primary mb-6">$29.99</div>
+                                <button class="w-full bg-primary text-white py-4 rounded-button text-xl font-bold hover:bg-opacity-90 transition-all duration-300 !rounded-button whitespace-nowrap">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-8 text-center">
+                <h2 class="text-6xl font-bold text-white mb-8 animate-bounce-custom">¡Tu Conejo Merece lo Mejor!</h2>
+                <p class="text-2xl text-white mb-12">Vitaminas premium respaldadas por veterinarios especializados</p>
+                <div class="flex justify-center space-x-8">
+                    <button class="bg-white text-primary px-12 py-6 rounded-button text-2xl font-bold hover:scale-105 transition-all duration-300 !rounded-button whitespace-nowrap animate-pulse-custom">
+                        Ver Todos los Productos
+                    </button>
+                    <button class="bg-primary text-white px-12 py-6 rounded-button text-2xl font-bold hover:scale-105 transition-all duration-300 !rounded-button whitespace-nowrap animate-float">
+                        Consulta Gratuita
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonios -->
+        <section class="py-16 bg-white bg-opacity-20 backdrop-blur-sm">
+            <div class="container mx-auto px-8">
+                <h2 class="text-5xl font-bold text-white text-center mb-16">Lo que Dicen Nuestros Clientes</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl animate-float">
+                        <div class="flex items-center mb-6">
+                            <img src="https://readdy.ai/api/search-image?query=happy%20woman%20with%20pet%20rabbit%20smiling%20portrait%20clean%20background%20professional%20photography&width=60&height=60&seq=test1&orientation=squarish" alt="Cliente" class="w-16 h-16 rounded-full mr-4 object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-800">María González</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg">"Mi conejo Pelusa ha mejorado increíblemente con VitaHop Premium. Su pelaje está más brillante y tiene mucha más energía."</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl animate-bounce-custom">
+                        <div class="flex items-center mb-6">
+                            <img src="https://readdy.ai/api/search-image?query=veterinarian%20man%20with%20rabbit%20professional%20portrait%20clean%20background%20medical%20setting&width=60&height=60&seq=test2&orientation=squarish" alt="Veterinario" class="w-16 h-16 rounded-full mr-4 object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-800">Dr. Carlos Ruiz</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg">"Como veterinario, recomiendo VitaHop por su calidad excepcional y resultados comprobados en la salud de los conejos."</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl animate-wave">
+                        <div class="flex items-center mb-6">
+                            <img src="https://readdy.ai/api/search-image?query=young%20woman%20holding%20cute%20rabbit%20happy%20smile%20clean%20background%20professional%20photography&width=60&height=60&seq=test3&orientation=squarish" alt="Cliente" class="w-16 h-16 rounded-full mr-4 object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-800">Ana Martínez</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg">"Los productos de VitaHop han transformado la salud de mis tres conejos. El servicio al cliente es excepcional."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 bg-black bg-opacity-30">
+            <div class="container mx-auto px-8 text-center">
+                <h3 class="font-['Pacifico'] text-white text-4xl mb-6">VitaHop</h3>
+                <p class="text-white text-xl mb-8">Cuidando la salud de tu conejo desde 2020</p>
+                <div class="flex justify-center space-x-8 text-white text-lg">
+                    <span>© 2024 VitaHop</span>
+                    <span>|</span>
+                    <span>Todos los derechos reservados</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Chat Flotante -->
+    <div class="fixed bottom-20 left-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg z-40 flex items-center justify-center hover:scale-110 transition-all duration-300 animate-bounce-custom">
+        <i class="ri-chat-3-line text-2xl"></i>
+    </div>
+
+    <script id="menuControls">
+        document.addEventListener('DOMContentLoaded', function() {
+            const leftMenu = document.getElementById('leftMenu');
+            const rightMenu = document.getElementById('rightMenu');
+            const bottomMenu = document.getElementById('bottomMenu');
+            
+            const openLeftBtn = document.getElementById('openLeftMenu');
+            const openRightBtn = document.getElementById('openRightMenu');
+            const openBottomBtn = document.getElementById('openBottomMenu');
+            
+            const closeLeftBtn = document.getElementById('closeLeftMenu');
+            const closeRightBtn = document.getElementById('closeRightMenu');
+            const closeBottomBtn = document.getElementById('closeBottomMenu');
+            
+            openLeftBtn.addEventListener('click', () => {
+                leftMenu.classList.add('active');
+            });
+            
+            openRightBtn.addEventListener('click', () => {
+                rightMenu.classList.add('active');
+            });
+            
+            openBottomBtn.addEventListener('click', () => {
+                bottomMenu.classList.add('active');
+            });
+            
+            closeLeftBtn.addEventListener('click', () => {
+                leftMenu.classList.remove('active');
+            });
+            
+            closeRightBtn.addEventListener('click', () => {
+                rightMenu.classList.remove('active');
+            });
+            
+            closeBottomBtn.addEventListener('click', () => {
+                bottomMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+    <script id="productInteractions">
+        document.addEventListener('DOMContentLoaded', function() {
+            const productCards = document.querySelectorAll('.min-w-80');
+            
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'scale(1.05)';
+                    card.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+
+    <script id="scrollAnimations">
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            const animatedElements = document.querySelectorAll('section > div');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
