@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolos Blindados - Consultoría Legal Avanzada para el Metaverso</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Three.js para WebGL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Fuente Inter (para claridad y modernidad) -->
+    <style>
+        @import url('https://fonts.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Contenedor del canvas Three.js, fijo en el fondo */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+
+        /* Estilos de Lujo Digital: Oscuro Profundo con acentos */
+        .luxury-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            opacity: 0; /* Controlado por JS para la narrativa de revelación */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .luxury-section.active {
+            opacity: 1;
+        }
+
+        .luxury-title {
+            font-family: 'Playfair Display', serif; /* Serif para la autoridad legal */
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Sombra de oro sutil */
+        }
+
+        /* Estilo del CTA base */
+        #cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+        }
+
+        /* Micro-Interacciones de Conversión: Efecto de Cristal de Cuarzo Líquido */
+        #cta-button:hover {
+            /* Simulación de Cristal Ahumado (Glassmorphism de lujo) */
+            background: rgba(40, 40, 40, 0.85); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 215, 0, 0.8);
+            transform: scale(1.05);
+            /* Pulso cinético fugaz y glow interno (activación textual) */
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 0 60px rgba(255, 215, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Nuevo: Barra de Estado Fija de Lujo Digital para Profesionalismo -->
+    <header class="fixed top-0 left-0 w-full z-20 p-4 md:p-6 bg-black bg-opacity-60 backdrop-blur-sm border-b border-yellow-900/40">
+        <div class="flex justify-between items-center max-w-7xl mx-auto text-yellow-300 font-mono text-xs md:text-sm">
+            <!-- Marca/Logo -->
+            <span class="font-bold tracking-widest uppercase luxury-title text-base md:text-xl">
+                Protocolos Blindados
+            </span>
+            
+            <!-- Estado Dinámico (Se actualiza con JS al hacer scroll) -->
+            <span id="header-status" class="hidden sm:inline-block tracking-widest text-gray-400">
+                // INICIANDO PROTOCOLO
+            </span>
+            
+            <!-- Hash Criptográfico Dinámico (Se actualiza constantemente) -->
+            <span id="crypto-hash" class="hidden md:inline-block">
+                0x0000000000000000...
+            </span>
+        </div>
+    </header>
+
+
+    <!-- Contenedor del Canvas Three.js -->
+    <div id="canvas-container"></div>
+
+    <!-- 4. Tono y Lenguaje: Contenido de la Página -->
+    <main class="text-white pt-20"> <!-- pt-20 para compensar el header fijo -->
+        <!-- SECCIÓN 1: Prólogo Jurisdiccional -->
+        <section id="section-1" class="luxury-section active">
+            <div class="max-w-4xl text-center p-8">
+                <h1 class="luxury-title text-5xl md:text-7xl font-bold mb-6 text-yellow-300">Dominando la Jurisdicción del Silicio</h1>
+                <p class="text-xl md:text-2xl font-light tracking-wide text-gray-300">El capital exige un marco. Nosotros diseñamos la protección inexpugnable para su Legado Digital en la intersección de Web3 y la Jurisprudencia Preventiva.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: Análisis de Capital -->
+        <section id="section-2" class="luxury-section">
+            <div class="max-w-4xl text-center p-8">
+                <h2 class="luxury-title text-4xl md:text-6xl font-semibold mb-6 text-yellow-300">Disrupción Sin Riesgo. La Volatilidad, Mapeada.</h2>
+                <p class="text-lg md:text-xl font-light tracking-wide text-gray-400">Transformamos exposiciones no mitigadas en estrategias de crecimiento cuantificables. Nuestra Consultoría es un algoritmo de previsión, no una reacción legal.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: El Protocolo Maestro -->
+        <section id="section-3" class="luxury-section">
+            <div class="max-w-4xl text-center p-8">
+                <h2 class="luxury-title text-4xl md:text-6xl font-semibold mb-6 text-yellow-300">Garantía Criptográfica, Interpretación Humana Experta.</h2>
+                <p class="text-lg md:text-xl font-light tracking-wide text-gray-400">La autoridad fiduciaria de nuestro *Consilium* valida cada *smart contract*. Protección Blindada a escala global.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: Acceso y Alcance -->
+        <section id="section-4" class="luxury-section">
+            <div class="max-w-4xl text-center p-8">
+                <h2 class="luxury-title text-4xl md:text-6xl font-semibold mb-6 text-yellow-300">Acceso al *Consilium* Global. Protocolos Blindados.</h2>
+                <p class="text-lg md:text-xl font-light tracking-wide text-gray-400">Su capital se mueve entre las jurisdicciones más seguras (Suiza, Singapur, Liechtenstein). Solo le otorgamos el mandato fiduciario más riguroso.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: La Conversión (CTA) -->
+        <section id="section-5" class="luxury-section">
+            <div class="max-w-4xl text-center p-8">
+                <h2 class="luxury-title text-4xl md:text-6xl font-semibold mb-12 text-yellow-300">La Próxima Cita con la Seguridad de su Legado Digital.</h2>
+                <!-- CTA con Micro-Interacción -->
+                <button id="cta-button" class="px-12 py-5 text-xl font-medium uppercase tracking-widest bg-black text-yellow-300 rounded-lg hover:text-white transition-all duration-300">
+                    Asegurar Consultoría Privada
+                </button>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN 6: Validación del Mandato (Social Proof) -->
+        <section id="section-6" class="luxury-section">
+            <div class="max-w-4xl text-center p-8">
+                <h2 class="luxury-title text-4xl md:text-6xl font-semibold mb-6 text-yellow-300">Validación del Mandato. Nuestro Círculo Privado.</h2>
+                <p class="text-lg md:text-xl font-light tracking-wide text-gray-400 italic">"La única firma que opera con la anticipación de un algoritmo y la precisión de la ley suiza. Un servicio que no tiene equivalente en este ecosistema." - Cliente Fiduciario Anónimo, 2025.</p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-500 text-sm tracking-widest">
+                    <span>TRUSTED JURISDICTION: ZURICH</span>
+                    <span>VERIFIED BY: CONSILIUM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: Activación del Canal Privado (Contact) -->
+        <section id="section-7" class="luxury-section">
+            <div class="max-w-4xl text-center p-8">
+                <h2 class="luxury-title text-4xl md:text-6xl font-semibold mb-8 text-yellow-300">Activación del Canal Privado. Su Mandato Comienza Aquí.</h2>
+                <p class="text-xl md:text-2xl font-medium tracking-wide text-gray-300 mb-10">La seguridad de su Legado exige una respuesta estratégica inmediata. Acceda al canal directo para iniciar su protocolo de protección.</p>
+                
+                <div class="space-y-6">
+                    <!-- Contacto Estratégico (Simulación de número de jurisdicción de alta seguridad) -->
+                    <p class="text-3xl text-yellow-400 font-bold tracking-wider">
+                        +41 44 588 50 10 (Zurich)
+                    </p>
+                    <a href="mailto:ESTRATEGICO@PROTOCOLOSBLINDADOS.COM" class="mt-4 inline-block text-lg text-yellow-500 hover:text-white underline transition-colors duration-300 tracking-wider uppercase">
+                        ESTRATÉGICO@PROTOCOLOSBLINDADOS.COM
+                    </a>
+                </div>
+
+                <!-- Footer Legal Minimalista -->
+                <div class="mt-20 border-t border-gray-800 pt-6">
+                    <p class="text-xs text-gray-700 tracking-wider">© 2025 Protocolos Blindados. Todos los derechos reservados. El acceso a esta información está bajo estricto mandato de confidencialidad y jurisdicción de Suiza.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- 1. Definición de las Animaciones Inmersivas Clave (IxD) con Three.js ---
+
+        // Configuración básica
+        let scene, camera, renderer;
+        let legalGrid, chaosMesh;
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let totalScrollHeight; 
+        
+        // Secciones de contenido y sus títulos para la barra de estado
+        const sections = ['section-1', 'section-2', 'section-3', 'section-4', 'section-5', 'section-6', 'section-7'];
+        const sectionTitles = [
+            "JURISDICCIÓN: PRÓLOGO", 
+            "ANÁLISIS: CAPITAL SEGURO", 
+            "ARQUITECTURA: PROTOCOLO MAESTRO", 
+            "MANDATO: ACCESO GLOBAL", 
+            "CONVERSIÓN: ACTIVACIÓN PRIVADA", 
+            "VALIDACIÓN: PRUEBA FIDUCIARIA", 
+            "CONTACTO: CANAL DIRECTO" 
+        ];
+
+        let cryptoHashEl;
+
+        function generateDynamicHash() {
+            // Genera un hash pseudo-criptográfico dinámico y en mayúsculas
+            const chars = '0123456789ABCDEF';
+            let hash = '0X';
+            for (let i = 0; i < 20; i++) {
+                hash += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return hash;
+        }
+
+        function init() {
+            // Obtener el elemento del hash para actualizarlo
+            cryptoHashEl = document.getElementById('crypto-hash');
+
+            // Inicializar Three.js
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            // Luz ambiental
+            scene.add(new THREE.AmbientLight(0x404040, 5));
+
+            // Cámara inicial
+            camera.position.z = 5;
+
+            // 1.1 El Despliegue del Ecosistema Volátil (Dimension Shift)
+            const particleCount = 2000;
+            const positions = new Float32Array(particleCount * 3);
+            for (let i = 0; i < particleCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 10;
+            }
+            const chaosGeometry = new THREE.BufferGeometry();
+            chaosGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const chaosMaterial = new THREE.PointsMaterial({
+                color: 0x00ffff, // Cian para la data caótica
+                size: 0.02,
+                transparent: true,
+                opacity: 1
+            });
+            chaosMesh = new THREE.Points(chaosGeometry, chaosMaterial);
+            scene.add(chaosMesh);
+
+            // Capa 2: Orden Legal (Legal Grid) - Wireframe limpio
+            const legalGeometry = new THREE.BoxGeometry(6, 4, 6, 10, 8, 10);
+            legalGrid = new THREE.WireframeGeometry(legalGeometry);
+            const legalMaterial = new THREE.LineBasicMaterial({
+                color: 0xffd700, // Dorado para la solidez
+                transparent: true,
+                opacity: 0, // Inicialmente invisible
+            });
+            legalGrid = new THREE.LineSegments(legalGrid, legalMaterial);
+            scene.add(legalGrid);
+
+            // 1.2 Simulación de Data Coalescence 
+            chaosMesh.userData.targetPositions = positions.slice();
+            for (let i = 0; i < particleCount; i++) {
+                const targetX = ((i % 50) / 50 - 0.5) * 4;
+                const targetY = (Math.floor(i / 50) / 40 - 0.5) * 3;
+                
+                // Simulación de una forma de "A" (Autoridad)
+                chaosMesh.userData.targetPositions[i * 3 + 0] = targetX;
+                chaosMesh.userData.targetPositions[i * 3 + 1] = targetY;
+                chaosMesh.userData.targetPositions[i * 3 + 2] = 0;
+            }
+
+            // 1.3 Simulación de la Materialización del Legado
+            const assetGeometry = new THREE.BoxGeometry(1, 1, 1);
+            const assetMaterial = new THREE.MeshPhysicalMaterial({
+                color: 0x1a1a1a, // Metal oscuro
+                metalness: 1,
+                roughness: 0.1,
+                reflectivity: 0.8,
+                transparent: true,
+                opacity: 0, 
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.1
+            });
+            chaosMesh.userData.solidAsset = new THREE.Mesh(assetGeometry, assetMaterial);
+            chaosMesh.userData.solidAsset.position.set(0, 0, -10); 
+            scene.add(chaosMesh.userData.solidAsset);
+
+            window.addEventListener('resize', onWindowResize, false);
+            window.addEventListener('scroll', onScrollUpdate, false);
+
+            animate();
+        }
+
+        function onWindowResize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+            
+            const windowHeight = window.innerHeight;
+            document.body.style.height = `${sections.length * windowHeight * 1.5}px`; 
+            totalScrollHeight = sections.length * windowHeight * 1.5;
+        }
+
+        function onScrollUpdate() {
+            const scrollY = window.scrollY;
+            const sectionHeight = height;
+
+            // 2. Estructura de la Página y Flujo de Lujo (UX): Control de opacidad del texto
+            let currentSection = 0;
+            for (let i = 0; i < sections.length; i++) {
+                const sectionEl = document.getElementById(sections[i]);
+                const rect = sectionEl.getBoundingClientRect();
+                
+                // Activar la sección cuando esté en el centro de la vista
+                if (rect.top <= sectionHeight / 2 && rect.bottom >= sectionHeight / 2) {
+                    currentSection = i + 1;
+                    sectionEl.classList.add('active');
+                } else {
+                    sectionEl.classList.remove('active');
+                }
+            }
+
+            // --- NUEVA LÓGICA DE BARRA DE ESTADO PROFESIONAL ---
+            const headerStatusEl = document.getElementById('header-status');
+            if (headerStatusEl && currentSection > 0 && currentSection <= sectionTitles.length) {
+                // Actualizar el estado de la navegación
+                headerStatusEl.textContent = `// ESTATUS: ${sectionTitles[currentSection - 1]}`;
+            } else if (headerStatusEl) {
+                headerStatusEl.textContent = `// ESTATUS: INICIANDO PROTOCOLO`;
+            }
+            // ---------------------------------------------------
+
+
+            // Normalización del progreso para animaciones específicas por sección
+            // p1: Dimension Shift (Sec 1 -> 2)
+            const p1 = Math.min(Math.max((scrollY - sectionHeight * 0) / sectionHeight, 0), 1); 
+            
+            // p2: Data Coalescence (Sec 3 -> 4)
+            const p2_start_multiplier = 2.5; 
+            const p2_end_multiplier = 3.5;
+            const p2_duration = p2_end_multiplier - p2_start_multiplier;
+            const p2 = Math.min(Math.max((scrollY - sectionHeight * p2_start_multiplier) / (sectionHeight * p2_duration), 0), 1); 
+            
+            // p3: Asset Volumetric Reveal (Sec 5 -> 6)
+            const p3_start_multiplier = 5.0; 
+            const p3_end_multiplier = 6.0;
+            const p3_duration = p3_end_multiplier - p3_start_multiplier;
+            const p3 = Math.min(Math.max((scrollY - sectionHeight * p3_start_multiplier) / (sectionHeight * p3_duration), 0), 1); 
+
+
+            // ANIMACIÓN 1.1: Dimension Shift (Sec 1-2)
+            const angle = p1 * (Math.PI / 4); 
+            camera.rotation.set(angle * 0.5, angle, angle * 0.25);
+            
+            if (chaosMesh && legalGrid) {
+                chaosMesh.material.opacity = 1 - p1;
+                legalGrid.material.opacity = p1 * 0.8;
+            }
+
+            // ANIMACIÓN 1.2: Data Coalescence (Simulación en Sec 3 -> 4)
+            if (chaosMesh && chaosMesh.geometry.attributes.position && p2 > 0 && p2 < 1) {
+                if (p1 >= 1) { camera.rotation.set(0, 0, 0); }
+                
+                const positions = chaosMesh.geometry.attributes.position.array;
+                const targetPositions = chaosMesh.userData.targetPositions;
+
+                for (let i = 0; i < positions.length; i += 3) {
+                    positions[i + 0] = THREE.MathUtils.lerp(positions[i + 0], targetPositions[i + 0], p2 * 0.1);
+                    positions[i + 1] = THREE.MathUtils.lerp(positions[i + 1], targetPositions[i + 1], p2 * 0.1);
+                    positions[i + 2] = THREE.MathUtils.lerp(positions[i + 2], targetPositions[i + 2], p2 * 0.1);
+                }
+                chaosMesh.geometry.attributes.position.needsUpdate = true;
+            }
+            
+            // ANIMACIÓN 1.3: Asset Volumetric Reveal (Simulación en Sec 5 -> 6)
+            if (chaosMesh && chaosMesh.userData.solidAsset && p3 > 0) {
+                const asset = chaosMesh.userData.solidAsset;
+                asset.position.z = THREE.MathUtils.lerp(-10, 0, p3);
+                asset.material.opacity = p3;
+                
+                asset.material.roughness = 1 - p3 * 0.9;
+                asset.material.metalness = p3;
+                asset.material.color.setHex(p3 > 0.5 ? 0xffd700 : 0x1a1a1a); 
+            } else {
+                if (chaosMesh && chaosMesh.userData.solidAsset) {
+                    chaosMesh.userData.solidAsset.position.z = -10;
+                    chaosMesh.userData.solidAsset.material.opacity = 0;
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotación de fondo constante
+            if (chaosMesh) {
+                chaosMesh.rotation.y += 0.0005;
+            }
+            if (legalGrid) {
+                legalGrid.rotation.y -= 0.001;
+            }
+
+            // Mueve el asset sólido
+            if (chaosMesh && chaosMesh.userData.solidAsset && chaosMesh.userData.solidAsset.material.opacity > 0) {
+                chaosMesh.userData.solidAsset.rotation.x += 0.005;
+                chaosMesh.userData.solidAsset.rotation.y += 0.005;
+            }
+
+            // NUEVA LÓGICA: Actualización constante del Hash Criptográfico
+            if (cryptoHashEl) {
+                // Actualizar solo cada 3 fotogramas para un efecto de "glitch de data" sutil
+                if (renderer.info.render.frame % 3 === 0) { 
+                     cryptoHashEl.textContent = generateDynamicHash();
+                }
+            }
+
+
+            renderer.render(scene, camera);
+        }
+
+        // Inicializar la aplicación cuando la ventana esté cargada
+        window.onload = function () {
+            init();
+            const windowHeight = window.innerHeight;
+            // Establecer la altura del cuerpo (7 secciones * 1.5vh cada una)
+            const newBodyHeight = sections.length * windowHeight * 1.5; 
+            document.body.style.height = `${newBodyHeight}px`;
+            // Establecer totalScrollHeight para el cálculo del progreso
+            totalScrollHeight = newBodyHeight; 
+        };
+
+    </script>
+</body>
+</html>
