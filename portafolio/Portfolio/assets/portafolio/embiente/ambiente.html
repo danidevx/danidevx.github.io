@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereal Interiors - Decoración de Espacios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Ocultamos el cursor por defecto */
+        }
+
+        :root {
+            --pastel-sand: #E6D7C3;
+            --pastel-beige: #D8C4A8;
+            --pastel-cream: #F5E9D7;
+            --pastel-peach-brown: #E8C8A9;
+            --pastel-warm-sand: #D2B48C;
+            --dark-text: #2D3436;
+            --light-text: #636E72;
+        }
+
+        /* Estilos del cursor personalizado */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(230, 215, 195, 0.8);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(216, 196, 168, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--pastel-peach-brown);
+            pointer-events: none;
+            z-index: 9997;
+            opacity: 0;
+            mix-blend-mode: difference;
+        }
+
+        /* Estados del cursor */
+        .cursor.hover {
+            transform: scale(1.5);
+            background: rgba(232, 200, 169, 0.9);
+        }
+
+        .cursor-follower.hover {
+            transform: scale(1.2);
+            border-color: rgba(232, 200, 169, 0.7);
+        }
+
+        .cursor.click {
+            transform: scale(0.8);
+            background: rgba(210, 180, 140, 0.9);
+        }
+
+        .cursor-follower.click {
+            transform: scale(0.9);
+            border-color: rgba(210, 180, 140, 0.7);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #FAF8FF 0%, #FFF9F2 100%);
+        }
+
+        /* Cookie Banner */
+        #cookieBanner {
+            position: fixed;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 25px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            z-index: 10000;
+            max-width: 500px;
+            width: 90%;
+            transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        #cookieBanner.show {
+            bottom: 30px;
+        }
+
+        #cookieBanner p {
+            margin-bottom: 15px;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cookie-btn {
+            flex: 1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: none; /* Mantenemos cursor none para que funcione nuestro cursor personalizado */
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cookie-accept {
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            color: var(--dark-text);
+        }
+
+        .cookie-decline {
+            background: transparent;
+            border: 2px solid var(--pastel-beige);
+            color: var(--dark-text);
+        }
+
+        .cookie-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--pastel-beige), var(--pastel-sand));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Central Animation */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand), var(--pastel-cream));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: var(--light-text);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .cta-button {
+            padding: 18px 45px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            color: var(--dark-text);
+            font-weight: 600;
+            cursor: none; /* Mantenemos cursor none para que funcione nuestro cursor personalizado */
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(216, 196, 168, 0.4);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(216, 196, 168, 0.6);
+        }
+
+        /* Central Animation - Floating 3D Shapes */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            opacity: 0.3;
+            animation: float 20s infinite;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-cream));
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--pastel-sand), var(--pastel-peach-brown));
+            top: 50%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .shape3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--pastel-cream), var(--pastel-warm-sand));
+            bottom: 10%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        .shape4 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, var(--pastel-peach-brown), var(--pastel-beige));
+            top: 30%;
+            left: 50%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            25% {
+                transform: translate(50px, -50px) rotate(90deg) scale(1.1);
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+            50% {
+                transform: translate(-30px, 70px) rotate(180deg) scale(0.9);
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+            }
+            75% {
+                transform: translate(-70px, -30px) rotate(270deg) scale(1.05);
+                border-radius: 30% 70% 30% 70% / 70% 30% 70% 30%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 120px 50px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFFBF5 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            height: 450px;
+            cursor: none; /* Mantenemos cursor none para que funcione nuestro cursor personalizado */
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px) scale(1.02);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px;
+            transform: translateY(100%);
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 120px 50px;
+            background: linear-gradient(180deg, #FFFBF5 0%, #FFF9F2 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: transform 0.4s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            color: white;
+            box-shadow: 0 15px 40px rgba(216, 196, 168, 0.4);
+            transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member:hover .team-photo {
+            box-shadow: 0 20px 50px rgba(216, 196, 168, 0.6);
+            transform: scale(1.05);
+        }
+
+        .team-member h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: var(--light-text);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .team-quote {
+            font-style: italic;
+            color: var(--pastel-warm-sand);
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 0 10px;
+            border-left: 2px solid var(--pastel-beige);
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 50px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF5 50%, #FFF9F2 100%);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--pastel-cream), var(--pastel-warm-sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(210, 180, 140, 0.3);
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 120px 50px;
+            background: linear-gradient(180deg, #FFF9F2 0%, #FFFBF5 100%);
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--pastel-beige);
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+            cursor: none; /* Mantenemos cursor none para que funcione nuestro cursor personalizado */
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pastel-sand);
+            box-shadow: 0 5px 20px rgba(230, 215, 195, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            color: var(--dark-text);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: none; /* Mantenemos cursor none para que funcione nuestro cursor personalizado */
+            transition: all 0.4s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(216, 196, 168, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--pastel-beige), var(--pastel-sand));
+            color: var(--dark-text);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 30px;
+            }
+            
+            /* En dispositivos móviles, mostramos el cursor normal */
+            * {
+                cursor: auto;
+            }
+            
+            .cursor, .cursor-follower, .cursor-particle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner">
+        <p>🍪 Utilizamos cookies para mejorar tu experiencia en nuestro sitio. ¿Aceptas el uso de cookies?</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Aceptar</button>
+            <button class="cookie-btn cookie-decline" onclick="declineCookies()">Rechazar</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Ethereal Interiors</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#portfolio">Portafolio</a></li>
+            <li><a href="#team">Equipo</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="floating-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+            <div class="shape shape4"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Transforma Tu Espacio</h1>
+            <p>Diseño de interiores que refleja tu esencia</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                Comienza Tu Proyecto
+            </button>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio reveal" id="portfolio">
+        <h2 class="section-title">Nuestro Portafolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80');"></div>
+                <div class="portfolio-overlay">
+                    <h3>Sala Minimalista</h3>
+                    <p>Diseño contemporáneo con toques de elegancia</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="portfolio-overlay">
+                    <h3>Dormitorio Sereno</h3>
+                    <p>Un oasis de tranquilidad y descanso</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="portfolio-overlay">
+                    <h3>Comedor Sofisticado</h3>
+                    <p>Espacio perfecto para reuniones memorables</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
+                <div class="portfolio-overlay">
+                    <h3>Estudio Creativo</h3>
+                    <p>Inspiración en cada rincón</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                <div class="portfolio-overlay">
+                    <h3>Terraza Interior</h3>
+                    <p>Naturaleza integrada al diseño moderno</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80');"></div>
+                <div class="portfolio-overlay">
+                    <h3>Espacio Multifuncional</h3>
+                    <p>Versatilidad con estilo único</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team reveal" id="team">
+        <h2 class="section-title">Nuestros Especialistas</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="María Rodríguez">
+                </div>
+                <h3>María Rodríguez</h3>
+                <p>Diseñadora de Interiores Senior</p>
+                <div class="team-quote">"Cada espacio tiene un alma esperando ser descubierta; mi misión es revelar su verdadera esencia a través del diseño."</div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Carlos Méndez">
+                </div>
+                <h3>Carlos Méndez</h3>
+                <p>Especialista en Iluminación</p>
+                <div class="team-quote">"La iluminación es el alma de cualquier espacio; sin una luz adecuada, la escena pierde su magia y propósito."</div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Ana Torres">
+                </div>
+                <h3>Ana Torres</h3>
+                <p>Consultora de Color y Texturas</p>
+                <div class="team-quote">"Los colores y texturas son el lenguaje silencioso que habla directamente a nuestras emociones y transforma la percepción del espacio."</div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Luis Fernández">
+                </div>
+                <h3>Luis Fernández</h3>
+                <p>Arquitecto de Espacios</p>
+                <div class="team-quote">"La arquitectura no se trata solo de construir espacios, sino de crear experiencias que mejoren la forma en que vivimos y nos relacionamos."</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about reveal" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Sobre Nosotros</h2>
+                <p>En Ethereal Interiors, creemos que cada espacio cuenta una historia única. Con más de 10 años de experiencia, nos especializamos en transformar hogares en refugios personalizados que reflejan la esencia de quienes los habitan.</p>
+                <p>Nuestro equipo multidisciplinario combina creatividad, funcionalidad y las últimas tendencias en diseño para crear ambientes que inspiran y elevan la calidad de vida.</p>
+                <p>Desde conceptos minimalistas hasta diseños eclécticos, cada proyecto es una colaboración íntima con nuestros clientes para materializar sus sueños.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80" alt="Nuestro estudio de diseño">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact reveal" id="contact">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Cuéntanos sobre tu proyecto</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ethereal Interiors. Todos los derechos reservados.</p>
+        <p>Transformando espacios, creando experiencias.</p>
+    </footer>
+
+    <script>
+        // Animación del cursor personalizado
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+        
+        // Seguimiento del cursor
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Posicionar el cursor principal
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+        
+        // Animación suave del cursor seguidor
+        function animateCursor() {
+            // Calcular la posición del seguidor con un retraso
+            followerX += (mouseX - followerX) / 8;
+            followerY += (mouseY - followerY) / 8;
+            
+            cursorFollower.style.left = followerX + 'px';
+            cursorFollower.style.top = followerY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        
+        animateCursor();
+        
+        // Efectos de hover en elementos interactivos
+        const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .team-member, input, textarea');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
+        });
+        
+        // Efecto de clic
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('click');
+            cursorFollower.classList.add('click');
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('click');
+            cursorFollower.classList.remove('click');
+        });
+        
+        // Efecto de partículas ocasionales
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('cursor-particle');
+            document.body.appendChild(particle);
+            
+            // Posicionar partícula cerca del cursor
+            const offsetX = (Math.random() - 0.5) * 60;
+            const offsetY = (Math.random() - 0.5) * 60;
+            
+            particle.style.left = (mouseX + offsetX) + 'px';
+            particle.style.top = (mouseY + offsetY) + 'px';
+            
+            // Animación de la partícula
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            const animation = particle.animate([
+                { opacity: 0.8, transform: 'translate(0, 0) scale(1)' },
+                { opacity: 0, transform: `translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px) scale(0)` }
+            ], {
+                duration: Math.random() * 1000 + 500,
+                easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+            });
+            
+            animation.onfinish = () => {
+                particle.remove();
+            };
+        }
+        
+        // Crear partículas periódicamente
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createParticle();
+            }
+        }, 200);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+
+        // Cookie banner
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const banner = document.getElementById('cookieBanner');
+                if (!sessionStorage.getItem('cookiesAccepted')) {
+                    banner.classList.add('show');
+                }
+            }, 1000);
+        });
+
+        function acceptCookies() {
+            sessionStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        function declineCookies() {
+            sessionStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
