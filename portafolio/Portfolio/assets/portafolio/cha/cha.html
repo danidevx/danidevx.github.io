@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHASPLASH</title>
+    <title>PopSockets - Personaliza tu PopGrip</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Estilos generales - Paleta Azul */
@@ -19,6 +19,7 @@
             line-height: 1.5;
             background-color: #f7fafc;
             font-size: 14px;
+            overflow-x: hidden;
         }
         
         a {
@@ -44,14 +45,85 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-size: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(43, 108, 176, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
         }
         
         .btn:hover {
             background: linear-gradient(135deg, #2c5282, #2b6cb0);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(43, 108, 176, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 15px rgba(43, 108, 176, 0.4);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Animaciones personalizadas */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         /* Header - Paleta Azul */
@@ -62,6 +134,18 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(26, 54, 93, 0.1);
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .top-bar {
@@ -76,6 +160,7 @@
             font-size: 22px;
             letter-spacing: 0.5px;
             color: #ffffff;
+            animation: pulse 2s infinite;
         }
         
         .search-bar {
@@ -86,6 +171,12 @@
             padding: 6px 12px;
             width: 280px;
             background-color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar:focus-within {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(144, 205, 244, 0.5);
         }
         
         .search-bar i {
@@ -113,11 +204,28 @@
             margin-left: 12px;
             font-size: 13px;
             color: #bee3f8;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         .user-actions a:hover {
             color: #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        .user-actions a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        
+        .user-actions a:hover::after {
+            width: 100%;
         }
         
         .nav-menu {
@@ -135,15 +243,33 @@
             text-transform: uppercase;
             letter-spacing: 0.3px;
             color: #bee3f8;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         .nav-menu li:hover {
             color: #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        .nav-menu li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu li:hover::after {
+            width: 100%;
         }
         
         .nav-menu li:last-child {
             color: #fed7d7;
+            animation: pulse 2s infinite;
         }
         
         /* Hero Section - Paleta Azul */
@@ -152,6 +278,18 @@
             padding: 70px 20px;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            animation: shimmer 3s infinite linear;
         }
         
         .hero h1 {
@@ -161,6 +299,7 @@
             line-height: 1.2;
             color: #2c5282;
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            animation: fadeInUp 1s ease-out;
         }
         
         .hero p {
@@ -168,6 +307,11 @@
             max-width: 550px;
             margin: 0 auto 25px;
             color: #4a5568;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero .btn {
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
         
         /* Product Sections - Paleta Azul */
@@ -184,6 +328,7 @@
             letter-spacing: 1.5px;
             color: #2c5282;
             position: relative;
+            animation: fadeInUp 0.8s ease-out;
         }
         
         .section-title::after {
@@ -194,6 +339,7 @@
             background: linear-gradient(90deg, #3182ce, #63b3ed);
             margin: 10px auto 0;
             border-radius: 2px;
+            animation: pulse 2s infinite;
         }
         
         .product-grid {
@@ -207,14 +353,21 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(49, 130, 206, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 1px solid #e2e8f0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.2);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(49, 130, 206, 0.3);
             border-color: #bee3f8;
         }
         
@@ -225,11 +378,33 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .product-card:hover .product-image::before {
+            transform: translateX(100%);
         }
         
         .product-image i {
             font-size: 50px;
             color: #4299e1;
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:hover .product-image i {
+            transform: scale(1.2) rotate(10deg);
         }
         
         .product-info {
@@ -242,6 +417,11 @@
             margin-bottom: 8px;
             font-size: 16px;
             color: #2d3748;
+            transition: color 0.3s ease;
+        }
+        
+        .product-card:hover .product-title {
+            color: #3182ce;
         }
         
         .product-price {
@@ -265,11 +445,20 @@
         .category-item {
             text-align: center;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
+        .category-item:nth-child(1) { animation-delay: 0.1s; }
+        .category-item:nth-child(2) { animation-delay: 0.2s; }
+        .category-item:nth-child(3) { animation-delay: 0.3s; }
+        .category-item:nth-child(4) { animation-delay: 0.4s; }
+        .category-item:nth-child(5) { animation-delay: 0.5s; }
+        .category-item:nth-child(6) { animation-delay: 0.6s; }
+        
         .category-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px) scale(1.05);
         }
         
         .category-image {
@@ -282,23 +471,51 @@
             justify-content: center;
             box-shadow: 0 4px 8px rgba(49, 130, 206, 0.1);
             border: 1px solid #bee3f8;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
         }
         
         .category-item:hover .category-image {
             background: linear-gradient(135deg, #ffffff, #90cdf4);
-            box-shadow: 0 6px 12px rgba(49, 130, 206, 0.2);
+            box-shadow: 0 10px 20px rgba(49, 130, 206, 0.2);
+        }
+        
+        .category-item:hover .category-image::before {
+            transform: translateX(100%);
         }
         
         .category-image i {
             font-size: 36px;
             color: #3182ce;
+            transition: all 0.4s ease;
+        }
+        
+        .category-item:hover .category-image i {
+            transform: scale(1.2) rotate(15deg);
         }
         
         .category-name {
             font-weight: 500;
             font-size: 14px;
             color: #2c5282;
+            transition: color 0.3s ease;
+        }
+        
+        .category-item:hover .category-name {
+            color: #3182ce;
         }
         
         /* Reviews - Paleta Azul */
@@ -320,12 +537,19 @@
             box-shadow: 0 4px 8px rgba(49, 130, 206, 0.1);
             position: relative;
             border: 1px solid #e2e8f0;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
+        .review-card:nth-child(1) { animation-delay: 0.1s; }
+        .review-card:nth-child(2) { animation-delay: 0.2s; }
+        .review-card:nth-child(3) { animation-delay: 0.3s; }
+        .review-card:nth-child(4) { animation-delay: 0.4s; }
+        
         .review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(49, 130, 206, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(49, 130, 206, 0.2);
         }
         
         .review-card::before {
@@ -336,6 +560,12 @@
             top: 8px;
             left: 15px;
             font-family: Georgia, serif;
+            transition: all 0.4s ease;
+        }
+        
+        .review-card:hover::before {
+            transform: scale(1.2);
+            color: #90cdf4;
         }
         
         .review-text {
@@ -369,13 +599,18 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(49, 130, 206, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid #e2e8f0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
+        .collection-card:nth-child(1) { animation-delay: 0.1s; }
+        .collection-card:nth-child(2) { animation-delay: 0.2s; }
+        
         .collection-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.2);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(49, 130, 206, 0.3);
         }
         
         .collection-image {
@@ -384,11 +619,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .collection-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .collection-card:hover .collection-image::before {
+            transform: translateX(100%);
         }
         
         .collection-image i {
             font-size: 70px;
             color: #4299e1;
+            transition: all 0.5s ease;
+        }
+        
+        .collection-card:hover .collection-image i {
+            transform: scale(1.2) rotate(10deg);
         }
         
         .collection-info {
@@ -401,6 +659,11 @@
             margin-bottom: 15px;
             font-weight: 400;
             color: #2c5282;
+            transition: color 0.3s ease;
+        }
+        
+        .collection-card:hover .collection-info h3 {
+            color: #3182ce;
         }
         
         /* Footer - Paleta Azul */
@@ -417,6 +680,16 @@
             margin-bottom: 35px;
         }
         
+        .footer-column {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .footer-column:nth-child(1) { animation-delay: 0.1s; }
+        .footer-column:nth-child(2) { animation-delay: 0.2s; }
+        .footer-column:nth-child(3) { animation-delay: 0.3s; }
+        .footer-column:nth-child(4) { animation-delay: 0.4s; }
+        
         .footer-column h4 {
             margin-bottom: 15px;
             font-size: 14px;
@@ -431,6 +704,11 @@
         
         .footer-column ul li {
             margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-column ul li:hover {
+            transform: translateX(5px);
         }
         
         .footer-column ul li a {
@@ -457,14 +735,14 @@
             height: 32px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: #bee3f8;
         }
         
         .social-icons a:hover {
             background-color: rgba(255, 255, 255, 0.2);
             color: #ffffff;
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.2);
         }
         
         .copyright {
@@ -473,6 +751,7 @@
             border-top: 1px solid #3182ce;
             font-size: 12px;
             color: #90cdf4;
+            animation: fadeInUp 0.6s ease-out 0.5s both;
         }
         
         /* Elementos específicos con paleta azul */
@@ -485,6 +764,7 @@
             font-size: 13px;
             display: inline-block;
             margin: 8px 0;
+            animation: pulse 2s infinite;
         }
         
         .customize-btn {
@@ -498,14 +778,31 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-size: 11px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 2px 4px rgba(49, 130, 206, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .customize-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
         }
         
         .customize-btn:hover {
             background: linear-gradient(135deg, #2c5282, #3182ce);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(49, 130, 206, 0.4);
+        }
+        
+        .customize-btn:hover::before {
+            left: 100%;
         }
         
         /* Estilos para elementos específicos */
@@ -520,6 +817,7 @@
             font-size: 11px;
             font-weight: 600;
             box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
+            animation: pulse 2s infinite;
         }
         
         .inspiration-section {
@@ -534,6 +832,7 @@
             font-weight: 400;
             color: #2c5282;
             position: relative;
+            animation: fadeInUp 0.8s ease-out;
         }
         
         .inspiration-title::after {
@@ -544,6 +843,7 @@
             background: linear-gradient(90deg, #3182ce, #63b3ed);
             margin: 10px auto 0;
             border-radius: 2px;
+            animation: pulse 2s infinite;
         }
         
         /* Responsive */
@@ -860,7 +1160,7 @@
     </footer>
 
     <script>
-        // JavaScript para funcionalidades básicas
+        // JavaScript para funcionalidades avanzadas
         document.addEventListener('DOMContentLoaded', function() {
             // Efecto de desplazamiento suave para enlaces internos
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -876,16 +1176,50 @@
                 });
             });
             
+            // Animación de entrada para elementos al hacer scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar elementos con animaciones
+            document.querySelectorAll('.product-card, .category-item, .review-card, .collection-card, .footer-column').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+            
             // Efecto de hover mejorado para tarjetas de productos
             const productCards = document.querySelectorAll('.product-card');
             productCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
+                    this.style.transform = 'translateY(-15px) scale(1.03)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
+                    this.style.transform = 'translateY(0) scale(1)';
                 });
+            });
+            
+            // Efecto de partículas en el hero (simulado con CSS)
+            const hero = document.querySelector('.hero');
+            hero.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { left, top, width, height } = hero.getBoundingClientRect();
+                
+                const x = (clientX - left) / width;
+                const y = (clientY - top) / height;
+                
+                hero.style.setProperty('--mouse-x', x);
+                hero.style.setProperty('--mouse-y', y);
             });
         });
     </script>
