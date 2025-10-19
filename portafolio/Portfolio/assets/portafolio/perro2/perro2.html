@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perros</title>
+    <style>
+        /* NUEVO: Cursor personalizado con huella de pata */
+        * {
+            cursor: url('https://imgs.search.brave.com/5sE15SHA0ZnBvKKWT8jfUwRQsm_R0iAs2THmEQMfK58/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuc3RpY2twbmcu/Y29tL3RodW1icy81/OGFlZmZhYWM4Njll/MDkyYWY1MWVlNzMu/cG5n') 16 16, auto;
+        }
+
+        .image-card, 
+        .logo,
+        .footer-content,
+        button,
+        a {
+            cursor: url('https://imgs.search.brave.com/5sE15SHA0ZnBvKKWT8jfUwRQsm_R0iAs2THmEQMfK58/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuc3RpY2twbmcu/Y29tL3RodW1icy81/OGFlZmZhYWM4Njll/MDkyYWY1MWVlNzMu/cG5n') 16 16, pointer;
+        }
+
+        /* Resto de tu CSS existente... */
+        :root {
+            --color-bg: #f5f5f5;
+            --color-primary: #e0e0e0;
+            --color-secondary: #d6d6d6;
+            --color-accent: #c9c9c9;
+            --color-text: #333333;
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 200, 150, 0.7), 
+                    rgba(150, 220, 255, 0.7),
+                    rgba(200, 255, 180, 0.7),
+                    rgba(255, 180, 220, 0.7)),
+                url('https://img.freepik.com/fotos-premium/colorido-mural-arte-callejero-que-representa-perros-felices-sonriendo-dia-soleado_1089554-36174.jpg?semt=ais_hybrid&w=740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            color: var(--color-text);
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            transform-style: preserve-3d;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--glass-bg);
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+        }
+
+        header {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transform-style: preserve-3d;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 15px 30px;
+            box-shadow: var(--glass-shadow);
+            color: var(--color-text);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transform-style: preserve-3d;
+            animation: logoFloat3D 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes logoFloat3D {
+            0%, 100% { 
+                transform: translateY(0) rotateX(0) rotateY(0); 
+            }
+            25% { 
+                transform: translateY(-10px) rotateX(5deg) rotateY(2deg); 
+            }
+            50% { 
+                transform: translateY(-5px) rotateX(-3deg) rotateY(-1deg); 
+            }
+            75% { 
+                transform: translateY(-8px) rotateX(2deg) rotateY(3deg); 
+            }
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            margin-top: 200px;
+            transform-style: preserve-3d;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 1100px;
+            transform-style: preserve-3d;
+        }
+
+        .image-card {
+            position: relative;
+            width: 240px;
+            height: 300px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            box-shadow: var(--glass-shadow);
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            z-index: 1;
+            will-change: transform, box-shadow;
+            animation: cardEntrance3D 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            opacity: 0;
+            transform: translateZ(-100px) rotateY(15deg);
+        }
+
+        @keyframes cardEntrance3D {
+            to {
+                opacity: 1;
+                transform: translateZ(0) rotateY(0);
+            }
+        }
+
+        .image-card:nth-child(1) { animation-delay: 0.1s; }
+        .image-card:nth-child(2) { animation-delay: 0.2s; }
+        .image-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .image-card:hover:not(.active) {
+            transform: translateY(-15px) translateZ(20px) rotateY(5deg) rotateX(5deg);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            z-index: 2;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 25px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: var(--glass-bg);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 75%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: center;
+            height: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        .image-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            transform: translateZ(20px);
+        }
+
+        .image-card.active {
+            position: fixed;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate3d(-50%, -50%, 0) scale(2.2) !important;
+            z-index: 1000;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .image-card.active .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .image-card.active .card-back {
+            background: transparent !important;
+            border-radius: 0 !important;
+        }
+
+        .image-card.active .image-container {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        .image-card.active .card-content {
+            display: none !important;
+        }
+
+        .image-card.active .image-container img {
+            transform: none !important;
+            filter: none !important;
+            object-fit: contain !important;
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 0 !important;
+        }
+
+        .card-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-card.active .card-particles {
+            opacity: 1;
+        }
+
+        .card-particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: cardParticleFloat 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes cardParticleFloat {
+            0%, 100% { 
+                transform: translate3d(0, 0, 0) rotate(0deg); 
+                opacity: 0;
+            }
+            50% { 
+                transform: translate3d(var(--tx), var(--ty), var(--tz)) rotate(180deg); 
+                opacity: 1;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(20px) brightness(0.8);
+            -webkit-backdrop-filter: blur(20px) brightness(0.8);
+            transform-style: preserve-3d;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .preload-images {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transform-style: preserve-3d;
+        }
+
+        .footer-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 10px 20px;
+            box-shadow: var(--glass-shadow);
+            font-size: 0.9rem;
+            transform: translateZ(10px);
+            animation: footerFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes footerFloat {
+            0%, 100% { transform: translateZ(10px) translateY(0); }
+            50% { transform: translateZ(15px) translateY(-5px); }
+        }
+
+        .expanded-image-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expanded-image-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .expanded-image-container img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .light-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x) var(--y), 
+                        rgba(255, 255, 255, 0.1) 0%, 
+                        transparent 50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .image-card:hover .light-effect {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .image-gallery {
+                flex-wrap: wrap;
+            }
+            
+            .image-card {
+                width: 220px;
+                height: 280px;
+            }
+            
+            .image-card.active {
+                transform: translate3d(-50%, -50%, 0) scale(1.8) !important;
+            }
+            
+            .expanded-image-container {
+                transform: translate(-50%, -50%) scale(0.7);
+            }
+            
+            .expanded-image-container.active {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-gallery {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .image-card {
+                width: 75%;
+                height: 250px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+                padding: 12px 25px;
+            }
+            
+            .main-container {
+                margin-top: 170px;
+            }
+            
+            .image-card.active {
+                transform: translate3d(-50%, -50%, 0) scale(1.4) !important;
+            }
+            
+            .expanded-image-container {
+                transform: translate(-50%, -50%) scale(0.6);
+            }
+            
+            .expanded-image-container.active {
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+                padding: 10px 20px;
+            }
+            
+            .image-card {
+                animation: cardEntranceMobile 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            }
+            
+            @keyframes cardEntranceMobile {
+                to {
+                    opacity: 1;
+                    transform: translateZ(0);
+                }
+            }
+            
+            .expanded-image-container {
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            
+            .expanded-image-container.active {
+                transform: translate(-50%, -50%) scale(0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas de fondo optimizadas -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Pre-cargar imágenes traseras -->
+    <div class="preload-images">
+        <img src="https://png.pngtree.com/png-vector/20240528/ourmid/pngtree-dog-bones-animal-food-pet-biscuit-on-white-background-png-image_12535300.png" alt="Preload 1">
+        <img src="https://png.pngtree.com/png-vector/20240724/ourmid/pngtree-dog-biscuits-on-transparent-background-png-image_13219662.png" alt="Preload 2">
+        <img src="https://png.pngtree.com/png-vector/20250520/ourmid/pngtree-two-crispy-dog-biscuits-shaped-like-bones-on-black-background-closeup-png-image_16330678.png" alt="Preload 3">
+    </div>
+
+    <!-- Overlay para expansión -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Contenedor para imagen expandida nítida -->
+    <div class="expanded-image-container" id="expandedImageContainer">
+        <img src="" alt="Imagen expandida" id="expandedImage">
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">Perros</div>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="main-container">
+        <div class="image-gallery">
+            <!-- Tarjeta 1 - Cachorro -->
+            <div class="image-card" data-card-id="1">
+                <div class="light-effect"></div>
+                <div class="card-particles" id="particles-1"></div>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Perro cachorro">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="image-title">Cachorros</h3>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="image-container">
+                            <img src="https://png.pngtree.com/png-vector/20241119/ourmid/pngtree-delicious-bone-shaped-dog-biscuit-png-image_14457807.png" alt="Premio para cachorro">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="image-title">Cachorros</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 - Joven -->
+            <div class="image-card" data-card-id="2">
+                <div class="light-effect"></div>
+                <div class="card-particles" id="particles-2"></div>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1554456854-55a089fd4cb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Perro joven">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="image-title">Jóvenes</h3>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="image-container">
+                            <img src="https://png.pngtree.com/png-vector/20240724/ourmid/pngtree-dog-biscuits-on-transparent-background-png-image_13219662.png" alt="Galleta para perro joven">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="image-title">Jóvenes</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 - Adulto -->
+            <div class="image-card" data-card-id="3">
+                <div class="light-effect"></div>
+                <div class="card-particles" id="particles-3"></div>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="image-container">
+                            <img src="https://resources.integricare.ca/hs-fs/hubfs/image4-Jul-25-2023-12-49-30-5188-PM.jpg?width=800&height=640&name=image4-Jul-25-2023-12-49-30-5188-PM.jpg" alt="Perro adulto">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="image-title">Adultos</h3>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="image-container">
+                            <img src="https://png.pngtree.com/png-vector/20250520/ourmid/pngtree-two-crispy-dog-biscuits-shaped-like-bones-on-black-background-closeup-png-image_16330678.png" alt="Hueso para perro adulto">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="image-title">Adultos</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            &copy; 2023 Perrer - Amor por los perros en todas sus etapas
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 12;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 25 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.opacity = Math.random() * 0.15 + 0.05;
+                particle.style.animation = `float3D ${15 + Math.random() * 10}s ease-in-out infinite`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+
+            document.querySelectorAll('.card-particles').forEach(container => {
+                for (let i = 0; i < 8; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('card-particle');
+                    
+                    const size = Math.random() * 6 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.opacity = Math.random() * 0.5 + 0.3;
+                    particle.style.animationDelay = `${Math.random() * 2}s`;
+                    
+                    particle.style.setProperty('--tx', `${Math.random() * 100 - 50}px`);
+                    particle.style.setProperty('--ty', `${Math.random() * 100 - 50}px`);
+                    particle.style.setProperty('--tz', `${Math.random() * 50}px`);
+                    
+                    container.appendChild(particle);
+                }
+            });
+
+            document.querySelectorAll('.image-card').forEach(card => {
+                const lightEffect = card.querySelector('.light-effect');
+                
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    
+                    lightEffect.style.setProperty('--x', `${x}%`);
+                    lightEffect.style.setProperty('--y', `${y}%`);
+                });
+            });
+
+            const cards = document.querySelectorAll('.image-card');
+            const overlay = document.getElementById('overlay');
+            const expandedImageContainer = document.getElementById('expandedImageContainer');
+            const expandedImage = document.getElementById('expandedImage');
+            let activeCard = null;
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    if (activeCard) {
+                        closeActiveCard();
+                        return;
+                    }
+                    
+                    const backImage = this.querySelector('.card-back img');
+                    const imageSrc = backImage.src;
+                    
+                    expandedImage.src = imageSrc;
+                    expandedImage.alt = backImage.alt;
+                    
+                    overlay.classList.add('active');
+                    expandedImageContainer.classList.add('active');
+                    
+                    this.style.transformOrigin = 'center center';
+                    this.classList.add('active');
+                    activeCard = this;
+                    
+                    createRippleEffect(e, this);
+                });
+            });
+            
+            function closeActiveCard() {
+                if (activeCard) {
+                    activeCard.classList.remove('active');
+                    overlay.classList.remove('active');
+                    expandedImageContainer.classList.remove('active');
+                    
+                    setTimeout(() => {
+                        activeCard = null;
+                    }, 400);
+                }
+            }
+            
+            overlay.addEventListener('click', closeActiveCard);
+            expandedImageContainer.addEventListener('click', closeActiveCard);
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && activeCard) {
+                    closeActiveCard();
+                }
+            });
+
+            function createRippleEffect(event, element) {
+                const ripple = document.createElement('div');
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    pointer-events: none;
+                    z-index: 100;
+                `;
+                
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+        });
+    </script>
+</body>
+</html>
