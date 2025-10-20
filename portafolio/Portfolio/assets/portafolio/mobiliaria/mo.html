@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Inversiones | Inversión Inmobiliaria de Alto Nivel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Ocultamos el cursor por defecto */
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Neomorphism styles */
+        .neo-card {
+            background: #e0f2e0;
+            border-radius: 20px;
+            box-shadow: 12px 12px 24px #b8d4b8, -12px -12px 24px #ffffff;
+        }
+        
+        .neo-inset {
+            background: #e0f2e0;
+            border-radius: 20px;
+            box-shadow: inset 8px 8px 16px #b8d4b8, inset -8px -8px 16px #ffffff;
+        }
+        
+        .neo-btn {
+            background: linear-gradient(145deg, #4caf50, #388e3c);
+            border-radius: 15px;
+            box-shadow: 6px 6px 12px #2e7d32, -6px -6px 12px #66bb6a;
+            transition: all 0.3s ease;
+        }
+        
+        .neo-btn:hover {
+            box-shadow: 4px 4px 8px #2e7d32, -4px -4px 8px #66bb6a;
+            transform: translateY(2px);
+        }
+        
+        /* Glassmorphism styles */
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+        }
+        
+        .glass-dark {
+            background: rgba(46, 125, 50, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        
+        /* Hero animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-animate {
+            background: linear-gradient(-45deg, #c8e6c9, #81c784, #66bb6a, #4caf50);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #c8e6c9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #4caf50;
+            border-radius: 5px;
+        }
+        
+        /* Hover effects */
+        .property-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            filter: none !important;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px) scale(1.15);
+            z-index: 50;
+            filter: none !important;
+            opacity: 1 !important;
+        }
+        
+        /* Blur effect only on other property cards when hovering one */
+        .properties-grid:has(.property-card:hover) .property-card:not(:hover) {
+            filter: blur(4px);
+            opacity: 0.4;
+            transform: scale(0.95);
+        }
+        
+        /* Navbar glass effect */
+        nav {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* WhatsApp float button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(145deg, #25d366, #128c7e);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Hero 3D effect */
+        .hero-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .hero-content {
+            transform: translateZ(50px);
+        }
+        
+        /* Particle background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+        }
+        
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+            }
+        }
+        
+        /* Cursor personalizado con estela de colores */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726, #ffee58, #66bb6a, #42a5f5, #ab47bc);
+            background-size: 400% 400%;
+            animation: cursorGradient 5s ease infinite;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.6s ease;
+            transition-property: width, height, background, transform;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .cursor.hover {
+            transform: scale(1.5);
+            background: linear-gradient(45deg, #ff4081, #7c4dff, #00bcd4);
+            animation: cursorGradientHover 2s ease infinite;
+        }
+        
+        .cursor-follower.hover {
+            transform: scale(1.8);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        @keyframes cursorGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes cursorGradientHover {
+            0% {
+                background-position: 0% 50%;
+                transform: scale(1.5) rotate(0deg);
+            }
+            50% {
+                background-position: 100% 50%;
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% {
+                background-position: 0% 50%;
+                transform: scale(1.5) rotate(360deg);
+            }
+        }
+        
+        /* Partículas de la estela */
+        .trail {
+            position: fixed;
+            pointer-events: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726, #ffee58, #66bb6a, #42a5f5, #ab47bc);
+            z-index: 9997;
+            opacity: 0;
+            animation: trailFade 0.8s ease-out forwards;
+        }
+        
+        @keyframes trailFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* ANIMACIONES 3D PARA LA SECCIÓN SERVICIOS */
+        #servicios {
+            position: relative;
+            overflow: hidden;
+            perspective: 1200px;
+        }
+
+        .services-3d-container {
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .service-card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(145deg, #e0f2e0, #c8e6c9);
+            box-shadow: 
+                20px 20px 60px #b8d4b8,
+                -20px -20px 60px #ffffff,
+                0 0 50px rgba(76, 175, 80, 0.1);
+        }
+
+        .service-card-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 2;
+        }
+
+        .service-card-3d:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .service-card-3d:hover {
+            transform: 
+                translateY(-20px) 
+                rotateX(5deg) 
+                rotateY(5deg) 
+                scale(1.05);
+            box-shadow: 
+                30px 30px 80px rgba(46, 125, 50, 0.3),
+                -30px -30px 80px rgba(255, 255, 255, 0.8),
+                0 0 80px rgba(76, 175, 80, 0.4),
+                0 0 120px rgba(76, 175, 80, 0.2);
+        }
+
+        .service-icon-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-card-3d:hover .service-icon-3d {
+            transform: 
+                translateZ(30px) 
+                rotateY(15deg) 
+                scale(1.2);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+
+        .service-title-3d {
+            transform: translateZ(20px);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .service-card-3d:hover .service-title-3d {
+            transform: translateZ(40px) scale(1.1);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .service-content-3d {
+            transform: translateZ(10px);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .service-card-3d:hover .service-content-3d {
+            transform: translateZ(30px);
+        }
+
+        /* Efecto de partículas flotantes en servicios */
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-particle {
+            position: absolute;
+            background: linear-gradient(45deg, #4caf50, #66bb6a, #81c784);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatAround 15s infinite linear;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate3d(30px, -50px, 20px) rotate(120deg);
+            }
+            66% {
+                transform: translate3d(-20px, 20px, -30px) rotate(240deg);
+            }
+            100% {
+                transform: translate3d(0, 0, 0) rotate(360deg);
+            }
+        }
+
+        /* Efecto de profundidad con gradientes */
+        .depth-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(102, 187, 106, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(129, 199, 132, 0.05) 0%, transparent 50%);
+            animation: depthMove 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes depthMove {
+            0%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+            50% {
+                transform: translate3d(10px, 5px, 0);
+            }
+        }
+
+        /* Animación de entrada para las tarjetas */
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: 
+                    translateY(100px) 
+                    rotateX(-45deg) 
+                    scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: 
+                    translateY(0) 
+                    rotateX(0) 
+                    scale(1);
+            }
+        }
+
+        .service-card-3d {
+            animation: cardEntrance 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+
+        .service-card-3d:nth-child(1) { animation-delay: 0.1s; }
+        .service-card-3d:nth-child(2) { animation-delay: 0.2s; }
+        .service-card-3d:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Efecto de luz dinámica */
+        .dynamic-light {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: lightMove 15s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes lightMove {
+            0%, 100% {
+                transform: translate3d(-100px, -50px, 0);
+            }
+            50% {
+                transform: translate3d(100px, 100px, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-800">
+                <i class="fas fa-building mr-2"></i>Elite Inversiones
+            </div>
+            <div class="hidden md:flex space-x-8 text-green-900 font-medium">
+                <a href="#inicio" class="hover:text-green-600 transition">Inicio</a>
+                <a href="#servicios" class="hover:text-green-600 transition">Servicios</a>
+                <a href="#tendencia" class="hover:text-green-600 transition">Propiedades</a>
+                <a href="#nosotros" class="hover:text-green-600 transition">Nosotros</a>
+                <a href="#contacto" class="hover:text-green-600 transition">Contacto</a>
+            </div>
+            <button class="md:hidden text-green-800 text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen relative overflow-hidden gradient-animate flex items-center justify-center pt-20">
+        <div class="particles">
+            <div class="particle" style="width: 10px; height: 10px; left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="width: 8px; height: 8px; left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="width: 12px; height: 12px; left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="width: 6px; height: 6px; left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="width: 10px; height: 10px; left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="width: 8px; height: 8px; left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="width: 12px; height: 12px; left: 70%; animation-delay: 2s;"></div>
+            <div class="particle" style="width: 10px; height: 10px; left: 80%; animation-delay: 4s;"></div>
+            <div class="particle" style="width: 8px; height: 8px; left: 90%; animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 hero-3d">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="hero-content">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        Inversiones que
+                        <span class="block text-green-900">Transforman Futuros</span>
+                    </h1>
+                    <p class="text-xl text-white/90 mb-8 leading-relaxed">
+                        Expertos en oportunidades inmobiliarias de alto rendimiento. Construimos patrimonio con visión estratégica y excelencia garantizada.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto" class="neo-btn px-8 py-4 text-white font-semibold text-lg inline-block text-center">
+                            <i class="fab fa-whatsapp mr-2"></i>Asesoría Exclusiva
+                        </a>
+                        <a href="#tendencia" class="glass px-8 py-4 text-white font-semibold text-lg inline-block text-center hover:bg-white/25 transition">
+                            Ver Propiedades
+                        </a>
+                    </div>
+                    <div class="mt-12 grid grid-cols-3 gap-6">
+                        <div class="glass-dark p-4 text-center">
+                            <div class="text-3xl font-bold text-white">500+</div>
+                            <div class="text-white/80 text-sm">Inversiones</div>
+                        </div>
+                        <div class="glass-dark p-4 text-center">
+                            <div class="text-3xl font-bold text-white">$50M</div>
+                            <div class="text-white/80 text-sm">Gestionados</div>
+                        </div>
+                        <div class="glass-dark p-4 text-center">
+                            <div class="text-3xl font-bold text-white">98%</div>
+                            <div class="text-white/80 text-sm">Satisfacción</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-animation">
+                    <div class="glass p-8">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800" alt="Luxury Property" class="rounded-2xl shadow-2xl w-full">
+                        <div class="mt-6 flex items-center justify-between">
+                            <div>
+                                <div class="text-white text-sm">Rentabilidad Promedio</div>
+                                <div class="text-white text-3xl font-bold">18% ROI</div>
+                            </div>
+                            <div class="neo-btn p-4 text-white">
+                                <i class="fas fa-arrow-trend-up text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 px-6 relative">
+        <!-- Elementos de fondo 3D -->
+        <div class="depth-background"></div>
+        <div class="dynamic-light"></div>
+        <div class="floating-particles" id="services-particles"></div>
+        
+        <div class="container mx-auto relative z-10 services-3d-container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-green-900 mb-4">Nuestros Servicios Premium</h2>
+                <p class="text-lg text-green-700 max-w-2xl mx-auto">Soluciones integrales diseñadas para maximizar el valor de su inversión inmobiliaria</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card-3d p-8">
+                    <div class="w-16 h-16 neo-btn rounded-full flex items-center justify-center text-white text-2xl mb-6 service-icon-3d">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-green-900 mb-4 service-title-3d">Análisis de Mercado</h3>
+                    <p class="text-green-700 leading-relaxed service-content-3d">
+                        Estudios exhaustivos de tendencias y oportunidades en mercados inmobiliarios emergentes y consolidados.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-green-200 service-content-3d">
+                        <ul class="text-green-600 text-sm space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Análisis predictivo
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Tendencias de mercado
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Oportunidades exclusivas
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card-3d p-8">
+                    <div class="w-16 h-16 neo-btn rounded-full flex items-center justify-center text-white text-2xl mb-6 service-icon-3d">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-green-900 mb-4 service-title-3d">Gestión Patrimonial</h3>
+                    <p class="text-green-700 leading-relaxed service-content-3d">
+                        Administración profesional de carteras inmobiliarias con estrategias personalizadas de crecimiento.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-green-200 service-content-3d">
+                        <ul class="text-green-600 text-sm space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Estrategias personalizadas
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Gestión activa
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Optimización fiscal
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card-3d p-8">
+                    <div class="w-16 h-16 neo-btn rounded-full flex items-center justify-center text-white text-2xl mb-6 service-icon-3d">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-green-900 mb-4 service-title-3d">Desarrollo Premium</h3>
+                    <p class="text-green-700 leading-relaxed service-content-3d">
+                        Proyectos exclusivos de desarrollo inmobiliario en ubicaciones estratégicas de alto potencial.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-green-200 service-content-3d">
+                        <ul class="text-green-600 text-sm space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Proyectos exclusivos
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Ubicaciones premium
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                Diseño arquitectónico
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resto del código se mantiene igual -->
+    <!-- Trending Properties Section -->
+    <section id="tendencia" class="py-20 px-6 bg-gradient-to-br from-green-50 to-green-100">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-green-900 mb-4">En Tendencia</h2>
+                <p class="text-lg text-green-700">Oportunidades exclusivas disponibles ahora</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 properties-grid">
+                <div class="neo-card overflow-hidden property-card">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400" alt="Property 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="neo-btn text-white text-xs px-3 py-1">Premium</span>
+                            <span class="text-green-900 font-bold">$2.5M</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-900 mb-2">Villa Esmeralda</h3>
+                        <p class="text-green-700 text-sm mb-4">Miami Beach, FL</p>
+                        <div class="flex items-center justify-between text-green-700 text-sm">
+                            <span><i class="fas fa-bed mr-1"></i> 5 Hab</span>
+                            <span><i class="fas fa-bath mr-1"></i> 4 Baños</span>
+                            <span><i class="fas fa-ruler-combined mr-1"></i> 450m²</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neo-card overflow-hidden property-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400" alt="Property 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="neo-btn text-white text-xs px-3 py-1">Exclusivo</span>
+                            <span class="text-green-900 font-bold">$3.8M</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-900 mb-2">Penthouse Élite</h3>
+                        <p class="text-green-700 text-sm mb-4">Manhattan, NY</p>
+                        <div class="flex items-center justify-between text-green-700 text-sm">
+                            <span><i class="fas fa-bed mr-1"></i> 4 Hab</span>
+                            <span><i class="fas fa-bath mr-1"></i> 3 Baños</span>
+                            <span><i class="fas fa-ruler-combined mr-1"></i> 380m²</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neo-card overflow-hidden property-card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400" alt="Property 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="neo-btn text-white text-xs px-3 py-1">Lujo</span>
+                            <span class="text-green-900 font-bold">$4.2M</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-900 mb-2">Residencia Prisma</h3>
+                        <p class="text-green-700 text-sm mb-4">Los Angeles, CA</p>
+                        <div class="flex items-center justify-between text-green-700 text-sm">
+                            <span><i class="fas fa-bed mr-1"></i> 6 Hab</span>
+                            <span><i class="fas fa-bath mr-1"></i> 5 Baños</span>
+                            <span><i class="fas fa-ruler-combined mr-1"></i> 520m²</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neo-card overflow-hidden property-card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400" alt="Property 4" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="neo-btn text-white text-xs px-3 py-1">Nuevo</span>
+                            <span class="text-green-900 font-bold">$1.9M</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-900 mb-2">Casa Moderna</h3>
+                        <p class="text-green-700 text-sm mb-4">Austin, TX</p>
+                        <div class="flex items-center justify-between text-green-700 text-sm">
+                            <span><i class="fas fa-bed mr-1"></i> 4 Hab</span>
+                            <span><i class="fas fa-bath mr-1"></i> 3 Baños</span>
+                            <span><i class="fas fa-ruler-combined mr-1"></i> 350m²</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contacto" class="neo-btn px-10 py-4 text-white font-semibold text-lg inline-block">
+                    Ver Más Propiedades <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-green-900 mb-6">Excelencia en Cada Inversión</h2>
+                    <p class="text-lg text-green-700 mb-6 leading-relaxed">
+                        Con más de 15 años de experiencia en el mercado inmobiliario de lujo, Elite Inversiones se ha consolidado como líder en asesoramiento patrimonial y desarrollo de proyectos exclusivos.
+                    </p>
+                    <p class="text-lg text-green-700 mb-8 leading-relaxed">
+                        Nuestro equipo de expertos combina análisis de mercado profundo, relaciones estratégicas y tecnología de vanguardia para identificar las mejores oportunidades de inversión con retornos superiores al promedio del mercado.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="neo-inset p-6 text-center">
+                            <div class="text-4xl font-bold text-green-800 mb-2">15+</div>
+                            <div class="text-green-700">Años de Experiencia</div>
+                        </div>
+                        <div class="neo-inset p-6 text-center">
+                            <div class="text-4xl font-bold text-green-800 mb-2">350+</div>
+                            <div class="text-green-700">Clientes Satisfechos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="neo-card p-6">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=300" alt="Luxury interior" class="rounded-xl w-full mb-4">
+                        <h4 class="font-bold text-green-900 mb-2">Diseño Premium</h4>
+                        <p class="text-green-700 text-sm">Propiedades con acabados de la más alta calidad</p>
+                    </div>
+                    <div class="neo-card p-6 mt-12">
+                        <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=300" alt="Modern architecture" class="rounded-xl w-full mb-4">
+                        <h4 class="font-bold text-green-900 mb-2">Ubicaciones Prime</h4>
+                        <p class="text-green-700 text-sm">Zonas estratégicas de alto crecimiento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (Content-heavy section) -->
+    <section class="py-20 px-6 bg-gradient-to-br from-green-900 to-green-700">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">¿Por Qué Elite Inversiones?</h2>
+                <p class="text-lg text-white/90">Ventajas competitivas que nos distinguen en el mercado</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass p-6">
+                    <i class="fas fa-shield-alt text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Seguridad Jurídica Total</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Todos nuestros procesos están respaldados por bufetes especializados en derecho inmobiliario internacional, garantizando transacciones 100% seguras y transparentes con documentación completa.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-globe text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Red Internacional</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Presencia en 12 países y alianzas con las principales firmas inmobiliarias globales. Acceso exclusivo a propiedades off-market y proyectos pre-construcción con descuentos significativos.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-users text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Equipo Multidisciplinario</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Arquitectos, economistas, abogados y expertos en bienes raíces trabajando en conjunto para analizar cada oportunidad desde múltiples perspectivas y minimizar riesgos.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-chart-pie text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Diversificación Estratégica</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Portafolios balanceados con inversiones en diferentes sectores: residencial, comercial, industrial y turístico. Estrategias personalizadas según perfil de riesgo y objetivos financieros.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-laptop-code text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Tecnología Avanzada</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Plataforma digital con inteligencia artificial para análisis predictivo de mercados, tours virtuales 360°, blockchain para transacciones y portal exclusivo para seguimiento en tiempo real de inversiones.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-award text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Reconocimiento Internacional</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Premiados como mejor firma de inversión inmobiliaria 2023-2024 por Real Estate Excellence Awards. Certificaciones ISO y membresías en las principales asociaciones del sector global.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-headset text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Asesoría Personalizada 24/7</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Gerente de cuenta dedicado disponible en cualquier momento. Soporte multicanal en español, inglés y portugués. Reuniones periódicas para revisión de estrategia y ajustes según evolución del mercado.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-percent text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Rentabilidad Comprobada</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">ROI promedio del 18% anual en los últimos 5 años. Más del 92% de nuestros proyectos han superado las proyecciones iniciales. Histórico transparente disponible para consulta de potenciales inversores.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <i class="fas fa-hand-holding-usd text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Financiamiento Flexible</h3>
+                    <p class="text-white/90 text-sm leading-relaxed">Acceso a líneas de crédito preferencial con tasas hasta 30% más bajas que el mercado. Planes de pago estructurados y opciones de coinversión para proyectos de mayor envergadura con mínima entrada inicial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-green-900 mb-4">Contacto Exclusivo</h2>
+                <p class="text-lg text-green-700">Programe una consulta personalizada con nuestros especialistas</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="neo-card p-8">
+                    <h3 class="text-2xl font-bold text-green-900 mb-6">Solicite Información</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-green-700 mb-2">Nombre Completo</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-green-700 mb-2">Correo Electrónico</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-green-700 mb-2">Teléfono</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-green-700 mb-2">Mensaje</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                        </div>
+                        <button type="submit" class="neo-btn w-full py-4 text-white font-semibold text-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="neo-card p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-green-900 mb-4">Información de Contacto</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-green-700 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-green-900">Oficina Principal</h4>
+                                    <p class="text-green-700">Avenida del Prado 123, Miami, FL 33101</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-green-700 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-green-900">Teléfono</h4>
+                                    <p class="text-green-700">+1 (305) 555-7890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-green-700 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-green-900">Email</h4>
+                                    <p class="text-green-700">info@eliteinversiones.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-green-700 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-green-900">Horario de Atención</h4>
+                                    <p class="text-green-700">Lun - Vie: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-card p-8">
+                        <h3 class="text-2xl font-bold text-green-900 mb-4">Síganos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 neo-btn rounded-full flex items-center justify-center text-white text-xl">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 neo-btn rounded-full flex items-center justify-center text-white text-xl">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 neo-btn rounded-full flex items-center justify-center text-white text-xl">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 neo-btn rounded-full flex items-center justify-center text-white text-xl">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Elite Inversiones</h3>
+                    <p class="text-green-200 leading-relaxed">
+                        Especialistas en inversión inmobiliaria de alto nivel con más de 15 años transformando patrimonios.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-green-200 hover:text-white transition">Inicio</a></li>
+                        <li><a href="#servicios" class="text-green-200 hover:text-white transition">Servicios</a></li>
+                        <li><a href="#tendencia" class="text-green-200 hover:text-white transition">Propiedades</a></li>
+                        <li><a href="#nosotros" class="text-green-200 hover:text-white transition">Nosotros</a></li>
+                        <li><a href="#contacto" class="text-green-200 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-200 hover:text-white transition">Análisis de Mercado</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">Gestión Patrimonial</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">Desarrollo Premium</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">Consultoría Estratégica</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">Inversión Internacional</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-green-200 mb-4">Suscríbase para recibir oportunidades exclusivas</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Su correo" class="px-4 py-2 rounded-l-lg w-full text-green-900 focus:outline-none">
+                        <button class="neo-btn px-4 py-2 rounded-r-lg text-white">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-green-800 mt-12 pt-8 text-center text-green-300">
+                <p>&copy; 2024 Elite Inversiones. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <script>
+        // Create dynamic particles
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Cursor personalizado con estela de colores
+            const cursor = document.querySelector('.cursor');
+            const follower = document.querySelector('.cursor-follower');
+            let mouseX = 0, mouseY = 0;
+            let posX = 0, posY = 0;
+            
+            // Seguir el movimiento del mouse
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Actualizar posición del cursor con animación suave
+            const updateCursor = () => {
+                // Cursor principal
+                posX += (mouseX - posX) / 5;
+                posY += (mouseY - posY) / 5;
+                
+                cursor.style.left = posX + 'px';
+                cursor.style.top = posY + 'px';
+                
+                // Follower (más lento para crear efecto de arrastre)
+                let followerX = posX - 20;
+                let followerY = posY - 20;
+                
+                follower.style.left = followerX + 'px';
+                follower.style.top = followerY + 'px';
+                
+                // Crear partículas de estela
+                if (Math.random() > 0.7) {
+                    createTrail(posX, posY);
+                }
+                
+                requestAnimationFrame(updateCursor);
+            };
+            
+            updateCursor();
+            
+            // Crear partículas de estela
+            function createTrail(x, y) {
+                const trail = document.createElement('div');
+                trail.classList.add('trail');
+                
+                // Posición aleatoria alrededor del cursor
+                const offsetX = (Math.random() - 0.5) * 30;
+                const offsetY = (Math.random() - 0.5) * 30;
+                
+                trail.style.left = (x + offsetX) + 'px';
+                trail.style.top = (y + offsetY) + 'px';
+                
+                // Color aleatorio para la partícula
+                const hue = Math.floor(Math.random() * 360);
+                trail.style.background = `hsl(${hue}, 100%, 65%)`;
+                
+                document.body.appendChild(trail);
+                
+                // Eliminar la partícula después de la animación
+                setTimeout(() => {
+                    trail.remove();
+                }, 800);
+            }
+            
+            // Efectos de hover
+            const hoverElements = document.querySelectorAll('a, button, .property-card, .neo-card, .neo-btn, .service-card-3d');
+            
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                    follower.classList.add('hover');
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                    follower.classList.remove('hover');
+                });
+            });
+
+            // Crear partículas flotantes para la sección de servicios
+            const servicesParticles = document.getElementById('services-particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('floating-particle');
+                
+                const size = Math.random() * 8 + 4;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                servicesParticles.appendChild(particle);
+            }
+
+            // Efecto de parallax para las tarjetas de servicios
+            const serviceCards = document.querySelectorAll('.service-card-3d');
+            
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                
+                serviceCards.forEach(card => {
+                    if (!card.matches(':hover')) {
+                        card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
