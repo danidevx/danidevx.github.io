@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Muralismo Urbano e Iluminación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            cursor: none;
+            transition: background-color 0.8s ease;
+        }
+
+        /* Imagen de fondo oscurecida */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.mupa.com.mx/blog/wp-content/uploads/2017/05/muralismo-urbano.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.15) contrast(1.2);
+            z-index: -1;
+            transition: filter 0.8s ease;
+        }
+
+        /* Estado cuando la luz está encendida */
+        body.light-on .background-image {
+            filter: brightness(1) contrast(1) saturate(1.1);
+        }
+
+        /* Efecto de luz principal que sigue el cursor */
+        .light-effect {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle, 
+                rgba(255, 255, 255, 0.8) 0%, 
+                rgba(255, 255, 255, 0.3) 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: blur(10px);
+            mix-blend-mode: overlay;
+        }
+
+        /* Cuando la luz está encendida, el efecto del cursor es más sutil */
+        body.light-on .light-effect {
+            mix-blend-mode: soft-light;
+            opacity: 0.5;
+        }
+
+        /* Segundo efecto de luz para mayor realismo */
+        .light-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(255, 255, 255, 0.4) 40%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            filter: blur(6px);
+        }
+
+        /* Efecto de resplandor dinámico */
+        .light-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                rgba(255, 255, 255, 0.1) 40%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            filter: blur(20px);
+            animation: pulse 4s infinite alternate;
+            mix-blend-mode: screen;
+        }
+
+        /* Cuando la luz está encendida, el resplandor es más tenue */
+        body.light-on .light-glow {
+            opacity: 0.2;
+            mix-blend-mode: normal;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        /* Mostrar efecto de luz cuando el cursor se mueve */
+        body:hover .light-effect,
+        body:hover .light-glow {
+            opacity: 1;
+        }
+
+        /* Contenedor principal centrado */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estilo del botón/imagen */
+        .light-button {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(10, 10, 10, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 
+                0 0 0px rgba(0, 0, 0, 0),
+                inset 0 0 15px rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+            position: relative;
+            z-index: 3;
+            opacity: 0;
+            border: 1px solid rgba(30, 30, 30, 0.8);
+            transform: scale(0.95);
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .light-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, 
+                rgba(255,255,255,0.15) 0%, 
+                rgba(255,255,255,0.05) 30%,
+                rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .light-button::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                rgba(255,255,255,0.1),
+                rgba(255,255,255,0.05),
+                rgba(255,255,255,0.025),
+                rgba(255,255,255,0.01),
+                rgba(255,255,255,0.025),
+                rgba(255,255,255,0.05),
+                rgba(255,255,255,0.1)
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .light-button img {
+            width: 70%;
+            height: auto;
+            filter: invert(0.15) brightness(0.8);
+            transition: all 0.5s ease;
+            opacity: 0;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Estado cuando está encendido */
+        .light-button.on {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 
+                0 0 40px rgba(255, 255, 255, 0.8),
+                inset 0 0 25px rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .light-button.on img {
+            filter: invert(0) brightness(1);
+            opacity: 1;
+        }
+
+        .light-button.on::before {
+            opacity: 0.3;
+        }
+
+        .light-button.on::after {
+            opacity: 0.4;
+        }
+
+        /* Efecto al pasar el cursor sobre el botón (cuando está apagado) */
+        .light-button:not(.on):hover {
+            opacity: 1;
+            background-color: rgba(20, 20, 20, 0.9);
+            box-shadow: 
+                0 0 25px rgba(100, 100, 100, 0.4),
+                inset 0 0 15px rgba(255, 255, 255, 0.08);
+            transform: scale(1);
+        }
+
+        .light-button:not(.on):hover img {
+            opacity: 0.8;
+            filter: invert(0.5) brightness(1);
+        }
+
+        .light-button:not(.on):hover::before {
+            opacity: 0.7;
+        }
+
+        .light-button:not(.on):hover::after {
+            opacity: 0.2;
+        }
+
+        /* Efecto al pasar el cursor sobre el botón (cuando está encendido) */
+        .light-button.on:hover {
+            box-shadow: 
+                0 0 50px rgba(255, 255, 255, 1),
+                inset 0 0 30px rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .light-button.on:hover img {
+            filter: invert(0) brightness(1.2);
+        }
+
+        /* Efecto de pulsación */
+        .light-button:active {
+            transform: scale(0.97);
+            transition: transform 0.15s ease;
+        }
+
+        /* Partículas de polvo o motas de luz */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+                opacity: 0;
+            }
+        }
+
+        /* Capa oscura sobre la imagen de fondo */
+        .dark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+            pointer-events: none;
+            transition: background 0.8s ease;
+        }
+
+        /* Cuando la luz está encendida, quitamos la capa oscura */
+        body.light-on .dark-overlay {
+            background: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="dark-overlay"></div>
+    <div class="light-effect" id="lightEffect"></div>
+    <div class="light-glow" id="lightGlow"></div>
+    
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="light-button" id="lightButton">
+            <!-- Imagen de ejemplo - reemplaza con tu imagen start.png -->
+            <img src="start.png" alt="Botón de inicio">
+        </div>
+    </div>
+
+    <script>
+        // Efecto de luz que sigue el cursor con suavizado
+        let mouseX = 0, mouseY = 0;
+        let lightX = 0, lightY = 0;
+        let glowX = 0, glowY = 0;
+        
+        document.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function animateLight() {
+            // Suavizar el movimiento del efecto de luz principal
+            lightX += (mouseX - lightX) * 0.1;
+            lightY += (mouseY - lightY) * 0.1;
+            
+            // Suavizar el movimiento del resplandor (más lento)
+            glowX += (mouseX - glowX) * 0.05;
+            glowY += (mouseY - glowY) * 0.05;
+            
+            const lightEffect = document.getElementById('lightEffect');
+            const lightGlow = document.getElementById('lightGlow');
+            
+            lightEffect.style.left = lightX + 'px';
+            lightEffect.style.top = lightY + 'px';
+            
+            lightGlow.style.left = glowX + 'px';
+            lightGlow.style.top = glowY + 'px';
+            
+            requestAnimationFrame(animateLight);
+        }
+        
+        animateLight();
+        
+        // Control del botón de luz
+        const lightButton = document.getElementById('lightButton');
+        let isLightOn = false;
+
+        lightButton.addEventListener('click', function() {
+            isLightOn = !isLightOn;
+            
+            if (isLightOn) {
+                lightButton.classList.add('on');
+                document.body.classList.add('light-on');
+            } else {
+                lightButton.classList.remove('on');
+                document.body.classList.remove('light-on');
+            }
+        });
+
+        // Crear partículas de polvo/motas de luz
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posición aleatoria
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 3 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Opacidad aleatoria
+                particle.style.opacity = Math.random() * 0.5;
+                
+                // Duración de animación aleatoria
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Efecto sutil de aparición inicial
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                lightButton.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            }, 100);
+            
+            createParticles();
+        });
+    </script>
+</body>
+</html>
