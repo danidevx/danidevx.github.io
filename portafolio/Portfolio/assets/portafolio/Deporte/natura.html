@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Balones de Fútbol Originales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+    
+    <!-- Fondo separado para aplicar solo a él el blur -->
+    <div class="background"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="tab active" data-tab="productos">Productos</div>
+            <div class="tab" data-tab="ofertas">Ofertas</div>
+        </div>
+
+        <div class="cart" onclick="showCart()">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count">0</span>
+        </div>
+
+        <div class="content">
+            <!-- Tab Productos -->
+            <div class="tab-content active" id="productos">
+                <div class="products-grid">
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-nike-mercurial" data-price="199.99">
+                        <div class="product-image">
+                            <img data-src="https://static.vecteezy.com/system/resources/thumbnails/045/547/351/small/soccer-ball-on-transparent-background-png.png" alt="Balón Nike Mercurial" loading="lazy">
+                            <div class="product-price">$199.99</div>
+                            <div class="product-name">Balón Nike Mercurial</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Nike Mercurial', 199.99, 'images/balon-nike-mercurial.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón de fútbol oficial con tecnología All Conditions Control. Excelente rebote y precisión en cualquier clima y terreno de juego.</div>
+                    </div>
+
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-adidas-predator" data-price="179.99">
+                        <div class="product-image">
+                            <img data-src="https://png.pngtree.com/png-vector/20250319/ourmid/pngtree-classic-black-and-white-soccer-ball-ready-for-an-exciting-game-png-image_15781122.png" alt="Balón Adidas Predator" loading="lazy">
+                            <div class="product-price">$179.99</div>
+                            <div class="product-name">Balón Adidas Predator</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Adidas Predator', 179.99, 'images/balon-adidas-predator.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón clásico con diseño tradicional. Excelente durabilidad y control para partidos profesionales y entrenamientos.</div>
+                    </div>
+
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-puma-future" data-price="159.99">
+                        <div class="product-image">
+                            <img data-src="https://static.vecteezy.com/system/resources/thumbnails/055/130/548/small/classic-black-and-white-soccer-ball-leather-texture-detailed-3d-model-free-png.png" alt="Balón Puma Future" loading="lazy">
+                            <div class="product-price">$159.99</div>
+                            <div class="product-name">Balón Puma Future</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Puma Future', 159.99, 'images/balon-puma-future.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón premium con textura de cuero sintético. Tecnología PWRfoam para mejor rebote y precisión en tiros largos.</div>
+                    </div>
+
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-mizuno-morelia" data-price="189.99">
+                        <div class="product-image">
+                            <img data-src="https://cdnx.jumpseller.com/sportway/image/63419039/Molten_1000-02.png?1747169602" alt="Balón Mizuno Morelia" loading="lazy">
+                            <div class="product-price">$189.99</div>
+                            <div class="product-name">Balón Mizuno Morelia</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Mizuno Morelia', 189.99, 'images/balon-mizuno-morelia.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón artesanal con cuero natural. Excelente toque y durabilidad para partidos tradicionales y entrenamientos intensivos.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Ofertas -->
+            <div class="tab-content" id="ofertas">
+                <div class="products-grid">
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-nike-phantom" data-price="189.99">
+                        <div class="discount-badge">-30%</div>
+                        <div class="product-image">
+                            <img data-src="https://png.pngtree.com/png-clipart/20250108/original/pngtree-detailed-illustration-of-a-leather-american-football-png-image_18950815.png" alt="Balón Nike Phantom" loading="lazy">
+                            <div class="product-price">$189.99</div>
+                            <div class="product-name">Balón Nike Phantom</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Nike Phantom', 189.99, 'images/balon-nike-phantom.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón con Gripknit para control total. Tecnología All Conditions Control (ACC) para cualquier clima y terreno de juego.</div>
+                    </div>
+
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-adidas-speedflow" data-price="169.99">
+                        <div class="discount-badge">-25%</div>
+                        <div class="product-image">
+                            <img data-src="https://static.vecteezy.com/system/resources/thumbnails/051/797/718/small/3d-traditional-soccer-ball-united-kingdom-sports-png.png" alt="Balón Adidas Speedflow" loading="lazy">
+                            <div class="product-price">$169.99</div>
+                            <div class="product-name">Balón Adidas Speedflow</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Adidas Speedflow', 169.99, 'images/balon-adidas-speedflow.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón ultraligero con Speedframe para máxima velocidad. Amortiguación Energy Return y tracción superior en cualquier terreno.</div>
+                    </div>
+
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-umbro-mediator" data-price="149.99">
+                        <div class="discount-badge">-40%</div>
+                        <div class="product-image">
+                            <img data-src="https://png.pngtree.com/png-clipart/20231127/original/pngtree-football-isolated-ball-picture-image_13287994.png" alt="Balón Umbro Mediator" loading="lazy">
+                            <div class="product-price">$149.99</div>
+                            <div class="product-name">Balón Umbro Mediator</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón Umbro Mediator', 149.99, 'images/balon-umbro-mediator.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón clásico con diseño retro. Excelente comodidad y durabilidad para partidos tradicionales y entrenamientos.</div>
+                    </div>
+
+                    <!-- Vue component: ProductCard -->
+                    <div class="product-card" data-product-id="botines-new-balance" data-price="179.99">
+                        <div class="discount-badge">-20%</div>
+                        <div class="product-image">
+                            <img data-src="https://png.pngtree.com/png-clipart/20241028/original/pngtree-metallic-soccer-ball-png-image_16550574.png" alt="Balón New Balance Furon" loading="lazy">
+                            <div class="product-price">$179.99</div>
+                            <div class="product-name">Balón New Balance Furon</div>
+                            <button class="btn-add" onclick="addToCart(event, 'Balón New Balance Furon', 179.99, 'images/balon-new-balance.png')">+</button>
+                        </div>
+                        <div class="product-description">Balón con Hypoknit para ajuste perfecto. Tecnología FantomFit y tacos de precisión para control total en el campo.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" onclick="closeExpanded()"></div>
+    
+    <!-- Modal del Carrito -->
+    <div class="cart-modal-overlay" onclick="closeCart()"></div>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2 class="cart-title">Tu Carrito de Compras</h2>
+            <button class="close-cart" onclick="closeCart()">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Los elementos del carrito se insertarán aquí -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+            <button class="checkout-btn" onclick="checkout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
