@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. Bladimir Jhon | Podología Avanzada</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 20%, #0b0f19, #03060d);
+      color: #f4f4f8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      perspective: 1000px;
+    }
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+    .glass:hover {
+      background: rgba(0, 255, 200, 0.12);
+      border-color: rgba(0, 255, 200, 0.4);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,255,200,0.1), rgba(0,150,255,0.05));
+      filter: blur(120px);
+      z-index: -1;
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}
+    }
+    ::selection {
+      background: rgba(0,255,200,0.3);
+    }
+    /* Animación 3D para el formulario */
+    .form3d {
+      transform-style: preserve-3d;
+      will-change: transform;
+      cursor: grab;
+      transition: box-shadow 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
+    }
+    .form3d:hover {
+      background-color: rgba(0, 255, 200, 0.15);
+      border-color: rgba(0, 255, 200, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 255, 200, 0.3);
+    }
+    .form3d:active {
+      cursor: grabbing;
+      box-shadow: 0 20px 40px rgba(0, 255, 200, 0.5);
+    }
+
+    /* Botón reserva */
+    #heroContent button {
+      transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+    }
+    #heroContent button:hover {
+      background-color: #00ffe0;
+      color: #000;
+      box-shadow: 0 8px 20px rgba(0, 255, 224, 0.7);
+      transform: scale(1.05);
+    }
+    #heroContent button:active {
+      transform: scale(0.98);
+    }
+
+    /* Tarjetas tratamientos */
+    .card3d {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease, color 0.4s ease;
+    }
+    .card3d:hover {
+      background-color: rgba(0, 255, 200, 0.15);
+      border-color: rgba(0, 255, 200, 0.6);
+      box-shadow: 0 16px 30px rgba(0, 255, 200, 0.4);
+      color: #00ffe0;
+    }
+    .card3d:hover h3 {
+      color: #00ffe0;
+    }
+
+    /* Imagen del doctor */
+    img.rounded-3xl {
+      transition: transform 0.5s ease, box-shadow 0.4s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      border-radius: 1.5rem;
+    }
+    img.rounded-3xl:hover {
+      transform: scale(1.07) rotate(2deg);
+      box-shadow: 0 25px 45px rgba(0, 255, 200, 0.6);
+      filter: brightness(1.1);
+    }
+
+    /* Botón formulario enviar */
+    form button[type="submit"] {
+      transition: background-color 0.4s ease, box-shadow 0.3s ease, color 0.4s ease;
+    }
+    form button[type="submit"]:hover {
+      background-color: #00ffe0;
+      color: #000;
+      box-shadow: 0 8px 25px rgba(0, 255, 224, 0.75);
+      transform: scale(1.05);
+    }
+    form button[type="submit"]:active {
+      transform: scale(0.97);
+    }
+
+    /* Inputs y textarea */
+    input, textarea {
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      background-color: rgba(0, 255, 200, 0.12);
+      border-color: #00ffe0;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body class="relative overflow-x-hidden">
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="transform-gpu" id="heroContent">
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">
+        Dr. Bladimir <span class="text-cyan-400">Jhon</span>
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-300">
+        Podología avanzada · Ciencia y estética para tus pasos.
+      </p>
+      <button class="mt-10 px-8 py-3 bg-cyan-500 text-black font-semibold rounded-full hover:bg-cyan-400 transition floating">
+        Reserva tu cita
+      </button>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="py-24 px-6 md:px-20 bg-transparent glass rounded-3xl mx-6 md:mx-20 my-10">
+    <h2 class="text-4xl font-bold mb-8 text-center text-cyan-300">Sobre mí</h2>
+    <div class="flex flex-col md:flex-row items-center gap-10">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=500&q=80"
+           alt="Doctor Bladimir Jhon" class="rounded-3xl shadow-lg w-full md:w-1/3 object-cover transform-gpu hover:scale-105 transition">
+      <p class="text-gray-300 text-lg leading-relaxed">
+        Soy el Dr. <b>Bladimir Jhon</b>, especialista en salud y estética del pie.  
+        Combino diagnóstico 3D y tratamientos personalizados para recuperar la movilidad y bienestar de cada paso.  
+        Con más de 15 años de experiencia, fusiono ciencia, arte y tecnología para resultados naturales y duraderos.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRATAMIENTOS -->
+  <section class="py-24 px-6 md:px-20">
+    <h2 class="text-4xl font-bold mb-16 text-center text-cyan-300">Tratamientos Destacados</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="glass p-8 rounded-3xl text-center transform-gpu hover:-translate-y-2 transition-all card3d">
+        <h3 class="text-2xl font-semibold mb-3 text-cyan-200">Podología Clínica</h3>
+        <p class="text-gray-400">Evaluación biomecánica y corrección sin dolor con tecnología láser de precisión.</p>
+      </div>
+      <div class="glass p-8 rounded-3xl text-center transform-gpu hover:-translate-y-2 transition-all card3d">
+        <h3 class="text-2xl font-semibold mb-3 text-cyan-200">Terapia Regenerativa</h3>
+        <p class="text-gray-400">Plasma rico en plaquetas y ondas de choque para una recuperación acelerada.</p>
+      </div>
+      <div class="glass p-8 rounded-3xl text-center transform-gpu hover:-translate-y-2 transition-all card3d">
+        <h3 class="text-2xl font-semibold mb-3 text-cyan-200">Estética Podal</h3>
+        <p class="text-gray-400">Restaura la forma y textura natural de tus pies con resultados visibles al instante.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="py-24 px-6 md:px-20 glass mx-6 md:mx-20 rounded-3xl">
+    <h2 class="text-4xl font-bold mb-10 text-center text-cyan-300">Testimonios</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="p-6 rounded-xl bg-white/5 border border-white/10 transition-colors duration-300 hover:bg-cyan-900/50 hover:border-cyan-400">
+        <p class="italic text-gray-300">“Volví a caminar sin dolor tras meses de molestias. Un profesional extraordinario.”</p>
+        <span class="block mt-4 text-cyan-400 font-semibold">– María López</span>
+      </div>
+      <div class="p-6 rounded-xl bg-white/5 border border-white/10 transition-colors duration-300 hover:bg-cyan-900/50 hover:border-cyan-400">
+        <p class="italic text-gray-300">“Atención impecable. Me ayudó a recuperar mi postura y confianza al caminar.”</p>
+        <span class="block mt-4 text-cyan-400 font-semibold">– Javier Ortega</span>
+      </div>
+      <div class="p-6 rounded-xl bg-white/5 border border-white/10 transition-colors duration-300 hover:bg-cyan-900/50 hover:border-cyan-400">
+        <p class="italic text-gray-300">“Una clínica futurista con trato humano y resultados reales.”</p>
+        <span class="block mt-4 text-cyan-400 font-semibold">– Laura Fernández</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="py-24 text-center">
+    <h2 class="text-4xl font-bold mb-6 text-cyan-300">Agenda tu cita</h2>
+    <p class="text-gray-400 mb-10">Clínica VitalStep · Madrid, España</p>
+    <form class="max-w-lg mx-auto glass p-8 rounded-3xl space-y-6 form3d">
+      <input type="text" placeholder="Nombre completo" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+      <input type="email" placeholder="Correo electrónico" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+      <textarea rows="4" placeholder="Mensaje" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
+      <button type="submit" class="px-8 py-3 bg-cyan-500 text-black font-semibold rounded-full hover:bg-cyan-400 transition">Enviar</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 text-center text-gray-500 text-sm border-t border-white/10 transition-colors duration-300 hover:text-cyan-400">
+    © 2025 Dr. Bladimir Jhon — Podología Avanzada. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación de entrada por secciones
+    gsap.utils.toArray("section").forEach((section) => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    });
+
+    // Parallax Hero 3D con movimiento de ratón
+    const hero = document.getElementById("hero");
+    const heroContent = document.getElementById("heroContent");
+    hero.addEventListener("mousemove", (e) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth - 0.5) * 20;
+      const y = (e.clientY / innerHeight - 0.5) * 20;
+      gsap.to(heroContent, {
+        rotateY: x,
+        rotateX: -y,
+        transformPerspective: 800,
+        ease: "power2.out",
+        duration: 0.6
+      });
+    });
+    hero.addEventListener("mouseleave", () => {
+      gsap.to(heroContent, { rotateX: 0, rotateY: 0, duration: 1, ease: "power3.out" });
+    });
+
+    // Cards con tilt 3D leve
+    document.querySelectorAll(".card3d").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+        gsap.to(card, { rotateX: -rotateX, rotateY: rotateY, duration: 0.4, ease: "power2.out" });
+      });
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.6, ease: "power3.out" });
+      });
+    });
+
+    // Animación 3D formulario
+    const form3d = document.querySelector(".form3d");
+    if (form3d) {
+      form3d.addEventListener("mousemove", (e) => {
+        const rect = form3d.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        gsap.to(form3d, { rotateX: -rotateX, rotateY: rotateY, duration: 0.4, ease: "power2.out" });
+      });
+      form3d.addEventListener("mouseleave", () => {
+        gsap.to(form3d, { rotateX: 0, rotateY: 0, duration: 0.6, ease: "power3.out" });
+      });
+    }
+  </script>
+</body>
+</html>
