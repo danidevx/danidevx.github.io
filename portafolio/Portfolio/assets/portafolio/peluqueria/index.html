@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gentleman's Cut | Peluquería Premium</title>
+    <meta name="description"
+        content="Experiencia de barbería premium para caballeros. Cortes clásicos, afeitados tradicionales y cuidado de barba en un ambiente exclusivo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a028',
+                            600: '#b08d1e',
+                        },
+                        dark: {
+                            900: '#1a1a1a',
+                            800: '#2d2d2d',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-900 text-gray-100 font-sans antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark-900/95 backdrop-blur-sm border-b border-white/10 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-serif font-bold text-gold-400 tracking-wider">GENTLEMAN'S CUT</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
+                        <a href="#servicios"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Servicios</a>
+                        <a href="#equipo"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Equipo</a>
+                        <a href="#galeria"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galería</a>
+                        <a href="#testimonios"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Testimonios</a>
+                        <a href="#contacto"
+                            class="bg-gold-500 text-dark-900 hover:bg-gold-400 px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105">Reservar</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-btn">
+                        <span class="sr-only">Abrir menú</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-dark-800 border-t border-gray-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#servicios"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Servicios</a>
+                <a href="#equipo"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Equipo</a>
+                <a href="#galeria"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Galería</a>
+                <a href="#testimonios"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Testimonios</a>
+                <a href="#contacto"
+                    class="text-gold-400 font-bold block px-3 py-2 rounded-md text-base font-medium">Reservar Cita</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="hero_image_1764037370081.png" alt="Interior de barbería clásica"
+                class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-900/80 via-dark-900/50 to-dark-900"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto fade-in-up">
+            <p class="text-gold-400 font-serif text-xl md:text-2xl mb-4 tracking-widest uppercase">Estilo & Tradición
+            </p>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                La Excelencia en <br><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200">Cuidado
+                    Masculino</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light">
+                Más que un corte, una experiencia. Redescubre el arte de la barbería clásica con un toque moderno y
+                exclusivo.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contacto"
+                    class="bg-gold-500 text-dark-900 hover:bg-gold-400 px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105 shadow-lg shadow-gold-500/20">
+                    Reservar Cita
+                </a>
+                <a href="#servicios"
+                    class="border border-white/30 hover:border-gold-400 hover:text-gold-400 text-white px-8 py-4 rounded-full text-lg font-medium transition-all backdrop-blur-sm">
+                    Ver Servicios
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#servicios" class="text-white/50 hover:text-gold-400 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-gold-400 font-serif text-lg tracking-widest mb-2">NUESTROS SERVICIOS</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-white">Cuidado Integral</h3>
+                <div class="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="group bg-dark-800 p-8 rounded-xl border border-white/5 hover:border-gold-500/30 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 mb-6 overflow-hidden rounded-lg">
+                        <img src="service1_image_1764037385922.png" alt="Corte de cabello"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-3">Corte Clásico</h4>
+                    <p class="text-gray-400 mb-4">Asesoría personalizada, lavado, corte con tijera o máquina y peinado
+                        con productos premium.</p>
+                    <div class="flex justify-between items-center text-gold-400 font-bold">
+                        <span>30 min</span>
+                        <span>$25</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div
+                    class="group bg-dark-800 p-8 rounded-xl border border-white/5 hover:border-gold-500/30 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 mb-6 overflow-hidden rounded-lg">
+                        <img src="service2_image_1764037440656.png" alt="Afeitado tradicional"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-3">Afeitado Royal</h4>
+                    <p class="text-gray-400 mb-4">Ritual de toalla caliente, aceites esenciales, afeitado con navaja y
+                        masaje facial relajante.</p>
+                    <div class="flex justify-between items-center text-gold-400 font-bold">
+                        <span>45 min</span>
+                        <span>$30</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="group bg-dark-800 p-8 rounded-xl border border-white/5 hover:border-gold-500/30 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 mb-6 overflow-hidden rounded-lg">
+                        <img src="service1_image_1764037385922.png" alt="Combo Gentleman"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-3">Combo Gentleman</h4>
+                    <p class="text-gray-400 mb-4">La experiencia completa: Corte de cabello + Afeitado o arreglo de
+                        barba + Bebida de cortesía.</p>
+                    <div class="flex justify-between items-center text-gold-400 font-bold">
+                        <span>75 min</span>
+                        <span>$50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipo" class="py-24 bg-dark-800 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-5">
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-gold-500 blur-3xl"></div>
+            <div class="absolute top-1/2 right-0 w-64 h-64 rounded-full bg-gold-600 blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-gold-400 font-serif text-lg tracking-widest mb-2">PROFESIONALES</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-white">Nuestro Equipo</h3>
+                <div class="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Expertos apasionados dedicados a perfeccionar tu estilo
+                    con precisión y arte.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Team Member 1 -->
+                <div class="group relative">
+                    <div class="relative h-96 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=800"
+                            alt="Master Barber"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-2xl font-serif font-bold text-white">Ricardo Silva</h4>
+                            <p class="text-gold-400 font-medium mb-2">Master Barber</p>
+                            <p
+                                class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                Especialista en cortes clásicos y afeitado tradicional con navaja.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="group relative">
+                    <div class="relative h-96 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800"
+                            alt="Stylist"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-2xl font-serif font-bold text-white">David Torres</h4>
+                            <p class="text-gold-400 font-medium mb-2">Senior Stylist</p>
+                            <p
+                                class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                Experto en tendencias modernas y diseño de barba.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="group relative">
+                    <div class="relative h-96 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=800"
+                            alt="Barber"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-2xl font-serif font-bold text-white">Mateo Ruiz</h4>
+                            <p class="text-gold-400 font-medium mb-2">Barber</p>
+                            <p
+                                class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                Apasionado por el detalle y la experiencia del cliente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-gold-400 font-serif text-lg tracking-widest mb-2">GALERÍA</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-white">Nuestro Espacio</h3>
+                </div>
+                <a href="#"
+                    class="hidden md:inline-block text-gold-400 hover:text-white transition-colors border-b border-gold-400 pb-1 mt-4 md:mt-0">Ver
+                    todo en Instagram</a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px]">
+                <div class="col-span-2 row-span-2 relative overflow-hidden rounded-xl group">
+                    <img src="hero_image_1764037370081.png" alt="Interior"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-serif text-xl">Interior</span>
+                    </div>
+                </div>
+                <div class="col-span-1 row-span-1 relative overflow-hidden rounded-xl group">
+                    <img src="service1_image_1764037385922.png" alt="Detalle"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="col-span-1 row-span-2 relative overflow-hidden rounded-xl group">
+                    <img src="service2_image_1764037440656.png" alt="Barba"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div
+                    class="col-span-1 row-span-1 relative overflow-hidden rounded-xl group bg-dark-900 flex items-center justify-center border border-white/5">
+                    <div class="text-center p-4">
+                        <p class="text-gold-400 font-serif text-4xl font-bold mb-2">10+</p>
+                        <p class="text-gray-400 text-sm">Años de experiencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-24 bg-dark-900">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <svg class="w-12 h-12 text-gold-500 mx-auto mb-8 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H7.19921C7.72939 16.8898 8.7044 17.5 9.83202 17.5C12.337 17.5 14.3813 15.4236 14.017 12.9181C13.4725 9.18332 9.98122 6.5 6.01698 6.5C3.80785 6.5 2.01698 8.29086 2.01698 10.5C2.01698 12.7091 3.80785 14.5 6.01698 14.5H8.01698V21H14.017ZM21.017 21L21.017 18C21.017 16.8954 20.1216 16 19.017 16H14.1992C14.7294 16.8898 15.7044 17.5 16.832 17.5C19.337 17.5 21.3813 15.4236 21.017 12.9181C20.4725 9.18332 16.9812 6.5 13.017 6.5C10.8079 6.5 9.01698 8.29086 9.01698 10.5C9.01698 12.7091 10.8079 14.5 13.017 14.5H15.017V21H21.017Z">
+                </path>
+            </svg>
+            <blockquote class="text-2xl md:text-3xl font-serif italic text-white mb-8 leading-relaxed">
+                "Sin duda la mejor experiencia de barbería en la ciudad. El ambiente es increíble y la atención al
+                detalle es insuperable. Salgo sintiéndome renovado cada vez."
+            </blockquote>
+            <div class="flex items-center justify-center space-x-4">
+                <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden">
+                    <img src="https://ui-avatars.com/api/?name=Carlos+R&background=d4af37&color=1a1a1a" alt="Cliente"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="text-left">
+                    <div class="text-white font-bold">Carlos Rodríguez</div>
+                    <div class="text-gold-400 text-sm">Cliente Frecuente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-black text-white py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <h3 class="text-2xl font-serif font-bold text-gold-400 mb-6">GENTLEMAN'S CUT</h3>
+                    <p class="text-gray-400 mb-6">Elevando el estándar del cuidado masculino. Donde la tradición se
+                        encuentra con el estilo moderno.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold-400 transition-colors"><span
+                                class="sr-only">Instagram</span>IG</a>
+                        <a href="#" class="text-gray-400 hover:text-gold-400 transition-colors"><span
+                                class="sr-only">Facebook</span>FB</a>
+                        <a href="#" class="text-gray-400 hover:text-gold-400 transition-colors"><span
+                                class="sr-only">Twitter</span>TW</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Horarios</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex justify-between"><span>Lunes - Viernes</span> <span>10:00 - 20:00</span></li>
+                        <li class="flex justify-between"><span>Sábado</span> <span>09:00 - 18:00</span></li>
+                        <li class="flex justify-between"><span>Domingo</span> <span class="text-gold-500">Cerrado</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contacto</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-gold-400 mr-3">📍</span>
+                            <span>Av. Principal 123, Ciudad Elegante</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-gold-400 mr-3">📞</span>
+                            <span>+1 234 567 890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-gold-400 mr-3">✉️</span>
+                            <span>citas@gentlemanscut.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-12 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 Gentleman's Cut. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
